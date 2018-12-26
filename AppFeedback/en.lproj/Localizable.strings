@@ -1,0 +1,69 @@
+//  Copyright (c) 2018 Yahoo Japan Corporation.
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+
+
+// global
+"cancel" = "Cancel";
+"confirm" = "Confirm";
+"send" = "Send";
+"select" = "Select";
+
+// category actionsheet
+"categoryMessage" = "Select a category";
+"bug" = "Bug";
+"request" = "Request";
+"question" = "Question";
+"design" = "Design";
+"others" = "Others";
+"comment" = "Comment";
+
+
+
+//Slack API Error
+"slackPostErrorTitle" = "Slack Post Error";
+"slackPostInvalidMessage" = "Slack token is invalid";
+"slackPostClientErrorMessage" = "Connection was failed. Check your network connection.";
+"slackPostSettingErrorMessage" = "Slack root was not found.";
+"slackPostAuthorizationErrorMessage" = "Authorization was failed. Ask the admimistrator";
+"slackPostDataNotFoundErrorMessage" = "Data was not found. Check EVENT_ID";
+"slackPostUnknownErrorMessage" = "Unknown error. Enviroment setting may be wrong.";
+"slackPostUnknownErrorStatucCodeMessage" = "Unknown error. Status Code: %ld";
+
+"slackPostSuccessTitle" = "Success";
+"slackPostSuccessMessage" = "Thank you for your coorporation.";
+
+// AlertController
+
+"confirmReportSettingInputTitleMessage" = "Please input title.";
+
+"confirmReportSettingTitle" = "Request";
+"confirmReportSettingMessage" = "Are you sure you want to report?";
+"confirmReportSettingSlackIdCausionMessage" = "Please input Slack ID.";
+
+"confirmReportSettingNotSelectedCategoryMessage" = "You haven't select Feedback Category yet";
+"confirmReportSettingIsLocalMessage" = "Cannot send the report frome local environment.";
+
+//　Video Capturing
+"videoButtonTappedAlertMessage" = "It can record a movie up to %d seconds. Tapping feedback icon stops the capturing.";
+"videoButtonTappedAlertTitle" = "Start capturing";
+"videoButtonTappedAlertStartButtonTitle" = "Start";
+
+// AppFeedback startRecording
+"failToCaptureAlertTitle" = "Capturing was failed.";

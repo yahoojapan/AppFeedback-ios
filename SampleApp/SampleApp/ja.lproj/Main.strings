@@ -1,0 +1,45 @@
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "6M3-E8-mny"; */
+"6M3-E8-mny.title" = "Item";
+
+/* Class = "UILabel"; text = "Title1"; ObjectID = "78F-Ia-SsD"; */
+"78F-Ia-SsD.text" = "Title1";
+
+/* Class = "UILabel"; text = "Loaded by FirstViewController"; ObjectID = "A5M-7J-77L"; */
+"A5M-7J-77L.text" = "Loaded by FirstViewController";
+
+/* Class = "UIButton"; normalTitle = "Toggle Button"; ObjectID = "GQt-Ll-q2R"; */
+"GQt-Ll-q2R.normalTitle" = "Toggle Button";
+
+/* Class = "UIButton"; normalTitle = "Start Recording"; ObjectID = "Jmn-Hp-jQb"; */
+"Jmn-Hp-jQb.normalTitle" = "Start Recording";
+
+/* Class = "UIButton"; normalTitle = "End Recording"; ObjectID = "Jo2-7M-fPh"; */
+"Jo2-7M-fPh.normalTitle" = "End Recording";
+
+/* Class = "UILabel"; text = "First View"; ObjectID = "KQZ-1w-vlD"; */
+"KQZ-1w-vlD.text" = "First View";
+
+/* Class = "UILabel"; text = "Loaded by SecondViewController"; ObjectID = "NDk-cv-Gan"; */
+"NDk-cv-Gan.text" = "Loaded by SecondViewController";
+
+/* Class = "UITabBarItem"; title = "First"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "First";
+
+/* Class = "UITabBarItem"; title = "Second"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Second";
+
+/* Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "caT-fk-tmZ"; */
+"caT-fk-tmZ.title" = "Root View Controller";
+
+/* Class = "UIButton"; normalTitle = "Action Sheet"; ObjectID = "ks4-gp-wSr"; */
+"ks4-gp-wSr.normalTitle" = "Action Sheet";
+
+/* Class = "UILabel"; text = "Title0"; ObjectID = "pxH-rZ-aq3"; */
+"pxH-rZ-aq3.text" = "Title0";
+
+/* Class = "UILabel"; text = "Title2"; ObjectID = "sCP-ly-kMf"; */
+"sCP-ly-kMf.text" = "Title2";
+
+/* Class = "UILabel"; text = "Second View"; ObjectID = "zEq-FU-wV5"; */
+"zEq-FU-wV5.text" = "Second View";

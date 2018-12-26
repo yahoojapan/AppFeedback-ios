@@ -1,0 +1,51 @@
+
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "0I5-Oh-U77"; */
+"0I5-Oh-U77.title" = "Save";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "2sh-V3-7vu"; */
+"2sh-V3-7vu.normalTitle" = "Edit";
+
+/* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "I1p-hr-esy"; */
+"I1p-hr-esy.title" = "Clear";
+
+/* Class = "UIViewController"; title = "Rendering"; ObjectID = "OfO-1t-4AJ"; */
+"OfO-1t-4AJ.title" = "Rendering";
+
+/* Class = "UIBarButtonItem"; title = "Send"; ObjectID = "R8d-uT-Jj5"; */
+"R8d-uT-Jj5.title" = "Send";
+
+/* Class = "UIViewController"; title = "Feedback"; ObjectID = "RGA-cb-TLJ"; */
+"RGA-cb-TLJ.title" = "Feedback";
+
+/* Class = "UINavigationItem"; title = "Edit"; ObjectID = "TDt-M0-Lpn"; */
+"TDt-M0-Lpn.title" = "Edit";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "Uak-43-rRS"; */
+"Uak-43-rRS.title" = "Close";
+
+/* Class = "UILabel"; text = "Sending..."; ObjectID = "Wep-PR-6FS"; */
+"Wep-PR-6FS.text" = "Sending...";
+
+/* Class = "UITextField"; placeholder = "Slack ID（Required）"; ObjectID = "bV0-Ol-cjp"; */
+"bV0-Ol-cjp.placeholder" = "Slack ID（Required）";
+
+/* Class = "UILabel"; text = "Category:"; ObjectID = "bj5-5w-icM"; */
+"bj5-5w-icM.text" = "Category:";
+
+/* Class = "UITextField"; placeholder = "Title（Required）"; ObjectID = "eZ4-A6-azb"; */
+"eZ4-A6-azb.placeholder" = "Title（Required）";
+
+/* Class = "UIButton"; normalTitle = "Select"; ObjectID = "eeV-rN-syK"; */
+"eeV-rN-syK.normalTitle" = "Select";
+
+/* Class = "UINavigationItem"; title = "Feedback"; ObjectID = "jKp-DZ-8i5"; */
+"jKp-DZ-8i5.title" = "Feedback";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "kAJ-Fe-Y06"; */
+"kAJ-Fe-Y06.normalTitle" = "Close";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "pHQ-Zk-4s5"; */
+"pHQ-Zk-4s5.title" = "Close";
+
+/* Class = "UIButton"; normalTitle = "Capture"; ObjectID = "pSC-l6-NTs"; */
+"pSC-l6-NTs.normalTitle" = "Capture";
