@@ -1,4 +1,4 @@
-source 'http://rubygems.corp.yahoo.co.jp:8000/rubygems'
+source 'https://rubygems.org'
 
 gem 'cocoapods'
 gem 'slather'

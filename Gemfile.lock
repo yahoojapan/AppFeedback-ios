@@ -5,7 +5,7 @@ GIT
     fastlane-plugin-setup_app_feedback_sdk (0.1.0)
 
 GEM
-  remote: http://rubygems.corp.yahoo.co.jp:8000/rubygems/
+  remote: https://rubygems.org/
   specs:
     CFPropertyList (2.3.6)
     activesupport (4.2.11)
