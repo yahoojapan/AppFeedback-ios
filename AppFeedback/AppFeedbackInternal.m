@@ -25,7 +25,6 @@
 
 #import "AppFeedback.h"
 #import "ReportViewController.h"
-#import "UIView+TTCategory.h"
 #import "DeviceUtil.h"
 #import "Config.h"
 #import "FloatingButtonController.h"
