@@ -21,4 +21,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source       = { :git => "https://github.com/yahoojapan/AppFeedback.git", :tag => "1.0.0" }
+  s.resources = 'AppFeedback/Images.xcassets'
 end
