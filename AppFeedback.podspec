@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AppFeedback"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "You can post feedback messages and screenshots to Slack from your app!"
 
   s.description  = <<-DESC
@@ -20,6 +20,6 @@ Pod::Spec.new do |s|
   s.source_files = "AppFeedback/*.{h,m}"
   s.requires_arc = true
 
-  s.source       = { :git => "https://github.com/yahoojapan/AppFeedback.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/yahoojapan/AppFeedback.git", :tag => s.version }
   s.resources = ['AppFeedback/Images.xcassets', 'AppFeedback/**/*.{xib,storyboard}']
 end
