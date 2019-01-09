@@ -15,11 +15,11 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author       = "Yahoo Japan Corporation"
 
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "9.0"
 
   s.source_files = "AppFeedback/*.{h,m}"
   s.requires_arc = true
 
   s.source       = { :git => "https://github.com/yahoojapan/AppFeedback.git", :tag => "1.0.0" }
-  s.resource_bundles = ['AppFeedback/Images.xcassets', 'AppFeedback/**/*.{xib,storyboard}']
+  s.resources = ['AppFeedback/Images.xcassets', 'AppFeedback/**/*.{xib,storyboard}']
 end
