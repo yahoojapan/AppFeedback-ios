@@ -25,7 +25,6 @@
 
 #import "PopUpTransitionAnimater.h"
 #import "ReportViewController.h"
-#import "UIView+TTCategory.h"
 #import "AnimationUtil.h"
 
 @interface PopUpTransitionAnimater()
@@ -73,14 +72,17 @@
      {
          if (!finished) return;
          
-         CGFloat y0 = self.presenting? alertView.height : containerView.y;
-         CGFloat y1 = self.presenting? containerView.y  : alertView.height;
+         CGFloat y0 = self.presenting? alertView.frame.size.height : containerView.frame.origin.y;
+         CGFloat y1 = self.presenting? containerView.frame.origin.y  : alertView.frame.size.height;
          
          // TODO: あとでちがうアニメーションにしたい
          [AnimationUtil animateWithDuration:0.5f
                                      easing:^(CGFloat t) {
                                          t = [AnimationUtil easeElasticOut:t];
-                                         alertView.y = y0 + (y1 - y0) * t;
+                                         CGFloat newY = y0 + (y1 - y0) * t;
+                                         CGRect newFrame = alertView.frame;
+                                         newFrame.origin.y = newY;
+                                         alertView.frame = newFrame;
                                      }
                                  completion:^(){
                                      [transitionContext completeTransition:YES];

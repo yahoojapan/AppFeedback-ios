@@ -68,8 +68,6 @@
 		DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68D31BD776B300A03D74 /* AppFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */; };
 		DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */; };
-		DBCE69051BD776ED00A03D74 /* UIView+TTCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68EE1BD776ED00A03D74 /* UIView+TTCategory.h */; };
-		DBCE69061BD776ED00A03D74 /* UIView+TTCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68EF1BD776ED00A03D74 /* UIView+TTCategory.m */; };
 		DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDCC3FC1BD9D25000327609 /* ReportViewController.h */; };
 		DBDCC4001BD9D25100327609 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC3FD1BD9D25000327609 /* ReportViewController.m */; };
 		DBDCC4041BD9D4E400327609 /* DeviceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDCC4021BD9D4E400327609 /* DeviceUtil.h */; };
@@ -148,8 +146,6 @@
 		DBCE68D51BD776B300A03D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppFeedbackInternal.h; sourceTree = "<group>"; };
 		DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppFeedbackInternal.m; sourceTree = "<group>"; };
-		DBCE68EE1BD776ED00A03D74 /* UIView+TTCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TTCategory.h"; sourceTree = "<group>"; };
-		DBCE68EF1BD776ED00A03D74 /* UIView+TTCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TTCategory.m"; sourceTree = "<group>"; };
 		DBDCC3FC1BD9D25000327609 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
 		DBDCC3FD1BD9D25000327609 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
 		DBDCC4021BD9D4E400327609 /* DeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
@@ -286,8 +282,6 @@
 				DBCE68D31BD776B300A03D74 /* AppFeedback.h */,
 				DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */,
 				DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */,
-				DBCE68EE1BD776ED00A03D74 /* UIView+TTCategory.h */,
-				DBCE68EF1BD776ED00A03D74 /* UIView+TTCategory.m */,
 				DBCE68D51BD776B300A03D74 /* Info.plist */,
 				DBDCC4021BD9D4E400327609 /* DeviceUtil.h */,
 				DBDCC4031BD9D4E400327609 /* DeviceUtil.m */,
@@ -337,7 +331,6 @@
 				09059A671EC1897C004B338E /* AutoResizeTextView.h in Headers */,
 				FB131F451F3190FA007B9EA0 /* DrawViewController.h in Headers */,
 				DBDCC4081BD9D8C900327609 /* AnimationUtil.h in Headers */,
-				DBCE69051BD776ED00A03D74 /* UIView+TTCategory.h in Headers */,
 				DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */,
 				09D5DC541EAA20E400F24FA4 /* ScreenCapture.h in Headers */,
 				DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */,
@@ -502,7 +495,6 @@
 				DBDCC4051BD9D4E400327609 /* DeviceUtil.m in Sources */,
 				09059A681EC1897C004B338E /* AutoResizeTextView.m in Sources */,
 				7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */,
-				DBCE69061BD776ED00A03D74 /* UIView+TTCategory.m in Sources */,
 				093E555A1EB097F800CF731F /* FloatingProgressView.m in Sources */,
 				09D40EE8215CBA110022ACA0 /* Color.m in Sources */,
 				09D5DC551EAA20E400F24FA4 /* ScreenCapture.m in Sources */,

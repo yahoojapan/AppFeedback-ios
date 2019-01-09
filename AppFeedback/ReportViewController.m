@@ -26,7 +26,6 @@
 #import "ReportViewController.h"
 #import "DrawViewController.h"
 #import "DeviceUtil.h"
-#import "UIView+TTCategory.h"
 #import "UIPlaceHolderTextView.h"
 #import "Config.h"
 #import "AppFeedbackInternal.h"
