@@ -16,7 +16,6 @@ Pod::Spec.new do |s|
   s.author                = "Yahoo Japan Corporation"
 
   s.ios.deployment_target = "9.0"
-  s.platform = :ios, '9.0'
 
   s.source_files          = "AppFeedback/*.{h,m}"
   s.public_header_files   = 'AppFeedback/AppFeedback.h'
