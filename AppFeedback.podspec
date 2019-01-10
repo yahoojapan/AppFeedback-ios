@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "AppFeedback"
-  s.version               = "1.0.0"
+  s.version               = "1.0.1"
   s.summary               = "You can post feedback messages and screenshots to Slack from your app!"
 
   s.description           = <<-DESC

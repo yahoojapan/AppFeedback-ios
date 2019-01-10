@@ -65,7 +65,7 @@ static const CGFloat BUTTON_SIZE = 50.0;
 }
 
 - (void)loadView {
-    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    NSBundle *bundle = AppFeedback.frameworkBundle;
 
     // 初期位置
     CGSize screenSize = UIScreen.mainScreen.bounds.size;

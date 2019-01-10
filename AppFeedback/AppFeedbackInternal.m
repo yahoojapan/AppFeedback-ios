@@ -64,6 +64,15 @@ static AppFeedback *sharedData = nil;
     return sharedData;
 }
 
++ (nonnull NSBundle*)frameworkBundle {
+#ifdef COCOAPODS
+    NSString* bundlePath = [NSBundle.mainBundle pathForResource:@"AppFeedbackResource" ofType:@"bundle"];
+    return [NSBundle bundleWithPath:bundlePath];
+#else
+    return [NSBundle bundleForClass:self.class];
+#endif
+}
+
 + (void)configureWithSlackToken:(NSString *)token slackChannel:(NSString *)channel {
     [AppFeedback.shared configureWithSlackToken:token slackChannel:channel];
 }
@@ -341,8 +350,7 @@ static AppFeedback *sharedData = nil;
 
 - (UINavigationController *)navigationController {
     if (!_reportViewController) {
-        NSBundle *frameworkBundle = [NSBundle bundleForClass:self.class];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:frameworkBundle];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:AppFeedback.frameworkBundle];
         _navigationController = [storyboard instantiateInitialViewController];
         _reportViewController = _navigationController.viewControllers[0];
         _reportViewController.delegate = self;
