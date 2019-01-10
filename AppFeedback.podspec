@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.source_files          = "AppFeedback/*.{h,m}"
   s.public_header_files   = 'AppFeedback/AppFeedback.h'
   s.resource_bundles      = {
-    'AppFeedbackResource' => ['AppFeedback/Images.xcassets', 'AppFeedback/**/*.{xib,storyboard}']
+    'AppFeedbackResource' => ['AppFeedback/Images.xcassets', 'AppFeedback/**/*.{xib,storyboard,lproj}']
   }
 
   s.requires_arc          = true
