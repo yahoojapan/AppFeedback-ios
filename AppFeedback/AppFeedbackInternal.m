@@ -87,6 +87,14 @@ static AppFeedback *sharedData = nil;
     [AppFeedback.shared setFeedbackCategories:feedbackCategories];
 }
 
++ (NSString *)slackApiUrl {
+    return AppFeedback.shared.config.slackApiUrl;
+}
+
++ (void)setSlackApiUrl:(NSString *)url {
+    AppFeedback.shared.config.slackApiUrl = url;
+}
+
 + (BOOL)isHidden {
     return AppFeedback.shared.isHidden;
 }

@@ -33,21 +33,24 @@
 
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) NSString *channel;
+@property (nonatomic, strong) NSString *apiUrl;
 
 @end
 
 @implementation SlackAPI
 
-- (instancetype)initWithToken:(NSString *)token channel:(NSString *)channel {
+- (instancetype)initWithToken:(NSString *)token channel:(NSString *)channel apiUrl:(NSString *)apiUrl {
     if (self = [super init]) {
         self.token = token;
         self.channel = channel;
+        self.apiUrl = apiUrl;
     }
     return self;
 }
 
 - (void)postData:(SendData *)data completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler {
-    NSString *urlString = @"https://slack.com/api/files.upload";
+
+    NSString *urlString = [NSString stringWithFormat:@"%@/files.upload", self.apiUrl];
     
     NSURL *feedbackURL = [NSURL URLWithString:urlString];
     
@@ -56,6 +59,10 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:feedbackURL];
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
+
+    NSString *authHeader = [NSString stringWithFormat:@"Bearer %@", self.token];
+    [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+
     [request setHTTPMethod:@"POST"];
 
     NSString *message = [NSString stringWithFormat:
@@ -76,8 +83,7 @@
     //postデータ作成
     NSMutableData *feedbackData = [NSMutableData new];
     [self setTextData:feedbackData
-       textDictionary:@{@"token":self.token,
-                        @"channels":self.channel,
+       textDictionary:@{@"channels":self.channel,
                         @"initial_comment":message}
              boundary:boundary];
     [self setImageData:feedbackData imageData:data.imageData videoPath:data.videoPath boundary:boundary];
