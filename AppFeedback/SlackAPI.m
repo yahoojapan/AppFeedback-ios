@@ -115,11 +115,11 @@
     
     if (videoPath) {
         NSData *videoData = [NSData dataWithContentsOfURL:videoPath];
-        [feedbackData appendData:[[NSString stringWithFormat:@"filename=\"%@\"\r\n", @"Screen Capture.mp4"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [feedbackData appendData:[[NSString stringWithFormat:@"filename=\"%@\"\r\n", @"ScreenCapture.mp4"] dataUsingEncoding:NSUTF8StringEncoding]];
         [feedbackData appendData:[[NSString stringWithFormat:@"Content-Type: video/mp4\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
         [feedbackData appendData:videoData];
     } else {
-        [feedbackData appendData:[[NSString stringWithFormat:@"filename=\"%@\"\r\n", @"Screen Shot.png"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [feedbackData appendData:[[NSString stringWithFormat:@"filename=\"%@\"\r\n", @"ScreenShot.png"] dataUsingEncoding:NSUTF8StringEncoding]];
         [feedbackData appendData:[[NSString stringWithFormat:@"Content-Type: image/jpeg\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
         [feedbackData appendData:imageData];
     }
