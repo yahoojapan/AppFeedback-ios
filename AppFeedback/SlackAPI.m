@@ -34,16 +34,18 @@
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) NSString *channel;
 @property (nonatomic, strong) NSString *apiUrl;
+@property (nonatomic, strong) NSString *branchName;
 
 @end
 
 @implementation SlackAPI
 
-- (instancetype)initWithToken:(NSString *)token channel:(NSString *)channel apiUrl:(NSString *)apiUrl {
+- (instancetype)initWithToken:(NSString *)token channel:(NSString *)channel apiUrl:(NSString *)apiUrl branch:(NSString *)branchName{
     if (self = [super init]) {
         self.token = token;
         self.channel = channel;
         self.apiUrl = apiUrl;
+        self.branchName = branchName;
     }
     return self;
 }
@@ -78,7 +80,12 @@
                          "[Device]\n"
                          "iOS: %@\n"
                          "Model: %@ (%@)\n"
-                         "```\n", data.title, data.username, data.category, data.comment, data.appTitle, data.appVersion, data.appBuildVersion, data.systemVersion, data.modelName, data.modelCode];
+                         , data.title, data.username, data.category, data.comment, data.appTitle, data.appVersion, data.appBuildVersion, data.systemVersion, data.modelName, data.modelCode];
+
+    if (self.branchName) {
+        message = [message stringByAppendingFormat:@"\n[Branch]\n%@\n", self.branchName];
+    }
+    message = [message stringByAppendingFormat:@"```\n"];
     
     //postデータ作成
     NSMutableData *feedbackData = [NSMutableData new];
