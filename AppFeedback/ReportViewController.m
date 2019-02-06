@@ -281,7 +281,7 @@ UITextViewDelegate
     data.modelCode = DeviceUtil.ModelCode;
     data.modelName = DeviceUtil.ModelName;
 
-    SlackAPI* slackAPI = [[SlackAPI alloc] initWithToken:self.config.slackToken channel:self.config.slackChannel];
+    SlackAPI* slackAPI = [[SlackAPI alloc] initWithToken:self.config.slackToken channel:self.config.slackChannel apiUrl:self.config.slackApiUrl];
     [slackAPI postData:data
      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         [self enableActivityIndicator:NO];

@@ -30,6 +30,7 @@
 /// feedback カテゴリの一覧
 @property (nonatomic, strong) NSArray *categories;
 
+@property (nonatomic, strong) NSString *slackApiUrl;
 @property (nonatomic, strong) NSString *slackToken;
 @property (nonatomic, strong) NSString *slackChannel;
 

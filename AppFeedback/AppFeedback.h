@@ -36,6 +36,11 @@
 + (void)configureWithSlackToken:(nonnull NSString *)token slackChannel:(nonnull NSString *)channel;
 
 /**
+ Slack API URL (default: https://slack.com/api)
+ */
+@property (class, nonnull) NSString *slackApiUrl;
+
+/**
  List of categories to select on feedback
  */
 @property (class, nonnull) NSArray<NSString *> *feedbackCategories;

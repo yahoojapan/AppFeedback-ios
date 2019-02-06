@@ -36,11 +36,12 @@
 
 - (id)init {
     if (self = [super init]) {
-        self.categories = @[  AppFeedbackLocalizedString(@"bug", @""),
+        self.categories = @[ AppFeedbackLocalizedString(@"bug", @""),
                              AppFeedbackLocalizedString(@"request", @""),
                              AppFeedbackLocalizedString(@"question", @""),
                              AppFeedbackLocalizedString(@"design", @""),
                              AppFeedbackLocalizedString(@"others", @"")];
+        self.slackApiUrl = @"https://slack.com/api";
     }
     return self;
 }
@@ -63,6 +64,9 @@
     }
     if ([self getRequiredKey:info key:@"AppFeedback_SlackChannel"]) {
         self.slackChannel = [self getRequiredKey:info key:@"AppFeedback_SlackChannel"];
+    }
+    if ([self getRequiredKey:info key:@"AppFeedback_SlackApiUrl"]) {
+        self.slackApiUrl = [self getRequiredKey:info key:@"AppFeedback_SlackApiUrl"];
     }
 }
 
