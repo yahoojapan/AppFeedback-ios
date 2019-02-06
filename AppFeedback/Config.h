@@ -33,6 +33,7 @@
 @property (nonatomic, strong) NSString *slackApiUrl;
 @property (nonatomic, strong) NSString *slackToken;
 @property (nonatomic, strong) NSString *slackChannel;
+@property (nonatomic, strong) NSString *branchName;
 
 - (id)init;
 

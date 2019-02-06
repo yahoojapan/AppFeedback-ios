@@ -68,6 +68,9 @@
     if ([self getRequiredKey:info key:@"AppFeedback_SlackApiUrl"]) {
         self.slackApiUrl = [self getRequiredKey:info key:@"AppFeedback_SlackApiUrl"];
     }
+    if ([self getRequiredKey:info key:@"AppFeedback_Branch"]) {
+        self.branchName = [self getRequiredKey:info key:@"AppFeedback_Branch"];
+    }
 }
 
 - (NSString *)getRequiredKey:(NSDictionary *)info key:(NSString *)key {
