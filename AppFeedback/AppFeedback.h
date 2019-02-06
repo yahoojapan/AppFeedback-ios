@@ -36,7 +36,7 @@
 + (void)configureWithSlackToken:(nonnull NSString *)token slackChannel:(nonnull NSString *)channel;
 
 /**
- Slack APi URL (default: default: https://slack.com/api)
+ Slack API URL (default: https://slack.com/api)
  */
 @property (class, nonnull) NSString *slackApiUrl;
 

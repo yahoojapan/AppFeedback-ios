@@ -152,3 +152,7 @@ Set your slack token and channel.
 List of feedback categories.
 
 The default is "Bug" "Request" "Question" "Design" "Others".
+
+#### var slackApiUrl: String { get set }
+
+Slack API URL (default: default: https://slack.com/api)
