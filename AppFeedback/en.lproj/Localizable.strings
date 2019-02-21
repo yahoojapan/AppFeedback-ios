@@ -42,7 +42,6 @@
 "slackPostClientErrorMessage" = "Connection was failed. Check your network connection.";
 "slackPostSettingErrorMessage" = "Slack root was not found.";
 "slackPostAuthorizationErrorMessage" = "Authorization was failed. Ask the admimistrator";
-"slackPostDataNotFoundErrorMessage" = "Data was not found. Check EVENT_ID";
 "slackPostUnknownErrorMessage" = "Unknown error. Enviroment setting may be wrong.";
 "slackPostUnknownErrorStatucCodeMessage" = "Unknown error. Status Code: %ld";
 

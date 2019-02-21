@@ -313,17 +313,6 @@ UITextViewDelegate
                 NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data
                                                                                    options:NSJSONReadingAllowFragments
                                                                                      error:nil];
-                if (responseDictionary[@"mym_res"] == [NSNull null]) {
-                    [self
-                     p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                     message:AppFeedbackLocalizedString(@"slackPostSettingErrorMessage", @"")
-                     cancelButtonTitle:nil
-                     destructiveButtonTitle:nil
-                     otherButtonTitle:@"OK"
-                     tapBlock:nil];
-                    return;
-                }
-                
                 if ([responseDictionary[@"ok"] boolValue] == NO) {
                     NSString *errorMessage = responseDictionary[@"error"];
                     [self p_createAlertWithTitle:@"Slack Error" message: errorMessage cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitle:@"OK" tapBlock:nil];
@@ -350,16 +339,6 @@ UITextViewDelegate
                 [self
                  p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
                  message:AppFeedbackLocalizedString(@"slackPostAuthorizationErrorMessage", @"")
-                 cancelButtonTitle:nil
-                 destructiveButtonTitle:nil
-                 otherButtonTitle:@"OK"
-                 tapBlock:nil];
-                break;
-                
-            case 404://Application Not found
-                [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                 message:AppFeedbackLocalizedString(@"slackPostDataNotFoundErrorMessage", @"")
                  cancelButtonTitle:nil
                  destructiveButtonTitle:nil
                  otherButtonTitle:@"OK"

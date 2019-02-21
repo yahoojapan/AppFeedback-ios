@@ -42,7 +42,6 @@
 "slackPostClientErrorMessage" = "送信エラーが発生しました。電波が入っていることをご確認の上再送信をお願いします";
 "slackPostSettingErrorMessage" = "Slackのワークスペースが見つかりませんでした。";
 "slackPostAuthorizationErrorMessage" = "トークンの認証に失敗しました。";
-"slackPostDataNotFoundErrorMessage" = "アプリのデータが見つかりませんでした。EVENT_IDを見直してください";
 "slackPostUnknownErrorMessage" = "不明なエラーです。環境設定が間違っている可能性があります";
 "slackPostUnknownErrorStatucCodeMessage" = "不明なエラーです。ステータスコード: %ld";
 
