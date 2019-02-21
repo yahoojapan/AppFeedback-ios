@@ -35,7 +35,7 @@ Swift
 
 [Carthage](https://github.com/Carthage/Carthage)
 ```
-github "https://github.com/yahoojapan/AppFeedback"
+github "https://github.com/yahoojapan/AppFeedback-ios"
 ```
 
 If you do not want to include SDK framework binaries in your application, please remove it from Copy Frameworks by looking at the configuration for the following.
