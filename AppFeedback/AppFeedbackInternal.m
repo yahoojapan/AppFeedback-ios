@@ -77,6 +77,10 @@ static AppFeedback *sharedData = nil;
     [AppFeedback.shared configureWithSlackToken:token slackChannel:channel];
 }
 
++ (void)configureWithSlackChannel:(nonnull NSString *)channel {
+    [AppFeedback.shared configureWithSlackToken:nil slackChannel:channel];
+}
+
 // getter method for feedbackCategories
 + (NSArray<NSString *> *)feedbackCategories {
     return [AppFeedback.shared getFeedbackCategories];
@@ -143,8 +147,13 @@ static AppFeedback *sharedData = nil;
 }
 
 - (void)configureWithSlackToken:(NSString *)token slackChannel:(NSString *)channel {
-    self.config.slackToken = token;
-    self.config.slackChannel = channel;
+    if (token) {
+        self.config.slackToken = token;
+    }
+
+    if (channel) {
+        self.config.slackChannel = channel;
+    }
 }
 
 - (FloatingButtonController *)createFloatingViewController {
