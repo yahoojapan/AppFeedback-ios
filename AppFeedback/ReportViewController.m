@@ -67,7 +67,8 @@ UITextViewDelegate
 @property (weak, nonatomic) IBOutlet UIButton *DrawingButton;
 @property (weak, nonatomic) IBOutlet UIButton *RecordingButton;
 @property (weak, nonatomic) IBOutlet UILabel *feedbackCategoryLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *sendingLabel;
+    
 @property (weak, nonatomic) IBOutlet ExpansionButton *feedbackCategoryButton;
 @property (nonatomic) NSString* notSelectedCategoryTitle;
 
@@ -98,6 +99,9 @@ UITextViewDelegate
     
     self.activityView.hidden = YES;
     [self.activityView.superview bringSubviewToFront:self.activityView];
+    
+    self.sendingLabel.text = AppFeedbackLocalizedString(@"sendingLabelText", @"");
+    [self.sendingLabel setHidden:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -280,11 +284,16 @@ UITextViewDelegate
     data.systemVersion = DeviceUtil.OSVersion;
     data.modelCode = DeviceUtil.ModelCode;
     data.modelName = DeviceUtil.ModelName;
+    
+    [self.sendingLabel setHidden:NO];
 
     SlackAPI* slackAPI = [[SlackAPI alloc] initWithToken:self.config.slackToken channel:self.config.slackChannel apiUrl:self.config.slackApiUrl branch:self.config.branchName];
     [slackAPI postData:data
      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         [self enableActivityIndicator:NO];
+         [self.sendingLabel setHidden:YES];
+
+         
         if (error) {
             if (error.code == kCFURLErrorUserCancelledAuthentication) {//401(Authentication failure)
                 [self
