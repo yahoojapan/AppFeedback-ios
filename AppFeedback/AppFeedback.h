@@ -36,6 +36,13 @@
 + (void)configureWithSlackToken:(nonnull NSString *)token slackChannel:(nonnull NSString *)channel;
 
 /**
+ Initialize AppFeedback SDK
+
+ @param channel slack channel id
+ */
++ (void)configureWithSlackChannel:(nonnull NSString *)channel;
+
+/**
  Slack API URL (default: https://slack.com/api)
  */
 @property (class, nonnull) NSString *slackApiUrl;

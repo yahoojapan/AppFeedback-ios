@@ -143,9 +143,13 @@ func yourLongPressedGesture(sender: UILongPressGestureRecognizer) {
 }
 ```
 
-#### func configure(withSlackToken:channel:)
+#### func configure(withSlackToken:slackChannel:)
 
 Set your slack token and channel.
+
+#### func configure(withSlackChannel)
+
+Set your slack channel. Please set the slack token with fastlane [setup_app_feedback_sdk](https://github.com/yahoojapan/fastlane-plugin-setup_app_feedback_sdk) action.
 
 #### var feedbackCategories: [String] { get set }
 
