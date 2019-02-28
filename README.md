@@ -3,7 +3,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](./LICENSE)
 ![Platform](https://img.shields.io/badge/platforms-iOS%209.0+-333332.svg)
-[![Build Status](https://travis-ci.org/yahoojapan/AppFeedback.svg?branch=master)](https://travis-ci.org/yahoojapan/AppFeedback)
+[![Build Status](https://travis-ci.org/yahoojapan/AppFeedback-ios.svg?branch=master)](https://travis-ci.org/yahoojapan/AppFeedback)
 
 
 # AppFeedback
