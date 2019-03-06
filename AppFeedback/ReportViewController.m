@@ -271,19 +271,18 @@ UITextViewDelegate
     //ScreenShot取得
     NSData *imageData = [self p_takeScreenShot:image];
 
-    SendData* data = [SendData new];
-    data.imageData = imageData;
-    data.videoPath = videoPath;
-    data.title = self.titleTextField.text;
-    data.category = self.feedbackCategoryButton.currentTitle;
-    data.comment = self.freeCommentField.text;
-    data.username = self.reporterName.text;
-    data.appTitle = (NSString*)[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
-    data.appVersion = DeviceUtil.appVersion;
-    data.appBuildVersion = DeviceUtil.appBuildVersion;
-    data.systemVersion = DeviceUtil.osVersion;
-    data.modelCode = DeviceUtil.modelCode;
-    data.modelName = DeviceUtil.modelName;
+    SendData* data = [[SendData alloc] initWithImageData:imageData
+                                               videoPath:videoPath
+                                                   title:self.titleTextField.text
+                                                category:self.feedbackCategoryButton.currentTitle
+                                                 comment:self.freeCommentField.text
+                                                username:self.reporterName.text
+                                                appTitle:(NSString*)[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]
+                                              appVersion:DeviceUtil.appVersion
+                                         appBuildVersion:DeviceUtil.appBuildVersion
+                                           systemVersion:DeviceUtil.osVersion
+                                               modelCode:DeviceUtil.modelCode
+                                               modelName:DeviceUtil.modelName];
     
     [self.sendingLabel setHidden:NO];
 

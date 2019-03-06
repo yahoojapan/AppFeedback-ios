@@ -61,6 +61,7 @@
 		7EBE637A218194E800AB7499 /* ExpansionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EBE6379218194E800AB7499 /* ExpansionButton.h */; };
 		7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE637B2181958000AB7499 /* ExpansionButton.m */; };
 		DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */; };
+		DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7AC222FA325009B9AB0 /* SendData.swift */; };
 		DB9010BA1BDDB096001E0576 /* UIPlaceHolderTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */; };
 		DB9010BB1BDDB096001E0576 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9010B91BDDB096001E0576 /* UIPlaceHolderTextView.m */; };
 		DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68D31BD776B300A03D74 /* AppFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -131,6 +132,7 @@
 		7EBE6379218194E800AB7499 /* ExpansionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpansionButton.h; sourceTree = "<group>"; };
 		7EBE637B2181958000AB7499 /* ExpansionButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpansionButton.m; sourceTree = "<group>"; };
 		DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtil.swift; sourceTree = "<group>"; };
+		DAA7B7AC222FA325009B9AB0 /* SendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendData.swift; sourceTree = "<group>"; };
 		DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
 		DB9010B91BDDB096001E0576 /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
 		DBCE68D01BD776B200A03D74 /* AppFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,6 +287,7 @@
 				09D40EE7215CBA110022ACA0 /* Color.m */,
 				095D269121B64EF6003802F5 /* SlackAPI.h */,
 				095D268F21B64EE9003802F5 /* SlackAPI.m */,
+				DAA7B7AC222FA325009B9AB0 /* SendData.swift */,
 				2BE8733621B7A58700B7D935 /* Localizable.strings */,
 			);
 			path = AppFeedback;
@@ -469,6 +472,7 @@
 				09D5DC5F1EAA6F1E00F24FA4 /* OverlayWindow.m in Sources */,
 				09059A6C1EC41048004B338E /* NSURL+Sizse.m in Sources */,
 				DB9010BB1BDDB096001E0576 /* UIPlaceHolderTextView.m in Sources */,
+				DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */,
 				09059A681EC1897C004B338E /* AutoResizeTextView.m in Sources */,
 				7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */,
 				093E555A1EB097F800CF731F /* FloatingProgressView.m in Sources */,

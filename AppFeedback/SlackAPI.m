@@ -25,9 +25,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SlackAPI.h"
-
-@implementation SendData
-@end
+#import <AppFeedback/AppFeedback-Swift.h>
 
 @interface SlackAPI ()
 

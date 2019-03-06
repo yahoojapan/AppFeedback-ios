@@ -29,22 +29,7 @@
 #import <Foundation/Foundation.h>
 #import "Config.h"
 
-@interface SendData : NSObject
-
-@property (nonatomic, strong) NSData* imageData;
-@property (nonatomic, strong) NSURL* videoPath;
-@property (nonatomic, strong) NSString* title;
-@property (nonatomic, strong) NSString* category;
-@property (nonatomic, strong) NSString* comment;
-@property (nonatomic, strong) NSString* username;
-@property (nonatomic, strong) NSString* appTitle;
-@property (nonatomic, strong) NSString* appVersion;
-@property (nonatomic, strong) NSString* appBuildVersion;
-@property (nonatomic, strong) NSString* systemVersion;
-@property (nonatomic, strong) NSString* modelCode;
-@property (nonatomic, strong) NSString* modelName;
-
-@end
+@class SendData;
 
 @interface SlackAPI : NSObject
 
