@@ -63,15 +63,11 @@
 		DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */; };
 		DB9010BA1BDDB096001E0576 /* UIPlaceHolderTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */; };
 		DB9010BB1BDDB096001E0576 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9010B91BDDB096001E0576 /* UIPlaceHolderTextView.m */; };
-		DB9010BE1BDDB9F3001E0576 /* PopUpTransitionAnimater.h in Headers */ = {isa = PBXBuildFile; fileRef = DB9010BC1BDDB9F3001E0576 /* PopUpTransitionAnimater.h */; };
-		DB9010BF1BDDB9F3001E0576 /* PopUpTransitionAnimater.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9010BD1BDDB9F3001E0576 /* PopUpTransitionAnimater.m */; };
 		DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68D31BD776B300A03D74 /* AppFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */; };
 		DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */; };
 		DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDCC3FC1BD9D25000327609 /* ReportViewController.h */; };
 		DBDCC4001BD9D25100327609 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC3FD1BD9D25000327609 /* ReportViewController.m */; };
-		DBDCC4081BD9D8C900327609 /* AnimationUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDCC4061BD9D8C900327609 /* AnimationUtil.h */; };
-		DBDCC4091BD9D8C900327609 /* AnimationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC4071BD9D8C900327609 /* AnimationUtil.m */; };
 		FB11DA311F394639002B399E /* DrawView.h in Headers */ = {isa = PBXBuildFile; fileRef = FB11DA2F1F394639002B399E /* DrawView.h */; };
 		FB11DA321F394639002B399E /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB11DA301F394639002B399E /* DrawView.m */; };
 		FB131F451F3190FA007B9EA0 /* DrawViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = FB131F431F3190FA007B9EA0 /* DrawViewController.h */; };
@@ -137,8 +133,6 @@
 		DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtil.swift; sourceTree = "<group>"; };
 		DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
 		DB9010B91BDDB096001E0576 /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
-		DB9010BC1BDDB9F3001E0576 /* PopUpTransitionAnimater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpTransitionAnimater.h; sourceTree = "<group>"; };
-		DB9010BD1BDDB9F3001E0576 /* PopUpTransitionAnimater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpTransitionAnimater.m; sourceTree = "<group>"; };
 		DBCE68D01BD776B200A03D74 /* AppFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCE68D31BD776B300A03D74 /* AppFeedback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppFeedback.h; sourceTree = "<group>"; };
 		DBCE68D51BD776B300A03D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -146,8 +140,6 @@
 		DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppFeedbackInternal.m; sourceTree = "<group>"; };
 		DBDCC3FC1BD9D25000327609 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
 		DBDCC3FD1BD9D25000327609 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
-		DBDCC4061BD9D8C900327609 /* AnimationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationUtil.h; sourceTree = "<group>"; };
-		DBDCC4071BD9D8C900327609 /* AnimationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationUtil.m; sourceTree = "<group>"; };
 		FB11DA2F1F394639002B399E /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
 		FB11DA301F394639002B399E /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
 		FB131F431F3190FA007B9EA0 /* DrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawViewController.h; sourceTree = "<group>"; };
@@ -279,12 +271,8 @@
 				DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */,
 				DBCE68D51BD776B300A03D74 /* Info.plist */,
 				DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */,
-				DBDCC4061BD9D8C900327609 /* AnimationUtil.h */,
-				DBDCC4071BD9D8C900327609 /* AnimationUtil.m */,
 				DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */,
 				DB9010B91BDDB096001E0576 /* UIPlaceHolderTextView.m */,
-				DB9010BC1BDDB9F3001E0576 /* PopUpTransitionAnimater.h */,
-				DB9010BD1BDDB9F3001E0576 /* PopUpTransitionAnimater.m */,
 				0928E47F1E9C888A00F477D2 /* Config.h */,
 				0928E4801E9C888A00F477D2 /* Config.m */,
 				09D5DC481EA8BF9300F24FA4 /* ScreenCapture */,
@@ -324,7 +312,6 @@
 				09B0F7491EADDFD90055F8A5 /* FloatingButtonView.h in Headers */,
 				09059A671EC1897C004B338E /* AutoResizeTextView.h in Headers */,
 				FB131F451F3190FA007B9EA0 /* DrawViewController.h in Headers */,
-				DBDCC4081BD9D8C900327609 /* AnimationUtil.h in Headers */,
 				DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */,
 				09D5DC541EAA20E400F24FA4 /* ScreenCapture.h in Headers */,
 				DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */,
@@ -339,7 +326,6 @@
 				098916921EC06E060047074D /* CaptureOverlayWindow.h in Headers */,
 				DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */,
 				093E55591EB097F800CF731F /* FloatingProgressView.h in Headers */,
-				DB9010BE1BDDB9F3001E0576 /* PopUpTransitionAnimater.h in Headers */,
 				09D9C3951EA766C700B81B19 /* FloatingButtonDelegate.h in Headers */,
 				7EBE637A218194E800AB7499 /* ExpansionButton.h in Headers */,
 				09D5DC5E1EAA6F1E00F24FA4 /* OverlayWindow.h in Headers */,
@@ -482,7 +468,6 @@
 				FB131F461F3190FA007B9EA0 /* DrawViewController.m in Sources */,
 				09D5DC5F1EAA6F1E00F24FA4 /* OverlayWindow.m in Sources */,
 				09059A6C1EC41048004B338E /* NSURL+Sizse.m in Sources */,
-				DBDCC4091BD9D8C900327609 /* AnimationUtil.m in Sources */,
 				DB9010BB1BDDB096001E0576 /* UIPlaceHolderTextView.m in Sources */,
 				09059A681EC1897C004B338E /* AutoResizeTextView.m in Sources */,
 				7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */,
@@ -495,7 +480,6 @@
 				DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */,
 				09D9C38D1EA74DD900B81B19 /* FloatingButtonController.m in Sources */,
 				FB11DA321F394639002B399E /* DrawView.m in Sources */,
-				DB9010BF1BDDB9F3001E0576 /* PopUpTransitionAnimater.m in Sources */,
 				DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */,
 				0928E4821E9C888A00F477D2 /* Config.m in Sources */,
 				093E555E1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m in Sources */,
