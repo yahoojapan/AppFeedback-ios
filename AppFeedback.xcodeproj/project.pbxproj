@@ -23,11 +23,10 @@
 /* Begin PBXBuildFile section */
 		09059A671EC1897C004B338E /* AutoResizeTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 09059A651EC1897C004B338E /* AutoResizeTextView.h */; };
 		09059A681EC1897C004B338E /* AutoResizeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09059A661EC1897C004B338E /* AutoResizeTextView.m */; };
-		09059A6B1EC41048004B338E /* NSURL+Sizse.h in Headers */ = {isa = PBXBuildFile; fileRef = 09059A691EC41047004B338E /* NSURL+Sizse.h */; };
-		09059A6C1EC41048004B338E /* NSURL+Sizse.m in Sources */ = {isa = PBXBuildFile; fileRef = 09059A6A1EC41047004B338E /* NSURL+Sizse.m */; };
 		0928E4811E9C888A00F477D2 /* Config.h in Headers */ = {isa = PBXBuildFile; fileRef = 0928E47F1E9C888A00F477D2 /* Config.h */; };
 		0928E4821E9C888A00F477D2 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928E4801E9C888A00F477D2 /* Config.m */; };
 		0928E4841E9C95AC00F477D2 /* ConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928E4831E9C95AC00F477D2 /* ConfigTests.m */; };
+		09308418222FA180009C8ECE /* URL+FileSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09308417222FA180009C8ECE /* URL+FileSize.swift */; };
 		093517511E95E49B00BB554F /* AppFeedbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 093517501E95E49B00BB554F /* AppFeedbackTests.m */; };
 		093517531E95E49B00BB554F /* AppFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCE68D01BD776B200A03D74 /* AppFeedback.framework */; };
 		093E55591EB097F800CF731F /* FloatingProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 093E55571EB097F800CF731F /* FloatingProgressView.h */; };
@@ -87,11 +86,10 @@
 /* Begin PBXFileReference section */
 		09059A651EC1897C004B338E /* AutoResizeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoResizeTextView.h; sourceTree = "<group>"; };
 		09059A661EC1897C004B338E /* AutoResizeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoResizeTextView.m; sourceTree = "<group>"; };
-		09059A691EC41047004B338E /* NSURL+Sizse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Sizse.h"; sourceTree = "<group>"; };
-		09059A6A1EC41047004B338E /* NSURL+Sizse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Sizse.m"; sourceTree = "<group>"; };
 		0928E47F1E9C888A00F477D2 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		0928E4801E9C888A00F477D2 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		0928E4831E9C95AC00F477D2 /* ConfigTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTests.m; sourceTree = "<group>"; };
+		09308417222FA180009C8ECE /* URL+FileSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+FileSize.swift"; sourceTree = "<group>"; };
 		0935174E1E95E49B00BB554F /* AppFeedbackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFeedbackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		093517501E95E49B00BB554F /* AppFeedbackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppFeedbackTests.m; sourceTree = "<group>"; };
 		093517521E95E49B00BB554F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -169,8 +167,7 @@
 		09059A6D1EC4104E004B338E /* Ext */ = {
 			isa = PBXGroup;
 			children = (
-				09059A691EC41047004B338E /* NSURL+Sizse.h */,
-				09059A6A1EC41047004B338E /* NSURL+Sizse.m */,
+				09308417222FA180009C8ECE /* URL+FileSize.swift */,
 			);
 			name = Ext;
 			sourceTree = "<group>";
@@ -321,7 +318,6 @@
 				09D9C3901EA74EE600B81B19 /* FloatingButtonWindow.h in Headers */,
 				FB11DA311F394639002B399E /* DrawView.h in Headers */,
 				09D5DC4B1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h in Headers */,
-				09059A6B1EC41048004B338E /* NSURL+Sizse.h in Headers */,
 				093E555D1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h in Headers */,
 				098916921EC06E060047074D /* CaptureOverlayWindow.h in Headers */,
 				DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */,
@@ -467,7 +463,7 @@
 			files = (
 				FB131F461F3190FA007B9EA0 /* DrawViewController.m in Sources */,
 				09D5DC5F1EAA6F1E00F24FA4 /* OverlayWindow.m in Sources */,
-				09059A6C1EC41048004B338E /* NSURL+Sizse.m in Sources */,
+				09308418222FA180009C8ECE /* URL+FileSize.swift in Sources */,
 				DB9010BB1BDDB096001E0576 /* UIPlaceHolderTextView.m in Sources */,
 				09059A681EC1897C004B338E /* AutoResizeTextView.m in Sources */,
 				7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */,

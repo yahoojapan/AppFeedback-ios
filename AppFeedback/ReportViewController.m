@@ -28,7 +28,6 @@
 #import "UIPlaceHolderTextView.h"
 #import "Config.h"
 #import "AppFeedbackInternal.h"
-#import "NSURL+Sizse.h"
 #import "Color.h"
 #import "ExpansionButton.h"
 #import "SlackAPI.h"
