@@ -30,7 +30,6 @@
 		0928E4841E9C95AC00F477D2 /* ConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928E4831E9C95AC00F477D2 /* ConfigTests.m */; };
 		093517511E95E49B00BB554F /* AppFeedbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 093517501E95E49B00BB554F /* AppFeedbackTests.m */; };
 		093517531E95E49B00BB554F /* AppFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCE68D01BD776B200A03D74 /* AppFeedback.framework */; };
-		0935175A1E95E50E00BB554F /* StringUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 093517591E95E50E00BB554F /* StringUtilTests.m */; };
 		093E55591EB097F800CF731F /* FloatingProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 093E55571EB097F800CF731F /* FloatingProgressView.h */; };
 		093E555A1EB097F800CF731F /* FloatingProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 093E55581EB097F800CF731F /* FloatingProgressView.m */; };
 		093E555D1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h in Headers */ = {isa = PBXBuildFile; fileRef = 093E555B1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h */; };
@@ -71,8 +70,6 @@
 		DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */; };
 		DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDCC3FC1BD9D25000327609 /* ReportViewController.h */; };
 		DBDCC4001BD9D25100327609 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC3FD1BD9D25000327609 /* ReportViewController.m */; };
-		DBDCC4041BD9D4E400327609 /* DeviceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDCC4021BD9D4E400327609 /* DeviceUtil.h */; };
-		DBDCC4051BD9D4E400327609 /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC4031BD9D4E400327609 /* DeviceUtil.m */; };
 		DBDCC4081BD9D8C900327609 /* AnimationUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDCC4061BD9D8C900327609 /* AnimationUtil.h */; };
 		DBDCC4091BD9D8C900327609 /* AnimationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC4071BD9D8C900327609 /* AnimationUtil.m */; };
 		FB11DA311F394639002B399E /* DrawView.h in Headers */ = {isa = PBXBuildFile; fileRef = FB11DA2F1F394639002B399E /* DrawView.h */; };
@@ -102,7 +99,6 @@
 		0935174E1E95E49B00BB554F /* AppFeedbackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFeedbackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		093517501E95E49B00BB554F /* AppFeedbackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppFeedbackTests.m; sourceTree = "<group>"; };
 		093517521E95E49B00BB554F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		093517591E95E50E00BB554F /* StringUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtilTests.m; sourceTree = "<group>"; };
 		093E55571EB097F800CF731F /* FloatingProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingProgressView.h; sourceTree = "<group>"; };
 		093E55581EB097F800CF731F /* FloatingProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingProgressView.m; sourceTree = "<group>"; };
 		093E555B1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonControllerIOS9.h; sourceTree = "<group>"; };
@@ -150,8 +146,6 @@
 		DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppFeedbackInternal.m; sourceTree = "<group>"; };
 		DBDCC3FC1BD9D25000327609 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
 		DBDCC3FD1BD9D25000327609 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
-		DBDCC4021BD9D4E400327609 /* DeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
-		DBDCC4031BD9D4E400327609 /* DeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
 		DBDCC4061BD9D8C900327609 /* AnimationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationUtil.h; sourceTree = "<group>"; };
 		DBDCC4071BD9D8C900327609 /* AnimationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationUtil.m; sourceTree = "<group>"; };
 		FB11DA2F1F394639002B399E /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
@@ -194,7 +188,6 @@
 			children = (
 				093517501E95E49B00BB554F /* AppFeedbackTests.m */,
 				093517521E95E49B00BB554F /* Info.plist */,
-				093517591E95E50E00BB554F /* StringUtilTests.m */,
 				0928E4831E9C95AC00F477D2 /* ConfigTests.m */,
 			);
 			path = AppFeedbackTests;
@@ -285,8 +278,6 @@
 				DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */,
 				DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */,
 				DBCE68D51BD776B300A03D74 /* Info.plist */,
-				DBDCC4021BD9D4E400327609 /* DeviceUtil.h */,
-				DBDCC4031BD9D4E400327609 /* DeviceUtil.m */,
 				DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */,
 				DBDCC4061BD9D8C900327609 /* AnimationUtil.h */,
 				DBDCC4071BD9D8C900327609 /* AnimationUtil.m */,
@@ -340,7 +331,6 @@
 				09B0F74D1EADF2600055F8A5 /* FloatingButtonOuterView.h in Headers */,
 				09D9C38C1EA74DD900B81B19 /* FloatingButtonController.h in Headers */,
 				DB9010BA1BDDB096001E0576 /* UIPlaceHolderTextView.h in Headers */,
-				DBDCC4041BD9D4E400327609 /* DeviceUtil.h in Headers */,
 				09D9C3901EA74EE600B81B19 /* FloatingButtonWindow.h in Headers */,
 				FB11DA311F394639002B399E /* DrawView.h in Headers */,
 				09D5DC4B1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h in Headers */,
@@ -481,7 +471,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				093517511E95E49B00BB554F /* AppFeedbackTests.m in Sources */,
-				0935175A1E95E50E00BB554F /* StringUtilTests.m in Sources */,
 				0928E4841E9C95AC00F477D2 /* ConfigTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,7 +484,6 @@
 				09059A6C1EC41048004B338E /* NSURL+Sizse.m in Sources */,
 				DBDCC4091BD9D8C900327609 /* AnimationUtil.m in Sources */,
 				DB9010BB1BDDB096001E0576 /* UIPlaceHolderTextView.m in Sources */,
-				DBDCC4051BD9D4E400327609 /* DeviceUtil.m in Sources */,
 				09059A681EC1897C004B338E /* AutoResizeTextView.m in Sources */,
 				7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */,
 				093E555A1EB097F800CF731F /* FloatingProgressView.m in Sources */,
