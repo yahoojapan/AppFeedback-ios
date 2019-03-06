@@ -33,6 +33,7 @@
 #import "Color.h"
 #import "ExpansionButton.h"
 #import "SlackAPI.h"
+#import <AppFeedback/AppFeedback-Swift.h>
 
 @import AVFoundation;
 @import AVKit;
@@ -281,9 +282,9 @@ UITextViewDelegate
     data.appTitle = (NSString*)[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
     data.appVersion = DeviceUtil.appVersion;
     data.appBuildVersion = DeviceUtil.appBuildVersion;
-    data.systemVersion = DeviceUtil.OSVersion;
-    data.modelCode = DeviceUtil.ModelCode;
-    data.modelName = DeviceUtil.ModelName;
+    data.systemVersion = DeviceUtil.osVersion;
+    data.modelCode = DeviceUtil.modelCode;
+    data.modelName = DeviceUtil.modelName;
     
     [self.sendingLabel setHidden:NO];
 

@@ -61,6 +61,7 @@
 		2BE8733821B7A5D100B7D935 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8733A21B7A5D100B7D935 /* Main.storyboard */; };
 		7EBE637A218194E800AB7499 /* ExpansionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EBE6379218194E800AB7499 /* ExpansionButton.h */; };
 		7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE637B2181958000AB7499 /* ExpansionButton.m */; };
+		DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */; };
 		DB9010BA1BDDB096001E0576 /* UIPlaceHolderTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */; };
 		DB9010BB1BDDB096001E0576 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9010B91BDDB096001E0576 /* UIPlaceHolderTextView.m */; };
 		DB9010BE1BDDB9F3001E0576 /* PopUpTransitionAnimater.h in Headers */ = {isa = PBXBuildFile; fileRef = DB9010BC1BDDB9F3001E0576 /* PopUpTransitionAnimater.h */; };
@@ -137,6 +138,7 @@
 		2BE8733C21B7A9C500B7D935 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7EBE6379218194E800AB7499 /* ExpansionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpansionButton.h; sourceTree = "<group>"; };
 		7EBE637B2181958000AB7499 /* ExpansionButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpansionButton.m; sourceTree = "<group>"; };
+		DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtil.swift; sourceTree = "<group>"; };
 		DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
 		DB9010B91BDDB096001E0576 /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
 		DB9010BC1BDDB9F3001E0576 /* PopUpTransitionAnimater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpTransitionAnimater.h; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				DBCE68D51BD776B300A03D74 /* Info.plist */,
 				DBDCC4021BD9D4E400327609 /* DeviceUtil.h */,
 				DBDCC4031BD9D4E400327609 /* DeviceUtil.m */,
+				DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */,
 				DBDCC4061BD9D8C900327609 /* AnimationUtil.h */,
 				DBDCC4071BD9D8C900327609 /* AnimationUtil.m */,
 				DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */,
@@ -505,6 +508,7 @@
 				09D9C38D1EA74DD900B81B19 /* FloatingButtonController.m in Sources */,
 				FB11DA321F394639002B399E /* DrawView.m in Sources */,
 				DB9010BF1BDDB9F3001E0576 /* PopUpTransitionAnimater.m in Sources */,
+				DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */,
 				0928E4821E9C888A00F477D2 /* Config.m in Sources */,
 				093E555E1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m in Sources */,
 				09B0F74E1EADF2600055F8A5 /* FloatingButtonOuterView.m in Sources */,
@@ -549,6 +553,7 @@
 		093517561E95E49B00BB554F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -564,6 +569,7 @@
 		093517571E95E49B00BB554F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -706,8 +712,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.yahoo.AppFeedback;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -729,7 +736,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.yahoo.AppFeedback;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

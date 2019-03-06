@@ -24,7 +24,7 @@
 
 
 #import <XCTest/XCTest.h>
-#import "DeviceUtil.h"
+// #import "DeviceUtil.h"
 
 @interface StringUtilTests : XCTestCase
 

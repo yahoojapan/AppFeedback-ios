@@ -25,15 +25,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DeviceUtil : NSObject
-+ (NSString *)appVersion;
-
-+ (NSString *)appBuildVersion;
-+ (NSString *)OSName;
-+ (NSString *)OSVersion;
-+ (NSString *)ModelCode;
-+ (NSString *)ModelName;
-@end
+//@interface DeviceUtil : NSObject
+//+ (NSString *)appVersion;
+//
+//+ (NSString *)appBuildVersion;
+//+ (NSString *)OSName;
+//+ (NSString *)OSVersion;
+//+ (NSString *)ModelCode;
+//+ (NSString *)ModelName;
+//@end
 
 @interface StringUtil: NSObject
 + (NSArray *)matchPattern:(NSString *)pattern string:(NSString *)string;
