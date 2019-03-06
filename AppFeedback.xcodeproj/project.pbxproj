@@ -41,7 +41,6 @@
 		09B0F74A1EADDFD90055F8A5 /* FloatingButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B0F7481EADDFD90055F8A5 /* FloatingButtonView.m */; };
 		09B0F74D1EADF2600055F8A5 /* FloatingButtonOuterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B0F74B1EADF2600055F8A5 /* FloatingButtonOuterView.h */; };
 		09B0F74E1EADF2600055F8A5 /* FloatingButtonOuterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B0F74C1EADF2600055F8A5 /* FloatingButtonOuterView.m */; };
-		09D40EE8215CBA110022ACA0 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D40EE7215CBA110022ACA0 /* Color.m */; };
 		09D5DC431EA8824400F24FA4 /* FloatingButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D5DC421EA8824400F24FA4 /* FloatingButton.xib */; };
 		09D5DC4B1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D5DC491EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h */; };
 		09D5DC4C1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5DC4A1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m */; };
@@ -107,8 +106,6 @@
 		09B0F7481EADDFD90055F8A5 /* FloatingButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonView.m; sourceTree = "<group>"; };
 		09B0F74B1EADF2600055F8A5 /* FloatingButtonOuterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonOuterView.h; sourceTree = "<group>"; };
 		09B0F74C1EADF2600055F8A5 /* FloatingButtonOuterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonOuterView.m; sourceTree = "<group>"; };
-		09D40EE6215CB9900022ACA0 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
-		09D40EE7215CBA110022ACA0 /* Color.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
 		09D5DC421EA8824400F24FA4 /* FloatingButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingButton.xib; sourceTree = "<group>"; };
 		09D5DC491EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenVideoCaptureSession.h; sourceTree = "<group>"; };
 		09D5DC4A1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenVideoCaptureSession.m; sourceTree = "<group>"; };
@@ -281,8 +278,6 @@
 				09D5DC561EAA5E4200F24FA4 /* Logger.h */,
 				09059A651EC1897C004B338E /* AutoResizeTextView.h */,
 				09059A661EC1897C004B338E /* AutoResizeTextView.m */,
-				09D40EE6215CB9900022ACA0 /* Color.h */,
-				09D40EE7215CBA110022ACA0 /* Color.m */,
 				095D269121B64EF6003802F5 /* SlackAPI.h */,
 				095D268F21B64EE9003802F5 /* SlackAPI.m */,
 				2BE8733621B7A58700B7D935 /* Localizable.strings */,
@@ -472,7 +467,6 @@
 				09059A681EC1897C004B338E /* AutoResizeTextView.m in Sources */,
 				7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */,
 				093E555A1EB097F800CF731F /* FloatingProgressView.m in Sources */,
-				09D40EE8215CBA110022ACA0 /* Color.m in Sources */,
 				09D5DC551EAA20E400F24FA4 /* ScreenCapture.m in Sources */,
 				09D9C3911EA74EE600B81B19 /* FloatingButtonWindow.m in Sources */,
 				09D5DC4C1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m in Sources */,
