@@ -29,7 +29,6 @@
 #import "Config.h"
 #import "AppFeedbackInternal.h"
 #import "NSURL+Sizse.h"
-#import "Color.h"
 #import "ExpansionButton.h"
 #import "SlackAPI.h"
 #import <AppFeedback/AppFeedback-Swift.h>
@@ -687,7 +686,7 @@ UITextViewDelegate
 
 - (void)setupNavBarAttributes:(UINavigationController *)navController {
     // storyboardからだと反映されないので、コードから直接色指定する。
-    navController.navigationBar.barTintColor = Color.navBarTint;
+    navController.navigationBar.barTintColor = [UIColor colorWithRed:0.278 green:0.729 blue:0.678 alpha:1.0];
     navController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName: UIColor.whiteColor };
 }
 
