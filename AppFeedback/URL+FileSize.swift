@@ -1,6 +1,6 @@
 //
-//  NSURL+Sizse.m
-//  NSURL+Sizse
+//  AppFeedback.h
+//  AppFeedback
 //
 //  Copyright (c) 2018 Yahoo Japan Corporation.
 //
@@ -22,23 +22,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import Foundation
 
-#import "NSURL+Sizse.h"
-
-@implementation NSURL (Size)
-
-- (NSInteger)fileSize {
-    NSNumber *fileSizeValue = nil;
-    NSError *fileSizeError = nil;
-    [self getResourceValue:&fileSizeValue
-                    forKey:NSURLFileSizeKey
-                     error:&fileSizeError];
-    if (fileSizeValue) {
-        return [fileSizeValue integerValue];
-    }
-    else {
-        return 0;
+@objc public extension NSURL {
+    public var fileSize: Int {
+        let resource = try? self.resourceValues(forKeys: [.fileSizeKey])
+        return resource?[.fileSizeKey] as? Int ?? 0
     }
 }
-
-@end
