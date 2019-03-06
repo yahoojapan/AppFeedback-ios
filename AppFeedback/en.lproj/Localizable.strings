@@ -27,6 +27,7 @@
 
 // category actionsheet
 "categoryMessage" = "Select a category";
+"notSelected" = "not selected";
 "bug" = "Bug";
 "request" = "Request";
 "question" = "Question";

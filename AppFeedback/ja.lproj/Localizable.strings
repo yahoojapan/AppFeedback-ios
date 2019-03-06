@@ -27,6 +27,7 @@
 
 // category actionsheet
 "categoryMessage" = "フィードバックカテゴリを選択して下さい";
+"notSelected" = "未選択";
 "bug" = "バグ";
 "request" = "要望";
 "question" = "質問";

@@ -275,7 +275,11 @@ UITextViewDelegate
     data.imageData = imageData;
     data.videoPath = videoPath;
     data.title = self.titleTextField.text;
-    data.category = self.feedbackCategoryButton.currentTitle;
+    if (self.feedbackCategoryButton.selected) {
+        data.category = self.feedbackCategoryButton.currentTitle;
+    } else {
+        data.category = AppFeedbackLocalizedString(@"notSelected", @"");
+    }
     data.comment = self.freeCommentField.text;
     data.username = self.reporterName.text;
     data.appTitle = (NSString*)[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
@@ -496,7 +500,7 @@ UITextViewDelegate
     
     NSString *confirmMsg = AppFeedbackLocalizedString(@"confirmReportSettingMessage", @"");
     
-    if ([self.feedbackCategoryButton.currentTitle  isEqual: self.notSelectedCategoryTitle]) {
+    if (!self.feedbackCategoryButton.selected) {
         confirmMsg = [NSString stringWithFormat:@"%@\n\n%@", confirmMsg, AppFeedbackLocalizedString(@"confirmReportSettingNotSelectedCategoryMessage", @"")];
     }
 
