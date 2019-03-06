@@ -1,6 +1,6 @@
 //
-//  Color.h
-//  Color
+//  AppFeedback.h
+//  AppFeedback
 //
 //  Copyright (c) 2018 Yahoo Japan Corporation.
 //
@@ -22,16 +22,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import Foundation
 
-#ifndef Color_h
-#define Color_h
-
-#import <UIKit/UIKit.h>
-
-@interface Color : NSObject
-
-+ (UIColor *)navBarTint;
-
-@end
-
-#endif /* Color_h */
+@objc public extension NSURL {
+    public var fileSize: Int {
+        let resource = try? self.resourceValues(forKeys: [.fileSizeKey])
+        return resource?[.fileSizeKey] as? Int ?? 0
+    }
+}
