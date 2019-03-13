@@ -21,8 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		09059A671EC1897C004B338E /* AutoResizeTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 09059A651EC1897C004B338E /* AutoResizeTextView.h */; };
-		09059A681EC1897C004B338E /* AutoResizeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09059A661EC1897C004B338E /* AutoResizeTextView.m */; };
 		0928E4811E9C888A00F477D2 /* Config.h in Headers */ = {isa = PBXBuildFile; fileRef = 0928E47F1E9C888A00F477D2 /* Config.h */; };
 		0928E4821E9C888A00F477D2 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928E4801E9C888A00F477D2 /* Config.m */; };
 		0928E4841E9C95AC00F477D2 /* ConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928E4831E9C95AC00F477D2 /* ConfigTests.m */; };
@@ -54,14 +52,14 @@
 		09D9C3911EA74EE600B81B19 /* FloatingButtonWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D9C38F1EA74EE600B81B19 /* FloatingButtonWindow.m */; };
 		09D9C3951EA766C700B81B19 /* FloatingButtonDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D9C3931EA766C700B81B19 /* FloatingButtonDelegate.h */; };
 		09D9C3981EA77C2D00B81B19 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09D9C3971EA77C2D00B81B19 /* Images.xcassets */; };
+		2B4562712238DCCE008DF57B /* UIPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4562702238DCCE008DF57B /* UIPlaceHolderTextView.swift */; };
+		2B4562732238DCED008DF57B /* AutoResizeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4562722238DCED008DF57B /* AutoResizeTextView.swift */; };
 		2BE8733421B7A58700B7D935 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8733621B7A58700B7D935 /* Localizable.strings */; };
 		2BE8733821B7A5D100B7D935 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8733A21B7A5D100B7D935 /* Main.storyboard */; };
 		7EBE637A218194E800AB7499 /* ExpansionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EBE6379218194E800AB7499 /* ExpansionButton.h */; };
 		7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE637B2181958000AB7499 /* ExpansionButton.m */; };
 		DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */; };
 		DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7AC222FA325009B9AB0 /* SendData.swift */; };
-		DB9010BA1BDDB096001E0576 /* UIPlaceHolderTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */; };
-		DB9010BB1BDDB096001E0576 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9010B91BDDB096001E0576 /* UIPlaceHolderTextView.m */; };
 		DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68D31BD776B300A03D74 /* AppFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */; };
 		DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */; };
@@ -84,8 +82,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09059A651EC1897C004B338E /* AutoResizeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoResizeTextView.h; sourceTree = "<group>"; };
-		09059A661EC1897C004B338E /* AutoResizeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoResizeTextView.m; sourceTree = "<group>"; };
 		0928E47F1E9C888A00F477D2 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		0928E4801E9C888A00F477D2 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		0928E4831E9C95AC00F477D2 /* ConfigTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTests.m; sourceTree = "<group>"; };
@@ -120,6 +116,8 @@
 		09D9C38F1EA74EE600B81B19 /* FloatingButtonWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonWindow.m; sourceTree = "<group>"; };
 		09D9C3931EA766C700B81B19 /* FloatingButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonDelegate.h; sourceTree = "<group>"; };
 		09D9C3971EA77C2D00B81B19 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2B4562702238DCCE008DF57B /* UIPlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPlaceHolderTextView.swift; sourceTree = "<group>"; };
+		2B4562722238DCED008DF57B /* AutoResizeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoResizeTextView.swift; sourceTree = "<group>"; };
 		2B4C828221BF82BC00B7ED6A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		2B4C828321BF865F00B7ED6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2BE8733721B7A58F00B7D935 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -128,8 +126,6 @@
 		7EBE637B2181958000AB7499 /* ExpansionButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpansionButton.m; sourceTree = "<group>"; };
 		DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtil.swift; sourceTree = "<group>"; };
 		DAA7B7AC222FA325009B9AB0 /* SendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendData.swift; sourceTree = "<group>"; };
-		DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
-		DB9010B91BDDB096001E0576 /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
 		DBCE68D01BD776B200A03D74 /* AppFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCE68D31BD776B300A03D74 /* AppFeedback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppFeedback.h; sourceTree = "<group>"; };
 		DBCE68D51BD776B300A03D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -267,16 +263,14 @@
 				DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */,
 				DBCE68D51BD776B300A03D74 /* Info.plist */,
 				DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */,
-				DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */,
-				DB9010B91BDDB096001E0576 /* UIPlaceHolderTextView.m */,
 				0928E47F1E9C888A00F477D2 /* Config.h */,
 				0928E4801E9C888A00F477D2 /* Config.m */,
+				2B4562702238DCCE008DF57B /* UIPlaceHolderTextView.swift */,
+				2B4562722238DCED008DF57B /* AutoResizeTextView.swift */,
 				09D5DC481EA8BF9300F24FA4 /* ScreenCapture */,
 				09D9C3921EA74EEC00B81B19 /* FloatingButton */,
 				09D9C3971EA77C2D00B81B19 /* Images.xcassets */,
 				09D5DC561EAA5E4200F24FA4 /* Logger.h */,
-				09059A651EC1897C004B338E /* AutoResizeTextView.h */,
-				09059A661EC1897C004B338E /* AutoResizeTextView.m */,
 				095D269121B64EF6003802F5 /* SlackAPI.h */,
 				095D268F21B64EE9003802F5 /* SlackAPI.m */,
 				DAA7B7AC222FA325009B9AB0 /* SendData.swift */,
@@ -305,14 +299,12 @@
 			files = (
 				0928E4811E9C888A00F477D2 /* Config.h in Headers */,
 				09B0F7491EADDFD90055F8A5 /* FloatingButtonView.h in Headers */,
-				09059A671EC1897C004B338E /* AutoResizeTextView.h in Headers */,
 				FB131F451F3190FA007B9EA0 /* DrawViewController.h in Headers */,
 				DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */,
 				09D5DC541EAA20E400F24FA4 /* ScreenCapture.h in Headers */,
 				DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */,
 				09B0F74D1EADF2600055F8A5 /* FloatingButtonOuterView.h in Headers */,
 				09D9C38C1EA74DD900B81B19 /* FloatingButtonController.h in Headers */,
-				DB9010BA1BDDB096001E0576 /* UIPlaceHolderTextView.h in Headers */,
 				09D9C3901EA74EE600B81B19 /* FloatingButtonWindow.h in Headers */,
 				FB11DA311F394639002B399E /* DrawView.h in Headers */,
 				09D5DC4B1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h in Headers */,
@@ -462,12 +454,12 @@
 				FB131F461F3190FA007B9EA0 /* DrawViewController.m in Sources */,
 				09D5DC5F1EAA6F1E00F24FA4 /* OverlayWindow.m in Sources */,
 				09308418222FA180009C8ECE /* URL+FileSize.swift in Sources */,
-				DB9010BB1BDDB096001E0576 /* UIPlaceHolderTextView.m in Sources */,
 				DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */,
-				09059A681EC1897C004B338E /* AutoResizeTextView.m in Sources */,
+				2B4562712238DCCE008DF57B /* UIPlaceHolderTextView.swift in Sources */,
 				7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */,
 				093E555A1EB097F800CF731F /* FloatingProgressView.m in Sources */,
 				09D5DC551EAA20E400F24FA4 /* ScreenCapture.m in Sources */,
+				2B4562732238DCED008DF57B /* AutoResizeTextView.swift in Sources */,
 				09D9C3911EA74EE600B81B19 /* FloatingButtonWindow.m in Sources */,
 				09D5DC4C1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m in Sources */,
 				09B0F74A1EADDFD90055F8A5 /* FloatingButtonView.m in Sources */,
