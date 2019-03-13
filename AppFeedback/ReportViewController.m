@@ -29,7 +29,6 @@
 #import "Config.h"
 #import "AppFeedbackInternal.h"
 #import "ExpansionButton.h"
-#import "SlackAPI.h"
 #import <AppFeedback/AppFeedback-Swift.h>
 
 @import AVFoundation;
@@ -284,33 +283,36 @@ UITextViewDelegate
     
     [self.sendingLabel setHidden:NO];
 
-    SlackAPI* slackAPI = [[SlackAPI alloc] initWithToken:self.config.slackToken channel:self.config.slackChannel apiUrl:self.config.slackApiUrl branch:self.config.branchName];
-    [slackAPI postData:data
-     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        [self enableActivityIndicator:NO];
-         [self.sendingLabel setHidden:YES];
+    SlackAPI* slackAPI = [[SlackAPI alloc] initWithToken:self.config.slackToken
+                                                 channel:self.config.slackChannel
+                                                  apiUrl:self.config.slackApiUrl
+                                              branchName:self.config.branchName];
+    
+    [slackAPI postWithData:data
+         completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+             [self enableActivityIndicator:NO];
+             [self.sendingLabel setHidden:YES];
 
-         
-        if (error) {
-            if (error.code == kCFURLErrorUserCancelledAuthentication) {//401(Authentication failure)
-                [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                 message:AppFeedbackLocalizedString(@"slackPostInvalidMessage", @"")
-                 cancelButtonTitle:nil
-                 destructiveButtonTitle:nil
-                 otherButtonTitle:@"OK"
-                 tapBlock:nil];
-            } else {
-                [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                 message:AppFeedbackLocalizedString(@"slackPostClientErrorMessage", @"")
-                 cancelButtonTitle:nil
-                 destructiveButtonTitle:nil
-                 otherButtonTitle:@"OK"
-                 tapBlock:nil];
-            }
-            return;
-        }
+             if (error) {
+                 if (error.code == kCFURLErrorUserCancelledAuthentication) {//401(Authentication failure)
+                     [self
+                      p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
+                      message:AppFeedbackLocalizedString(@"slackPostInvalidMessage", @"")
+                      cancelButtonTitle:nil
+                      destructiveButtonTitle:nil
+                      otherButtonTitle:@"OK"
+                      tapBlock:nil];
+                 } else {
+                     [self
+                      p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
+                      message:AppFeedbackLocalizedString(@"slackPostClientErrorMessage", @"")
+                      cancelButtonTitle:nil
+                      destructiveButtonTitle:nil
+                      otherButtonTitle:@"OK"
+                      tapBlock:nil];
+                 }
+                 return;
+             }
         
         NSInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
         
