@@ -30,9 +30,6 @@
 
 #define VIDEO_LIMIT_SECS 30.0f
 
-#define FLOATING_BUTTON_WINDOW_LEVEL (CGFLOAT_MAX - 1000)
-#define OVERLAY_WINDOW_LEVEL (FLOATING_BUTTON_WINDOW_LEVEL - 1000)
-
 #define RGBA(r, g, b, a)  [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]
 
 #define AppFeedbackLocalizedString(key, comment) \

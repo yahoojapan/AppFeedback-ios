@@ -25,8 +25,8 @@
 
 #import "ScreenCapture.h"
 #import "FloatingButtonWindow.h"
-#import "OverlayWindow.h"
 #import <UIKit/UIKit.h>
+#import <AppFeedback/AppFeedback-Swift.h>
 
 @implementation ScreenCapture
 
