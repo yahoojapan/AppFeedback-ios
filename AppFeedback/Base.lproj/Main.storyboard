@@ -171,7 +171,7 @@
                                                 <color key="textColor" red="0.38431372549019605" green="0.38431372549019605" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="bottomLeft" horizontalHuggingPriority="750" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeV-rN-syK" customClass="ExpansionButton">
+                                            <button opaque="NO" contentMode="bottomLeft" horizontalHuggingPriority="750" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeV-rN-syK" customClass="ExpansionButton" customModule="AppFeedback" customModuleProvider="target">
                                                 <rect key="frame" x="93" y="9" width="49" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Select">
@@ -181,7 +181,7 @@
                                                     <color key="titleColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="selectFeedbackCategory:" destination="RGA-cb-TLJ" eventType="touchDown" id="HBG-NM-6jk"/>
+                                                    <action selector="selectFeedbackCategory:" destination="RGA-cb-TLJ" eventType="touchUpInside" id="tnh-BB-4Jc"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="送信中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ue-iZ-Spc">
@@ -311,7 +311,7 @@
                         <outlet property="activityIndicator" destination="BQX-zL-8TG" id="DDk-e4-IX4"/>
                         <outlet property="activityView" destination="HLt-Vp-yvr" id="Vis-j0-LbX"/>
                         <outlet property="container" destination="4Vc-vg-eNt" id="i9V-DM-kN3"/>
-                        <outlet property="feedbackCategoryButton" destination="eeV-rN-syK" id="Avo-5g-j4p"/>
+                        <outlet property="feedbackCategoryButton" destination="eeV-rN-syK" id="Vzo-UM-V8l"/>
                         <outlet property="feedbackCategoryLabel" destination="bj5-5w-icM" id="p4i-Ji-NZa"/>
                         <outlet property="freeCommentField" destination="pRC-RS-zAC" id="wTn-gT-rnp"/>
                         <outlet property="freeCommentHeightConstraint" destination="Orb-wr-YZ1" id="9X0-gw-Aqy"/>
