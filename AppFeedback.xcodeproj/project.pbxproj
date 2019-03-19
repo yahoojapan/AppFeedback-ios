@@ -56,8 +56,7 @@
 		09D9C3981EA77C2D00B81B19 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09D9C3971EA77C2D00B81B19 /* Images.xcassets */; };
 		2BE8733421B7A58700B7D935 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8733621B7A58700B7D935 /* Localizable.strings */; };
 		2BE8733821B7A5D100B7D935 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8733A21B7A5D100B7D935 /* Main.storyboard */; };
-		7EBE637A218194E800AB7499 /* ExpansionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EBE6379218194E800AB7499 /* ExpansionButton.h */; };
-		7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE637B2181958000AB7499 /* ExpansionButton.m */; };
+		D42C66E9223B95BB00EB1A21 /* ExpansionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42C66E8223B95BB00EB1A21 /* ExpansionButton.swift */; };
 		DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */; };
 		DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7AC222FA325009B9AB0 /* SendData.swift */; };
 		DB9010BA1BDDB096001E0576 /* UIPlaceHolderTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */; };
@@ -124,8 +123,7 @@
 		2B4C828321BF865F00B7ED6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2BE8733721B7A58F00B7D935 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2BE8733C21B7A9C500B7D935 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7EBE6379218194E800AB7499 /* ExpansionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpansionButton.h; sourceTree = "<group>"; };
-		7EBE637B2181958000AB7499 /* ExpansionButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpansionButton.m; sourceTree = "<group>"; };
+		D42C66E8223B95BB00EB1A21 /* ExpansionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionButton.swift; sourceTree = "<group>"; };
 		DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtil.swift; sourceTree = "<group>"; };
 		DAA7B7AC222FA325009B9AB0 /* SendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendData.swift; sourceTree = "<group>"; };
 		DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
@@ -209,8 +207,7 @@
 				DBDCC3FD1BD9D25000327609 /* ReportViewController.m */,
 				09D5DC5C1EAA6F1E00F24FA4 /* OverlayWindow.h */,
 				09D5DC5D1EAA6F1E00F24FA4 /* OverlayWindow.m */,
-				7EBE6379218194E800AB7499 /* ExpansionButton.h */,
-				7EBE637B2181958000AB7499 /* ExpansionButton.m */,
+				D42C66E8223B95BB00EB1A21 /* ExpansionButton.swift */,
 			);
 			name = FeedbackDialog;
 			sourceTree = "<group>";
@@ -321,7 +318,6 @@
 				DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */,
 				093E55591EB097F800CF731F /* FloatingProgressView.h in Headers */,
 				09D9C3951EA766C700B81B19 /* FloatingButtonDelegate.h in Headers */,
-				7EBE637A218194E800AB7499 /* ExpansionButton.h in Headers */,
 				09D5DC5E1EAA6F1E00F24FA4 /* OverlayWindow.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,7 +461,7 @@
 				DB9010BB1BDDB096001E0576 /* UIPlaceHolderTextView.m in Sources */,
 				DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */,
 				09059A681EC1897C004B338E /* AutoResizeTextView.m in Sources */,
-				7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */,
+				D42C66E9223B95BB00EB1A21 /* ExpansionButton.swift in Sources */,
 				093E555A1EB097F800CF731F /* FloatingProgressView.m in Sources */,
 				09D5DC551EAA20E400F24FA4 /* ScreenCapture.m in Sources */,
 				09D9C3911EA74EE600B81B19 /* FloatingButtonWindow.m in Sources */,
