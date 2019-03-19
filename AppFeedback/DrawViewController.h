@@ -24,7 +24,7 @@
 
 
 #import <UIKit/UIKit.h>
-#import "DrawView.h"
+@class DrawView;
 
 @interface DrawViewController : UIViewController
 

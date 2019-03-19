@@ -24,7 +24,7 @@
 
 
 #import "DrawViewController.h"
-#import "DrawView.h"
+#import <AppFeedback/AppFeedback-Swift.h>
 
 @interface DrawViewController () <DrawViewDelegate>
 
@@ -54,7 +54,7 @@
     
     self.drawingView.delegate = self;
     
-    [self.drawingView linkUIImageView:self.imageView];
+    [self.drawingView linkUIWithImageView:self.imageView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +69,7 @@
 }
 
 // DrawViewがドラッグされた時の処理
-- (void)finishPannig:(UIImage*)image {
+- (void)finishPannigWithImage:(UIImage*)image {
     self.imageView.image = image;
     self.clearButton.enabled = true;
     self.editingImage = image;
