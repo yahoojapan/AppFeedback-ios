@@ -28,6 +28,7 @@
 #import "UIPlaceHolderTextView.h"
 #import "Config.h"
 #import "AppFeedbackInternal.h"
+#import "ExpansionButton.h"
 #import <AppFeedback/AppFeedback-Swift.h>
 
 @import AVFoundation;
@@ -64,6 +65,7 @@ UITextViewDelegate
 @property (weak, nonatomic) IBOutlet UIButton *RecordingButton;
 @property (weak, nonatomic) IBOutlet UILabel *feedbackCategoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sendingLabel;
+    
 @property (weak, nonatomic) IBOutlet ExpansionButton *feedbackCategoryButton;
 @property (nonatomic) NSString* notSelectedCategoryTitle;
 
@@ -78,6 +80,7 @@ UITextViewDelegate
     [super viewDidLoad];
     //self.container.hidden = YES;
     [self p_setupView];
+
     [self.feedbackCategoryButton setPerceivableAreaWithLeftArea:0.0f rightArea:30.0f];
     self.notSelectedCategoryTitle = AppFeedbackLocalizedString(@"select", @"");
 
