@@ -24,6 +24,7 @@
 		0928E4811E9C888A00F477D2 /* Config.h in Headers */ = {isa = PBXBuildFile; fileRef = 0928E47F1E9C888A00F477D2 /* Config.h */; };
 		0928E4821E9C888A00F477D2 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928E4801E9C888A00F477D2 /* Config.m */; };
 		0928E4841E9C95AC00F477D2 /* ConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928E4831E9C95AC00F477D2 /* ConfigTests.m */; };
+		092EB7C62240BC0B007DA694 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092EB7C52240BC0B007DA694 /* DrawView.swift */; };
 		09308418222FA180009C8ECE /* URL+FileSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09308417222FA180009C8ECE /* URL+FileSize.swift */; };
 		093517511E95E49B00BB554F /* AppFeedbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 093517501E95E49B00BB554F /* AppFeedbackTests.m */; };
 		093517531E95E49B00BB554F /* AppFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCE68D01BD776B200A03D74 /* AppFeedback.framework */; };
@@ -65,8 +66,6 @@
 		DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */; };
 		DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDCC3FC1BD9D25000327609 /* ReportViewController.h */; };
 		DBDCC4001BD9D25100327609 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC3FD1BD9D25000327609 /* ReportViewController.m */; };
-		FB11DA311F394639002B399E /* DrawView.h in Headers */ = {isa = PBXBuildFile; fileRef = FB11DA2F1F394639002B399E /* DrawView.h */; };
-		FB11DA321F394639002B399E /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB11DA301F394639002B399E /* DrawView.m */; };
 		FB131F451F3190FA007B9EA0 /* DrawViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = FB131F431F3190FA007B9EA0 /* DrawViewController.h */; };
 		FB131F461F3190FA007B9EA0 /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB131F441F3190FA007B9EA0 /* DrawViewController.m */; };
 /* End PBXBuildFile section */
@@ -85,6 +84,7 @@
 		0928E47F1E9C888A00F477D2 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		0928E4801E9C888A00F477D2 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		0928E4831E9C95AC00F477D2 /* ConfigTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTests.m; sourceTree = "<group>"; };
+		092EB7C52240BC0B007DA694 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		09308417222FA180009C8ECE /* URL+FileSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+FileSize.swift"; sourceTree = "<group>"; };
 		0935174E1E95E49B00BB554F /* AppFeedbackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFeedbackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		093517501E95E49B00BB554F /* AppFeedbackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppFeedbackTests.m; sourceTree = "<group>"; };
@@ -132,8 +132,6 @@
 		DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppFeedbackInternal.m; sourceTree = "<group>"; };
 		DBDCC3FC1BD9D25000327609 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
 		DBDCC3FD1BD9D25000327609 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
-		FB11DA2F1F394639002B399E /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
-		FB11DA301F394639002B399E /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
 		FB131F431F3190FA007B9EA0 /* DrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawViewController.h; sourceTree = "<group>"; };
 		FB131F441F3190FA007B9EA0 /* DrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -282,8 +280,7 @@
 			children = (
 				FB131F441F3190FA007B9EA0 /* DrawViewController.m */,
 				FB131F431F3190FA007B9EA0 /* DrawViewController.h */,
-				FB11DA2F1F394639002B399E /* DrawView.h */,
-				FB11DA301F394639002B399E /* DrawView.m */,
+				092EB7C52240BC0B007DA694 /* DrawView.swift */,
 			);
 			name = Drawing;
 			sourceTree = "<group>";
@@ -304,7 +301,6 @@
 				09B0F74D1EADF2600055F8A5 /* FloatingButtonOuterView.h in Headers */,
 				09D9C38C1EA74DD900B81B19 /* FloatingButtonController.h in Headers */,
 				09D9C3901EA74EE600B81B19 /* FloatingButtonWindow.h in Headers */,
-				FB11DA311F394639002B399E /* DrawView.h in Headers */,
 				09D5DC4B1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h in Headers */,
 				093E555D1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h in Headers */,
 				098916921EC06E060047074D /* CaptureOverlayWindow.h in Headers */,
@@ -452,6 +448,7 @@
 			files = (
 				FB131F461F3190FA007B9EA0 /* DrawViewController.m in Sources */,
 				09D5DC5F1EAA6F1E00F24FA4 /* OverlayWindow.m in Sources */,
+				092EB7C62240BC0B007DA694 /* DrawView.swift in Sources */,
 				09308418222FA180009C8ECE /* URL+FileSize.swift in Sources */,
 				DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */,
 				2B4562712238DCCE008DF57B /* UIPlaceHolderTextView.swift in Sources */,
@@ -464,7 +461,6 @@
 				09B0F74A1EADDFD90055F8A5 /* FloatingButtonView.m in Sources */,
 				DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */,
 				09D9C38D1EA74DD900B81B19 /* FloatingButtonController.m in Sources */,
-				FB11DA321F394639002B399E /* DrawView.m in Sources */,
 				DAB6F89C2240C6DB00EAB279 /* SlackAPI.swift in Sources */,
 				DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */,
 				0928E4821E9C888A00F477D2 /* Config.m in Sources */,
