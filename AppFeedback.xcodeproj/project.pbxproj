@@ -54,6 +54,7 @@
 		09D9C3911EA74EE600B81B19 /* FloatingButtonWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D9C38F1EA74EE600B81B19 /* FloatingButtonWindow.m */; };
 		09D9C3951EA766C700B81B19 /* FloatingButtonDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D9C3931EA766C700B81B19 /* FloatingButtonDelegate.h */; };
 		09D9C3981EA77C2D00B81B19 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09D9C3971EA77C2D00B81B19 /* Images.xcassets */; };
+		2B0732C42240BE54006899C5 /* ScreenVideoCaptureSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0732C32240BE54006899C5 /* ScreenVideoCaptureSession.swift */; };
 		2BE8733421B7A58700B7D935 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8733621B7A58700B7D935 /* Localizable.strings */; };
 		2BE8733821B7A5D100B7D935 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8733A21B7A5D100B7D935 /* Main.storyboard */; };
 		D42C66E9223B95BB00EB1A21 /* ExpansionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42C66E8223B95BB00EB1A21 /* ExpansionButton.swift */; };
@@ -119,6 +120,7 @@
 		09D9C38F1EA74EE600B81B19 /* FloatingButtonWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonWindow.m; sourceTree = "<group>"; };
 		09D9C3931EA766C700B81B19 /* FloatingButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonDelegate.h; sourceTree = "<group>"; };
 		09D9C3971EA77C2D00B81B19 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2B0732C32240BE54006899C5 /* ScreenVideoCaptureSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenVideoCaptureSession.swift; sourceTree = "<group>"; };
 		2B4C828221BF82BC00B7ED6A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		2B4C828321BF865F00B7ED6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2BE8733721B7A58F00B7D935 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		09D5DC481EA8BF9300F24FA4 /* ScreenCapture */ = {
 			isa = PBXGroup;
 			children = (
+				2B0732C32240BE54006899C5 /* ScreenVideoCaptureSession.swift */,
 				09D5DC491EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h */,
 				09D5DC4A1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m */,
 				09D5DC521EAA20E400F24FA4 /* ScreenCapture.h */,
@@ -463,6 +466,7 @@
 				09059A681EC1897C004B338E /* AutoResizeTextView.m in Sources */,
 				D42C66E9223B95BB00EB1A21 /* ExpansionButton.swift in Sources */,
 				093E555A1EB097F800CF731F /* FloatingProgressView.m in Sources */,
+				2B0732C42240BE54006899C5 /* ScreenVideoCaptureSession.swift in Sources */,
 				09D5DC551EAA20E400F24FA4 /* ScreenCapture.m in Sources */,
 				09D9C3911EA74EE600B81B19 /* FloatingButtonWindow.m in Sources */,
 				09D5DC4C1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m in Sources */,
