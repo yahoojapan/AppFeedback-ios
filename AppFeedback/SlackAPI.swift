@@ -13,14 +13,14 @@ public class SlackAPI: NSObject {
     private let token: String
     private let channel: String
     private let apiUrl: String
-    private let branchName: String
+    private let branchName: String?
     
     static public let boundary = "AppFeedbackiOSSDKBoundary"
     
     public init(token: String,
                 channel: String,
                 apiUrl: String,
-                branchName: String) {
+                branchName: String?) {
         self.token = token
         self.channel = channel
         self.apiUrl = apiUrl
@@ -35,10 +35,7 @@ public class SlackAPI: NSObject {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         
-        let message = makeMessage(from: data)
-            .appendingFormat("\n[Branch]\n%s\n", branchName)
-            .appending("```\n")
-        
+        let message = makeMessage(from: data, branchName: branchName)
         var feedbackData = Data()
         let textDictionary = ["channels": channel, "initial_comment": message]
         feedbackData.setTextData(textDictionary: textDictionary)
@@ -51,21 +48,32 @@ public class SlackAPI: NSObject {
         task.resume()
     }
     
-    private func makeMessage(from data: SendData) -> String {
+    private func makeMessage(from data: SendData, branchName: String?) -> String {
         let unknown = "-"
         return """
-        "\(data.title ?? unknown)"
-        "by @\(data.username ?? unknown)\n"
-        "```"
-        "[Category]\n\(data.category ?? unknown)\n"
-        "[Message]\n\(data.comment ?? unknown)\n"
-        "[App Title]\n\(data.appTitle ?? unknown)\n"
-        "[App Version]"
-        "Version: \(data.appVersion ?? unknown)"
-        "Build: \(data.appBuildVersion ?? unknown)\n"
-        "[Device]"
-        "iOS: \(data.systemVersion ?? unknown)"
-        "Model: \(data.modelName ?? unknown) (\(data.modelCode ?? unknown))"
+        \(data.title ?? unknown)
+        by @\(data.username ?? unknown)\n
+        ```
+        [Category]
+        \(data.category ?? unknown)
+        
+        [Message]
+        \(data.comment ?? unknown)
+        
+        [App Title]
+        \(data.appTitle ?? unknown)
+        
+        [App Version]
+        Version: \(data.appVersion ?? unknown)
+        Build: \(data.appBuildVersion ?? unknown)
+        
+        [Device]
+        iOS: \(data.systemVersion ?? unknown)
+        Model: \(data.modelName ?? unknown) (\(data.modelCode ?? unknown))
+        
+        [Branch]
+        \(branchName ?? unknown)
+        ```
         """
     }
 }
@@ -74,7 +82,7 @@ fileprivate extension Data {
     mutating func setTextData(textDictionary: Dictionary<String, String>) {
         textDictionary.forEach { key, value in
             appendBoundary()
-            appendContentDisposition()
+            append(contentDisposition: "form-data;")
             append(name: key)
             append(value: value)
         }
@@ -82,30 +90,42 @@ fileprivate extension Data {
     
     mutating func setImageData(_ imageData: Data?, videoPath: URL?) {
         appendBoundary()
-        appendContentDisposition()
-        appendData(string: "name=\"file\"")
-        
+        append(contentDisposition: "form-data;")
+        appendData(string: "name=\"file\";")
+
         if let videoPath = videoPath {
             guard let videoData = try? Data.init(contentsOf: videoPath) else { return }
-            appendData(string: "filename=\"ScreenCapture.mp4\"\r\n")
-            appendData(string: "Content-Type: video/mp4\r\n\r\n")
+            append(fileName: "ScreenCapture.mp4")
+            append(contentType: "video/mp4")
             append(videoData)
         } else {
             guard let imageData = imageData else { return }
-            appendData(string: "filename=\"ScreenCapture.png\"\r\n")
-            appendData(string: "Content-Type: image/jpeg\r\n\r\n")
+            append(fileName: "ScreenCapture.png")
+            append(contentType: "image/jpeg")
             append(imageData)
         }
         appendData(string: "\r\n")
-        appendBoundary()
+        appendEndingBoundary()
     }
 
     private mutating func appendBoundary() {
         appendData(string: "--\(SlackAPI.boundary)\r\n")
     }
     
-    private mutating func appendContentDisposition() {
-        appendData(string: "Content-Disposition: form-data;")
+    private mutating func appendEndingBoundary() {
+        appendData(string: "--\(SlackAPI.boundary)--\r\n")
+    }
+    
+    private mutating func append(contentDisposition: String) {
+        appendData(string: "Content-Disposition: \(contentDisposition)")
+    }
+    
+    private mutating func append(contentType: String) {
+        appendData(string: "Content-Type: \(contentType)\r\n\r\n")
+    }
+    
+    private mutating func append(fileName: String) {
+        appendData(string: "filename=\"\(fileName)\"\r\n")
     }
     
     private mutating func append(name: String) {
@@ -113,7 +133,7 @@ fileprivate extension Data {
     }
     
     private mutating func append(value: String) {
-        appendData(string: "\(value)\"\r\n")
+        appendData(string: "\(value)\r\n")
     }
     
     private mutating func appendData(string: String) {
