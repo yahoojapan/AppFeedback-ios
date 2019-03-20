@@ -28,7 +28,7 @@ import AVKit
 
 @objcMembers
 class ScreenVideoCaptureSession: NSObject {
-    typealias StopRecordingCallBack = (URL, NSError) -> Void
+    typealias StopRecordingCallBack = (URL?, Error?) -> Void
     
     private let frameRate: Float = 20
 
@@ -135,18 +135,135 @@ class ScreenVideoCaptureSession: NSObject {
         }
     }
     
-    func runRecordFrameLoop(delay: Float) {
+    func runRecordFrameLoop(delay: TimeInterval) {
         if recording {
-            
+            DispatchQueue.global().async { [weak self] in
+                self?.completeRecordingSession()
+            }
+        }
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + delay) { [weak self] in
+            self?.recordFrame()
         }
     }
     
-    
-    func startRecordingUntil(_ tileLimitScs: Float, callback: StopRecordingCallBack) {
+    func recordFrame() {
+        let start = Date()
+        var image: UIImage?
+        DispatchQueue.main.sync {
+            // TODO
+        }
         
+        if let startedAt = startedAt, let image = image {
+            let millisElapsed = Date().timeIntervalSince(startedAt)
+            
+            writeVideoFrameAtTime(
+                time: CMTime(value: CMTimeValue(millisElapsed),
+                             timescale: 1000), image: image)
+        }
+        
+        let processingSeconds = Date().timeIntervalSince(start)
+        let delayRemaining = TimeInterval(interval) - processingSeconds
+        
+        
+        let delay = delayRemaining > 0 ? delayRemaining : TimeInterval(interval)
+        runRecordFrameLoop(delay: delay)
+    }
+    
+    func completeRecordingSession() {
+        videoWriterInput?.markAsFinished()
+        
+        var status = videoWriter?.status
+        while status == .unknown {
+            Thread.sleep(forTimeInterval: 0.5)
+            status = videoWriter?.status
+        }
+        
+        
+        videoWriter?.finishWriting { [weak self] in
+            let status = self?.videoWriter?.status
+            
+            if self?.videoWriter?.error != nil {
+                let error = self?.videoWriter?.error
+                DispatchQueue.main.async { [weak self] in
+                    self?.callback?(nil, error)
+                    self?.callback = nil
+                }
+            } else if status == .completed {
+                DispatchQueue.main.async { [weak self] in
+                    self?.callback?(self?.outputFile, nil)
+                    self?.callback = nil
+                }
+            }
+        }
+        cleanupWriter()
+    }
+    
+    
+    func startRecordingUntil(_ timeLimitScs: TimeInterval, callback: @escaping StopRecordingCallBack) -> Bool {
+        if recording {
+            return false
+        }
+        
+        initOrientation = UIApplication.shared.statusBarOrientation
+        initScreenSize = UIScreen.main.bounds.size
+        initScreenScale = fixedImageScale
+        
+        if !self.setupWriter() {
+            return false
+        }
+        
+        self.callback = callback
+        startedAt = Date()
+        timer = Timer.scheduledTimer(timeInterval: timeLimitScs, target: self, selector: #selector(timerFired(timer:)), userInfo: nil, repeats: false)
+        recording = true
+        runRecordFrameLoop(delay: 0)
+        return true
     }
     
     func stopRecording() {
+        if recording {
+            timer?.invalidate()
+            timer = nil
+            recording = false
+        }
+    }
+    
+    func timerFired(timer: Timer) {
+        stopRecording()
+    }
+    
+    func writeVideoFrameAtTime(time: CMTime, image: UIImage) {
+        guard let videoWriterInput = videoWriterInput, videoWriterInput.isReadyForMoreMediaData else {
+            return
+        }
         
+        guard let pixelBufferPool = avAdaptor?.pixelBufferPool else {
+            return
+        }
+        
+        var pixelBuffer: CVPixelBuffer?
+        let status = CVPixelBufferPoolCreatePixelBuffer(
+            kCFAllocatorDefault,
+            pixelBufferPool,
+            &pixelBuffer)
+        if status != kCVReturnSuccess {
+            return
+        }
+        
+        guard let cgImage = image.cgImage?.copy(), let data = cgImage.dataProvider?.data else {
+            return
+        }
+        
+        if let pixelBuffer = pixelBuffer,
+            let destPixels = CVPixelBufferGetBaseAddress(pixelBuffer) {
+            CVPixelBufferLockBaseAddress(pixelBuffer, .readOnly)
+            let range = CFRange(location: 0, length: CFDataGetLength(data))
+            
+            CFDataGetBytes(data, range, UnsafeMutablePointer<UInt8>(OpaquePointer(destPixels)))
+            
+            avAdaptor?.append(pixelBuffer, withPresentationTime: time)
+            CVPixelBufferUnlockBaseAddress(pixelBuffer, .readOnly)
+        }
     }
 }
