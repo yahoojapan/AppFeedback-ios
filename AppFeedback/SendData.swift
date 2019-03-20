@@ -65,4 +65,42 @@ public class SendData: NSObject {
         self.modelCode = modelCode
         self.modelName = modelName
     }
+    
+    func convertToMessage(with branchName: String?) -> String {
+        let unknown = "-"
+        var message = """
+        \(title ?? unknown)
+        by @\(username ?? unknown)\n
+        ```
+        [Category]
+        \(category ?? unknown)
+        
+        [Message]
+        \(comment ?? unknown)
+        
+        [App Title]
+        \(appTitle ?? unknown)
+        
+        [App Version]
+        Version: \(appVersion ?? unknown)
+        Build: \(appBuildVersion ?? unknown)
+        
+        [Device]
+        iOS: \(systemVersion ?? unknown)
+        Model: \(modelName ?? unknown) (\(modelCode ?? unknown))
+        """
+        
+        if let branchName = branchName {
+            let branchSuffix = """
+            \n
+            [Branch]
+            \(branchName)
+            """
+            message += branchSuffix
+        }
+        
+        message += "\n```"
+        
+        return message
+    }
 }

@@ -51,7 +51,7 @@ public class SlackAPI: NSObject {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         
-        let message = makeMessage(from: data, branchName: branchName)
+        let message = data.convertToMessage(with: branchName)
         var feedbackData = Data()
         let textDictionary = ["channels": channel, "initial_comment": message]
         feedbackData.setTextData(textDictionary: textDictionary)
@@ -62,35 +62,6 @@ public class SlackAPI: NSObject {
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
         let task = session.dataTask(with: request, completionHandler: completionHandler)
         task.resume()
-    }
-    
-    private func makeMessage(from data: SendData, branchName: String?) -> String {
-        let unknown = "-"
-        return """
-        \(data.title ?? unknown)
-        by @\(data.username ?? unknown)\n
-        ```
-        [Category]
-        \(data.category ?? unknown)
-        
-        [Message]
-        \(data.comment ?? unknown)
-        
-        [App Title]
-        \(data.appTitle ?? unknown)
-        
-        [App Version]
-        Version: \(data.appVersion ?? unknown)
-        Build: \(data.appBuildVersion ?? unknown)
-        
-        [Device]
-        iOS: \(data.systemVersion ?? unknown)
-        Model: \(data.modelName ?? unknown) (\(data.modelCode ?? unknown))
-        
-        [Branch]
-        \(branchName ?? unknown)
-        ```
-        """
     }
 }
 

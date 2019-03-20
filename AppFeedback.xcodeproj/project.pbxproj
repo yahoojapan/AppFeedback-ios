@@ -59,6 +59,7 @@
 		DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */; };
 		DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7AC222FA325009B9AB0 /* SendData.swift */; };
 		DAB6F89C2240C6DB00EAB279 /* SlackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */; };
+		DAB6F8BF22420BDA00EAB279 /* SendDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6F8BE22420BDA00EAB279 /* SendDataTests.swift */; };
 		DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68D31BD776B300A03D74 /* AppFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */; };
 		DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */; };
@@ -123,6 +124,7 @@
 		DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtil.swift; sourceTree = "<group>"; };
 		DAA7B7AC222FA325009B9AB0 /* SendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendData.swift; sourceTree = "<group>"; };
 		DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackAPI.swift; sourceTree = "<group>"; };
+		DAB6F8BE22420BDA00EAB279 /* SendDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDataTests.swift; sourceTree = "<group>"; };
 		DBCE68D01BD776B200A03D74 /* AppFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCE68D31BD776B300A03D74 /* AppFeedback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppFeedback.h; sourceTree = "<group>"; };
 		DBCE68D51BD776B300A03D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				093517501E95E49B00BB554F /* AppFeedbackTests.m */,
+				DAB6F8BE22420BDA00EAB279 /* SendDataTests.swift */,
 				093517521E95E49B00BB554F /* Info.plist */,
 				0928E4831E9C95AC00F477D2 /* ConfigTests.m */,
 			);
@@ -362,6 +365,7 @@
 				TargetAttributes = {
 					0935174D1E95E49B00BB554F = {
 						CreatedOnToolsVersion = 8.3;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					DBCE68CF1BD776B200A03D74 = {
@@ -436,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAB6F8BF22420BDA00EAB279 /* SendDataTests.swift in Sources */,
 				093517511E95E49B00BB554F /* AppFeedbackTests.m in Sources */,
 				0928E4841E9C95AC00F477D2 /* ConfigTests.m in Sources */,
 			);
@@ -508,12 +513,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				INFOPLIST_FILE = AppFeedbackTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.yahoo.AppFeedbackTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -524,12 +532,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				INFOPLIST_FILE = AppFeedbackTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.yahoo.AppFeedbackTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
