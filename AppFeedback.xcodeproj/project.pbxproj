@@ -31,7 +31,6 @@
 		093E555A1EB097F800CF731F /* FloatingProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 093E55581EB097F800CF731F /* FloatingProgressView.m */; };
 		093E555D1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h in Headers */ = {isa = PBXBuildFile; fileRef = 093E555B1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h */; };
 		093E555E1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m in Sources */ = {isa = PBXBuildFile; fileRef = 093E555C1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m */; };
-		095D269021B64EE9003802F5 /* SlackAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 095D268F21B64EE9003802F5 /* SlackAPI.m */; };
 		098916921EC06E060047074D /* CaptureOverlayWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 098916901EC06E060047074D /* CaptureOverlayWindow.h */; };
 		098916931EC06E060047074D /* CaptureOverlayWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 098916911EC06E060047074D /* CaptureOverlayWindow.m */; };
 		09B0F7491EADDFD90055F8A5 /* FloatingButtonView.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B0F7471EADDFD90055F8A5 /* FloatingButtonView.h */; };
@@ -59,6 +58,8 @@
 		D42C66E9223B95BB00EB1A21 /* ExpansionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42C66E8223B95BB00EB1A21 /* ExpansionButton.swift */; };
 		DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */; };
 		DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7AC222FA325009B9AB0 /* SendData.swift */; };
+		DAB6F89C2240C6DB00EAB279 /* SlackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */; };
+		DAB6F8BF22420BDA00EAB279 /* SendDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6F8BE22420BDA00EAB279 /* SendDataTests.swift */; };
 		DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68D31BD776B300A03D74 /* AppFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */; };
 		DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */; };
@@ -92,8 +93,6 @@
 		093E55581EB097F800CF731F /* FloatingProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingProgressView.m; sourceTree = "<group>"; };
 		093E555B1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonControllerIOS9.h; sourceTree = "<group>"; };
 		093E555C1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonControllerIOS9.m; sourceTree = "<group>"; };
-		095D268F21B64EE9003802F5 /* SlackAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlackAPI.m; sourceTree = "<group>"; };
-		095D269121B64EF6003802F5 /* SlackAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlackAPI.h; sourceTree = "<group>"; };
 		098916901EC06E060047074D /* CaptureOverlayWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureOverlayWindow.h; sourceTree = "<group>"; };
 		098916911EC06E060047074D /* CaptureOverlayWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureOverlayWindow.m; sourceTree = "<group>"; };
 		09B0F7471EADDFD90055F8A5 /* FloatingButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonView.h; sourceTree = "<group>"; };
@@ -124,6 +123,8 @@
 		D42C66E8223B95BB00EB1A21 /* ExpansionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionButton.swift; sourceTree = "<group>"; };
 		DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtil.swift; sourceTree = "<group>"; };
 		DAA7B7AC222FA325009B9AB0 /* SendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendData.swift; sourceTree = "<group>"; };
+		DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackAPI.swift; sourceTree = "<group>"; };
+		DAB6F8BE22420BDA00EAB279 /* SendDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDataTests.swift; sourceTree = "<group>"; };
 		DBCE68D01BD776B200A03D74 /* AppFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCE68D31BD776B300A03D74 /* AppFeedback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppFeedback.h; sourceTree = "<group>"; };
 		DBCE68D51BD776B300A03D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				093517501E95E49B00BB554F /* AppFeedbackTests.m */,
+				DAB6F8BE22420BDA00EAB279 /* SendDataTests.swift */,
 				093517521E95E49B00BB554F /* Info.plist */,
 				0928E4831E9C95AC00F477D2 /* ConfigTests.m */,
 			);
@@ -268,9 +270,8 @@
 				09D9C3921EA74EEC00B81B19 /* FloatingButton */,
 				09D9C3971EA77C2D00B81B19 /* Images.xcassets */,
 				09D5DC561EAA5E4200F24FA4 /* Logger.h */,
-				095D269121B64EF6003802F5 /* SlackAPI.h */,
-				095D268F21B64EE9003802F5 /* SlackAPI.m */,
 				DAA7B7AC222FA325009B9AB0 /* SendData.swift */,
+				DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */,
 				2BE8733621B7A58700B7D935 /* Localizable.strings */,
 			);
 			path = AppFeedback;
@@ -364,6 +365,7 @@
 				TargetAttributes = {
 					0935174D1E95E49B00BB554F = {
 						CreatedOnToolsVersion = 8.3;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					DBCE68CF1BD776B200A03D74 = {
@@ -438,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAB6F8BF22420BDA00EAB279 /* SendDataTests.swift in Sources */,
 				093517511E95E49B00BB554F /* AppFeedbackTests.m in Sources */,
 				0928E4841E9C95AC00F477D2 /* ConfigTests.m in Sources */,
 			);
@@ -462,13 +465,13 @@
 				DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */,
 				09D9C38D1EA74DD900B81B19 /* FloatingButtonController.m in Sources */,
 				FB11DA321F394639002B399E /* DrawView.m in Sources */,
+				DAB6F89C2240C6DB00EAB279 /* SlackAPI.swift in Sources */,
 				DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */,
 				0928E4821E9C888A00F477D2 /* Config.m in Sources */,
 				093E555E1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m in Sources */,
 				09B0F74E1EADF2600055F8A5 /* FloatingButtonOuterView.m in Sources */,
 				DBDCC4001BD9D25100327609 /* ReportViewController.m in Sources */,
 				098916931EC06E060047074D /* CaptureOverlayWindow.m in Sources */,
-				095D269021B64EE9003802F5 /* SlackAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,12 +513,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				INFOPLIST_FILE = AppFeedbackTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.yahoo.AppFeedbackTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -526,12 +532,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				INFOPLIST_FILE = AppFeedbackTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.yahoo.AppFeedbackTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
