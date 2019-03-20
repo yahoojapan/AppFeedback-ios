@@ -1,6 +1,6 @@
 //
-//  UIPlaceHolderTextView.h
-//  UIPlaceHolderTextView
+//  AutoResizeTextView.h
+//  AutoResizeTextView
 //
 //  Copyright (c) 2018 Yahoo Japan Corporation.
 //
@@ -22,14 +22,32 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import UIKit
 
-#import <UIKit/UIKit.h>
-#import "AutoResizeTextView.h"
-
-@interface UIPlaceHolderTextView : AutoResizeTextView
-
-@property (nonatomic, retain) NSString *placeholder;
-@property (nonatomic, retain) UIColor *placeholderColor;
-
--(void)textChanged:(NSNotification*)notification;
-@end
+@objcMembers
+public class AutoResizeTextView: UITextView {
+    public var minHeight: CGFloat = 0
+    public weak var heightConstraint: NSLayoutConstraint?
+    
+    override public func awakeFromNib() {
+        super.awakeFromNib()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(autoResizeTextViewtextChanged(_:)), name: UITextView.textDidChangeNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if heightConstraint != nil {
+            heightConstraint?.constant = max(minHeight, intrinsicContentSize.height)
+        }
+    }
+    
+    func autoResizeTextViewtextChanged(_ notification: Notification) {
+        setNeedsLayout()
+    }
+}
