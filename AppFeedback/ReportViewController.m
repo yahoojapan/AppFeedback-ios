@@ -78,7 +78,7 @@ UITextViewDelegate
     //self.container.hidden = YES;
     [self p_setupView];
     [self.feedbackCategoryButton setPerceivableAreaWithLeftArea:0.0f rightArea:30.0f];
-    self.notSelectedCategoryTitle = AppFeedbackLocalizedString(@"select", @"");
+    self.notSelectedCategoryTitle = [AppFeedbackLocalizedString stringFor:@"select"];
 
     self.keyboardAccessoryView.hidden = YES;
     
@@ -93,7 +93,7 @@ UITextViewDelegate
     self.activityView.hidden = YES;
     [self.activityView.superview bringSubviewToFront:self.activityView];
     
-    self.sendingLabel.text = AppFeedbackLocalizedString(@"sendingLabelText", @"");
+    self.sendingLabel.text = [AppFeedbackLocalizedString stringFor:@"sendingLabelText"];
     [self.sendingLabel setHidden:YES];
 }
 
@@ -147,7 +147,7 @@ UITextViewDelegate
     
     self.freeCommentField.layer.cornerRadius = 5.0f;
     
-    self.freeCommentField.placeholder = AppFeedbackLocalizedString(@"comment", @"");
+    self.freeCommentField.placeholder = [AppFeedbackLocalizedString stringFor:@"comment"];
     self.freeCommentField.placeholderColor = [UIColor lightGrayColor];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -292,16 +292,16 @@ UITextViewDelegate
              if (error) {
                  if (error.code == kCFURLErrorUserCancelledAuthentication) {//401(Authentication failure)
                      [self
-                      p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                      message:AppFeedbackLocalizedString(@"slackPostInvalidMessage", @"")
+                      p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
+                      message:[AppFeedbackLocalizedString stringFor:@"slackPostInvalidMessage"]
                       cancelButtonTitle:nil
                       destructiveButtonTitle:nil
                       otherButtonTitle:@"OK"
                       tapBlock:nil];
                  } else {
                      [self
-                      p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                      message:AppFeedbackLocalizedString(@"slackPostClientErrorMessage", @"")
+                      p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
+                      message:[AppFeedbackLocalizedString stringFor:@"slackPostClientErrorMessage"]
                       cancelButtonTitle:nil
                       destructiveButtonTitle:nil
                       otherButtonTitle:@"OK"
@@ -328,8 +328,8 @@ UITextViewDelegate
                 [self doneSelectedFeedbackCategory:self.notSelectedCategoryTitle :false]; // 未選択の状態に戻す
                 
                 [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostSuccessTitle", @"")
-                 message:AppFeedbackLocalizedString(@"slackPostSuccessMessage", @"")
+                 p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostSuccessTitle"]
+                 message:[AppFeedbackLocalizedString stringFor:@"slackPostSuccessMessage"]
                  cancelButtonTitle:nil
                  destructiveButtonTitle:nil
                  otherButtonTitle:@"OK"
@@ -341,8 +341,8 @@ UITextViewDelegate
                 
             case 403:// Forbidden
                 [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                 message:AppFeedbackLocalizedString(@"slackPostAuthorizationErrorMessage", @"")
+                 p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
+                 message:[AppFeedbackLocalizedString stringFor:@"slackPostAuthorizationErrorMessage"]
                  cancelButtonTitle:nil
                  destructiveButtonTitle:nil
                  otherButtonTitle:@"OK"
@@ -351,8 +351,8 @@ UITextViewDelegate
                 
             case 500://Internal Error
                 [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                 message:AppFeedbackLocalizedString(@"slackPostUnknownErrorMessage", @"")
+                 p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
+                 message:[AppFeedbackLocalizedString stringFor:@"slackPostUnknownErrorMessage"]
                  cancelButtonTitle:nil
                  destructiveButtonTitle:nil
                  otherButtonTitle:@"OK"
@@ -361,8 +361,8 @@ UITextViewDelegate
                 
             default:
                 [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                 message:[NSString stringWithFormat:AppFeedbackLocalizedString(@"slackPostUnknownErrorStatucCodeMessage", @""), (long)statusCode]
+                 p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
+                 message:[NSString stringWithFormat:[AppFeedbackLocalizedString stringFor:@"slackPostUnknownErrorStatucCodeMessage"], (long)statusCode]
                  cancelButtonTitle:nil
                  destructiveButtonTitle:nil
                  otherButtonTitle:@"OK"
@@ -466,7 +466,7 @@ UITextViewDelegate
     if (self.titleTextField.text.length == 0) {
         [self
          p_createAlertWithTitle:nil
-         message:AppFeedbackLocalizedString(@"confirmReportSettingInputTitleMessage", @"")
+         message:[AppFeedbackLocalizedString stringFor:@"confirmReportSettingInputTitleMessage"]
          cancelButtonTitle:nil
          destructiveButtonTitle:nil
          otherButtonTitle:@"OK"
@@ -478,8 +478,8 @@ UITextViewDelegate
 
     if (self.reporterName.text.length == 0) {
         [self
-         p_createAlertWithTitle:AppFeedbackLocalizedString(@"confirmReportSettingMessage", @"")
-         message:AppFeedbackLocalizedString(@"confirmReportSettingSlackIdCausionMessage", @"")
+         p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"confirmReportSettingMessage"]
+         message:[AppFeedbackLocalizedString stringFor:@"confirmReportSettingSlackIdCausionMessage"]
          cancelButtonTitle:nil
          destructiveButtonTitle:nil
          otherButtonTitle:@"OK"
@@ -489,14 +489,14 @@ UITextViewDelegate
         return;
     }
     
-    NSString *confirmMsg = AppFeedbackLocalizedString(@"confirmReportSettingMessage", @"");
+    NSString *confirmMsg = [AppFeedbackLocalizedString stringFor:@"confirmReportSettingMessage"];
     
     if ([self.feedbackCategoryButton.currentTitle  isEqual: self.notSelectedCategoryTitle]) {
-        confirmMsg = [NSString stringWithFormat:@"%@\n\n%@", confirmMsg, AppFeedbackLocalizedString(@"confirmReportSettingNotSelectedCategoryMessage", @"")];
+        confirmMsg = [NSString stringWithFormat:@"%@\n\n%@", confirmMsg, [AppFeedbackLocalizedString stringFor:@"confirmReportSettingNotSelectedCategoryMessage"]];
     }
 
 
-    [self p_createAlertWithTitle:AppFeedbackLocalizedString(@"confirm", @"") message:confirmMsg cancelButtonTitle:AppFeedbackLocalizedString(@"cancel", @"") destructiveButtonTitle:nil otherButtonTitle:AppFeedbackLocalizedString(@"send", @"") tapBlock:^(NSInteger buttonIndex){
+    [self p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"confirm"] message:confirmMsg cancelButtonTitle:[AppFeedbackLocalizedString stringFor:@"cancel"] destructiveButtonTitle:nil otherButtonTitle:[AppFeedbackLocalizedString stringFor:@"send"] tapBlock:^(NSInteger buttonIndex){
         if (buttonIndex == UIAlertFirstOtherButtonIndex) {
             [self p_sendMessage];
             [self closeKeyboard];
@@ -510,8 +510,8 @@ UITextViewDelegate
 
 
 - (IBAction)videoButtonTapped:(id)sender {
-    NSString *message = [NSString stringWithFormat:AppFeedbackLocalizedString(@"videoButtonTappedAlertMessage", @""), (int)floor(VIDEO_LIMIT_SECS)];
-    [self p_createAlertWithTitle:AppFeedbackLocalizedString(@"videoButtonTappedAlertTitle", @"") message:message cancelButtonTitle:AppFeedbackLocalizedString(@"cancel", @"") destructiveButtonTitle:nil otherButtonTitle:AppFeedbackLocalizedString(@"videoButtonTappedAlertStartButtonTitle", @"") tapBlock:^(NSInteger buttonIndex){
+    NSString *message = [NSString stringWithFormat:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertMessage"], (int)floor(VIDEO_LIMIT_SECS)];
+    [self p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertTitle"] message:message cancelButtonTitle:[AppFeedbackLocalizedString stringFor:@"cancel"] destructiveButtonTitle:nil otherButtonTitle:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertStartButtonTitle"] tapBlock:^(NSInteger buttonIndex){
         if (buttonIndex == UIAlertFirstOtherButtonIndex) {
             [self p_close:^{
                 [AppFeedback startRecording];
@@ -688,11 +688,11 @@ UITextViewDelegate
 
 // フィードバックカテゴリ選択ボタンを押下した時の処理
 - (IBAction)selectFeedbackCategory:(id)sender {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:AppFeedbackLocalizedString(@"categoryMessage", @"")
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[AppFeedbackLocalizedString stringFor:@"categoryMessage"]
                                                                              message:nil
                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:AppFeedbackLocalizedString(@"cancel", @"")
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:[AppFeedbackLocalizedString stringFor:@"cancel"]
                                                            style:UIAlertActionStyleCancel
                                                          handler:^(UIAlertAction * action) {}];
     

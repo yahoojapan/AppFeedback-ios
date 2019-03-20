@@ -25,6 +25,7 @@
 
 #import "Config.h"
 #import "AppFeedbackInternal.h"
+#import <AppFeedback/AppFeedback-Swift.h>
 
 @interface Config()
 
@@ -36,11 +37,11 @@
 
 - (id)init {
     if (self = [super init]) {
-        self.categories = @[ AppFeedbackLocalizedString(@"bug", @""),
-                             AppFeedbackLocalizedString(@"request", @""),
-                             AppFeedbackLocalizedString(@"question", @""),
-                             AppFeedbackLocalizedString(@"design", @""),
-                             AppFeedbackLocalizedString(@"others", @"")];
+        self.categories = @[ [AppFeedbackLocalizedString stringFor:@"bug"],
+                             [AppFeedbackLocalizedString stringFor:@"request"],
+                             [AppFeedbackLocalizedString stringFor:@"question"],
+                             [AppFeedbackLocalizedString stringFor:@"design"],
+                             [AppFeedbackLocalizedString stringFor:@"others"]];
         self.slackApiUrl = @"https://slack.com/api";
     }
     return self;

@@ -33,6 +33,7 @@
 #import "OverlayWindow.h"
 #import "CaptureOverlayWindow.h"
 #import "AppFeedbackInternal.h"
+#import <AppFeedback/AppFeedback-Swift.h>
 
 // Notification
 static NSString * _Nonnull const kCaptureStartNotification = @"CaptureStartNotification";
@@ -326,7 +327,7 @@ static AppFeedback *sharedData = nil;
         [self.floatingButtonController endProgress];
         [self updateFloatingButtonState];
         if (error) {
-            UIAlertController *ac = [UIAlertController alertControllerWithTitle:AppFeedbackLocalizedString(@"failToCaptureAlertTitle", @"")
+            UIAlertController *ac = [UIAlertController alertControllerWithTitle:[AppFeedbackLocalizedString stringFor:@"failToCaptureAlertTitle"]
                                                                         message:error.localizedDescription
                                                                  preferredStyle:UIAlertControllerStyleAlert];
             [ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}]];
