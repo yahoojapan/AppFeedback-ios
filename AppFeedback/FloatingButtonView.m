@@ -24,7 +24,7 @@
 
 
 #import "FloatingButtonView.h"
-#import "FloatingProgressView.h"
+#import <AppFeedback/AppFeedback-Swift.h>
 
 @interface FloatingButtonView ()
 
