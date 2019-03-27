@@ -42,8 +42,6 @@
 		09D5DC4F1EA8CC4B00F24FA4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D5DC4E1EA8CC4B00F24FA4 /* AVFoundation.framework */; };
 		09D5DC541EAA20E400F24FA4 /* ScreenCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D5DC521EAA20E400F24FA4 /* ScreenCapture.h */; };
 		09D5DC551EAA20E400F24FA4 /* ScreenCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5DC531EAA20E400F24FA4 /* ScreenCapture.m */; };
-		09D5DC5E1EAA6F1E00F24FA4 /* OverlayWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D5DC5C1EAA6F1E00F24FA4 /* OverlayWindow.h */; };
-		09D5DC5F1EAA6F1E00F24FA4 /* OverlayWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5DC5D1EAA6F1E00F24FA4 /* OverlayWindow.m */; };
 		09D9C38C1EA74DD900B81B19 /* FloatingButtonController.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D9C38A1EA74DD900B81B19 /* FloatingButtonController.h */; };
 		09D9C38D1EA74DD900B81B19 /* FloatingButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D9C38B1EA74DD900B81B19 /* FloatingButtonController.m */; };
 		09D9C3901EA74EE600B81B19 /* FloatingButtonWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D9C38E1EA74EE600B81B19 /* FloatingButtonWindow.h */; };
@@ -56,6 +54,7 @@
 		2BE8733821B7A5D100B7D935 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8733A21B7A5D100B7D935 /* Main.storyboard */; };
 		D42C66E9223B95BB00EB1A21 /* ExpansionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42C66E8223B95BB00EB1A21 /* ExpansionButton.swift */; };
 		D42C66ED2242174600EB1A21 /* FloatingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42C66EC2242174600EB1A21 /* FloatingProgressView.swift */; };
+		D460C347224B528F00CBC359 /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D460C346224B528F00CBC359 /* OverlayWindow.swift */; };
 		DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */; };
 		DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7AC222FA325009B9AB0 /* SendData.swift */; };
 		DAB6F89C2240C6DB00EAB279 /* SlackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */; };
@@ -104,8 +103,6 @@
 		09D5DC521EAA20E400F24FA4 /* ScreenCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenCapture.h; sourceTree = "<group>"; };
 		09D5DC531EAA20E400F24FA4 /* ScreenCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenCapture.m; sourceTree = "<group>"; };
 		09D5DC561EAA5E4200F24FA4 /* Logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
-		09D5DC5C1EAA6F1E00F24FA4 /* OverlayWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayWindow.h; sourceTree = "<group>"; };
-		09D5DC5D1EAA6F1E00F24FA4 /* OverlayWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayWindow.m; sourceTree = "<group>"; };
 		09D9C38A1EA74DD900B81B19 /* FloatingButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonController.h; sourceTree = "<group>"; };
 		09D9C38B1EA74DD900B81B19 /* FloatingButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonController.m; sourceTree = "<group>"; };
 		09D9C38E1EA74EE600B81B19 /* FloatingButtonWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonWindow.h; sourceTree = "<group>"; };
@@ -120,6 +117,7 @@
 		2BE8733C21B7A9C500B7D935 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D42C66E8223B95BB00EB1A21 /* ExpansionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionButton.swift; sourceTree = "<group>"; };
 		D42C66EC2242174600EB1A21 /* FloatingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingProgressView.swift; sourceTree = "<group>"; };
+		D460C346224B528F00CBC359 /* OverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindow.swift; sourceTree = "<group>"; };
 		DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtil.swift; sourceTree = "<group>"; };
 		DAA7B7AC222FA325009B9AB0 /* SendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendData.swift; sourceTree = "<group>"; };
 		DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackAPI.swift; sourceTree = "<group>"; };
@@ -201,8 +199,7 @@
 			children = (
 				DBDCC3FC1BD9D25000327609 /* ReportViewController.h */,
 				DBDCC3FD1BD9D25000327609 /* ReportViewController.m */,
-				09D5DC5C1EAA6F1E00F24FA4 /* OverlayWindow.h */,
-				09D5DC5D1EAA6F1E00F24FA4 /* OverlayWindow.m */,
+				D460C346224B528F00CBC359 /* OverlayWindow.swift */,
 				D42C66E8223B95BB00EB1A21 /* ExpansionButton.swift */,
 			);
 			name = FeedbackDialog;
@@ -306,7 +303,6 @@
 				098916921EC06E060047074D /* CaptureOverlayWindow.h in Headers */,
 				DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */,
 				09D9C3951EA766C700B81B19 /* FloatingButtonDelegate.h in Headers */,
-				09D5DC5E1EAA6F1E00F24FA4 /* OverlayWindow.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +373,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				ja,
 				Base,
@@ -446,11 +443,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB131F461F3190FA007B9EA0 /* DrawViewController.m in Sources */,
-				09D5DC5F1EAA6F1E00F24FA4 /* OverlayWindow.m in Sources */,
 				092EB7C62240BC0B007DA694 /* DrawView.swift in Sources */,
 				09308418222FA180009C8ECE /* URL+FileSize.swift in Sources */,
 				DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */,
 				2B4562712238DCCE008DF57B /* UIPlaceHolderTextView.swift in Sources */,
+				D460C347224B528F00CBC359 /* OverlayWindow.swift in Sources */,
 				D42C66E9223B95BB00EB1A21 /* ExpansionButton.swift in Sources */,
 				09D5DC551EAA20E400F24FA4 /* ScreenCapture.m in Sources */,
 				2B4562732238DCED008DF57B /* AutoResizeTextView.swift in Sources */,
