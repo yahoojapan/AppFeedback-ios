@@ -62,6 +62,7 @@
 		DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7B7AC222FA325009B9AB0 /* SendData.swift */; };
 		DAB6F89C2240C6DB00EAB279 /* SlackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */; };
 		DAB6F8BF22420BDA00EAB279 /* SendDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6F8BE22420BDA00EAB279 /* SendDataTests.swift */; };
+		DAB6F8C1224215B800EAB279 /* AppFeedbackLocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6F8C0224215B800EAB279 /* AppFeedbackLocalizedString.swift */; };
 		DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68D31BD776B300A03D74 /* AppFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */; };
 		DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */; };
@@ -125,6 +126,7 @@
 		DAA7B7AC222FA325009B9AB0 /* SendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendData.swift; sourceTree = "<group>"; };
 		DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackAPI.swift; sourceTree = "<group>"; };
 		DAB6F8BE22420BDA00EAB279 /* SendDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDataTests.swift; sourceTree = "<group>"; };
+		DAB6F8C0224215B800EAB279 /* AppFeedbackLocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedbackLocalizedString.swift; sourceTree = "<group>"; };
 		DBCE68D01BD776B200A03D74 /* AppFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCE68D31BD776B300A03D74 /* AppFeedback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppFeedback.h; sourceTree = "<group>"; };
 		DBCE68D51BD776B300A03D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				09D5DC561EAA5E4200F24FA4 /* Logger.h */,
 				DAA7B7AC222FA325009B9AB0 /* SendData.swift */,
 				DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */,
+				DAB6F8C0224215B800EAB279 /* AppFeedbackLocalizedString.swift */,
 				2BE8733621B7A58700B7D935 /* Localizable.strings */,
 			);
 			path = AppFeedback;
@@ -462,6 +465,7 @@
 				0928E4821E9C888A00F477D2 /* Config.m in Sources */,
 				093E555E1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m in Sources */,
 				09B0F74E1EADF2600055F8A5 /* FloatingButtonOuterView.m in Sources */,
+				DAB6F8C1224215B800EAB279 /* AppFeedbackLocalizedString.swift in Sources */,
 				DBDCC4001BD9D25100327609 /* ReportViewController.m in Sources */,
 				098916931EC06E060047074D /* CaptureOverlayWindow.m in Sources */,
 			);
