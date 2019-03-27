@@ -36,6 +36,7 @@
 		09B0F74A1EADDFD90055F8A5 /* FloatingButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B0F7481EADDFD90055F8A5 /* FloatingButtonView.m */; };
 		09B0F74D1EADF2600055F8A5 /* FloatingButtonOuterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B0F74B1EADF2600055F8A5 /* FloatingButtonOuterView.h */; };
 		09B0F74E1EADF2600055F8A5 /* FloatingButtonOuterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B0F74C1EADF2600055F8A5 /* FloatingButtonOuterView.m */; };
+		09C80B3C224B495C00994C01 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C80B3B224B495C00994C01 /* ReportViewController.swift */; };
 		09D5DC431EA8824400F24FA4 /* FloatingButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D5DC421EA8824400F24FA4 /* FloatingButton.xib */; };
 		09D5DC4B1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D5DC491EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h */; };
 		09D5DC4C1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5DC4A1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m */; };
@@ -97,6 +98,7 @@
 		09B0F7481EADDFD90055F8A5 /* FloatingButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonView.m; sourceTree = "<group>"; };
 		09B0F74B1EADF2600055F8A5 /* FloatingButtonOuterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonOuterView.h; sourceTree = "<group>"; };
 		09B0F74C1EADF2600055F8A5 /* FloatingButtonOuterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonOuterView.m; sourceTree = "<group>"; };
+		09C80B3B224B495C00994C01 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		09D5DC421EA8824400F24FA4 /* FloatingButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingButton.xib; sourceTree = "<group>"; };
 		09D5DC491EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenVideoCaptureSession.h; sourceTree = "<group>"; };
 		09D5DC4A1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenVideoCaptureSession.m; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			children = (
 				DBDCC3FC1BD9D25000327609 /* ReportViewController.h */,
 				DBDCC3FD1BD9D25000327609 /* ReportViewController.m */,
+				09C80B3B224B495C00994C01 /* ReportViewController.swift */,
 				09D5DC5C1EAA6F1E00F24FA4 /* OverlayWindow.h */,
 				09D5DC5D1EAA6F1E00F24FA4 /* OverlayWindow.m */,
 				D42C66E8223B95BB00EB1A21 /* ExpansionButton.swift */,
@@ -453,6 +456,7 @@
 				2B4562712238DCCE008DF57B /* UIPlaceHolderTextView.swift in Sources */,
 				D42C66E9223B95BB00EB1A21 /* ExpansionButton.swift in Sources */,
 				09D5DC551EAA20E400F24FA4 /* ScreenCapture.m in Sources */,
+				09C80B3C224B495C00994C01 /* ReportViewController.swift in Sources */,
 				2B4562732238DCED008DF57B /* AutoResizeTextView.swift in Sources */,
 				D42C66ED2242174600EB1A21 /* FloatingProgressView.swift in Sources */,
 				09D9C3911EA74EE600B81B19 /* FloatingButtonWindow.m in Sources */,
