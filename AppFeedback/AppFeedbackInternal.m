@@ -22,111 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-
-#import "AppFeedback.h"
-#import "ReportViewController.h"
-#import "Config.h"
-#import "FloatingButtonController.h"
-#import "FloatingButtonControllerIOS9.h"
-#import "ScreenVideoCaptureSession.h"
-#import "ScreenCapture.h"
-#import "OverlayWindow.h"
-#import "CaptureOverlayWindow.h"
-#import "AppFeedbackInternal.h"
-#import <AppFeedback/AppFeedback-Swift.h>
-
-// Notification
-static NSString * _Nonnull const kCaptureStartNotification = @"CaptureStartNotification";
-static NSString * _Nonnull const kCaptureEndNotification   = @"CaptureEndNotification";
-
-@interface AppFeedback() <FloatingButtonDelegate, ReportViewControllerDelegate>
-@property (nonatomic, strong) Config *config;
-@property (nonatomic, strong) OverlayWindow *overlayWindow;
-@property (nonatomic, strong) CaptureOverlayWindow *captureOverlayWindow;
-@property (nonatomic, strong) FloatingButtonController *floatingButtonController;
-@property (nonatomic, strong) ScreenVideoCaptureSession *screenVideoCaptureSession;
-@property (nonatomic) BOOL isHidden;
-@property (nonatomic, strong) NSArray<NSString *> *feedbackCategories;
-@property (nonatomic) BOOL feedbackDialogPresented;
-@property (nonatomic, strong) ReportViewController *reportViewController;
-@property (nonatomic, strong) UINavigationController *navigationController;
-
-@end
-
 @implementation AppFeedback
-
-static AppFeedback *sharedData = nil;
-
-+ (AppFeedback *)shared {
-    if (!sharedData) {
-        sharedData = [AppFeedback new];
-    }
-    return sharedData;
-}
-
-+ (nonnull NSBundle*)frameworkBundle {
-#ifdef COCOAPODS
-    NSString* bundlePath = [NSBundle.mainBundle pathForResource:@"AppFeedbackResource" ofType:@"bundle"];
-    return [NSBundle bundleWithPath:bundlePath];
-#else
-    return [NSBundle bundleForClass:self.class];
-#endif
-}
-
-+ (void)configureWithSlackToken:(NSString *)token slackChannel:(NSString *)channel {
-    [AppFeedback.shared configureWithSlackToken:token slackChannel:channel];
-}
-
-+ (void)configureWithSlackChannel:(nonnull NSString *)channel {
-    [AppFeedback.shared configureWithSlackToken:nil slackChannel:channel];
-}
-
-// getter method for feedbackCategories
-+ (NSArray<NSString *> *)feedbackCategories {
-    return [AppFeedback.shared getFeedbackCategories];
-}
-
-// setter method for feedbackCategories
-+ (void)setFeedbackCategories:(NSArray<NSString *> *)feedbackCategories {
-    [AppFeedback.shared setFeedbackCategories:feedbackCategories];
-}
-
-+ (NSString *)slackApiUrl {
-    return AppFeedback.shared.config.slackApiUrl;
-}
-
-+ (void)setSlackApiUrl:(NSString *)url {
-    AppFeedback.shared.config.slackApiUrl = url;
-}
-
-+ (BOOL)isHidden {
-    return AppFeedback.shared.isHidden;
-}
-
-+ (void)setIsHidden:(BOOL)isHidden {
-    AppFeedback.shared.isHidden = isHidden;
-}
-
-+ (void)showFeedbackDialog {
-    [AppFeedback.shared showFeedbackDialog];
-}
-
-+ (void)readyFeedbackGesture {
-    [AppFeedback.shared readyFeedbackGesture];
-}
-
-+ (void)readyScreenShot {
-    [AppFeedback.shared readyScreenShot];
-}
-
-+ (void)startRecording {
-    [AppFeedback.shared startRecording];
-}
-
-+ (void)endRecording {
-    [AppFeedback.shared endRecording];
-}
-
 
 #pragma mark - Public Methods
 
@@ -144,25 +40,6 @@ static AppFeedback *sharedData = nil;
         [self.config loadInfoPlist];
     }
     return self;
-}
-
-- (void)configureWithSlackToken:(NSString *)token slackChannel:(NSString *)channel {
-    if (token) {
-        self.config.slackToken = token;
-    }
-
-    if (channel) {
-        self.config.slackChannel = channel;
-    }
-}
-
-- (FloatingButtonController *)createFloatingViewController {
-    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_9_x_Max) {
-        return [[FloatingButtonControllerIOS9 alloc] init];
-    } else {
-        return [[FloatingButtonController alloc] init];
-        
-    }
 }
 
 - (void)setFeedbackCategories:(NSArray<NSString *> *)categories {
@@ -217,22 +94,6 @@ static AppFeedback *sharedData = nil;
 - (void)setIsHidden:(BOOL)isHidden {
     _isHidden = isHidden;
     [self updateFloatingButtonState];
-}
-
-- (void)updateFloatingButtonState {
-    if (self.screenVideoCaptureSession.recording) {
-        self.floatingButtonController.hidden = NO;
-    } else {
-        self.floatingButtonController.hidden = self.isHidden || self.feedbackDialogPresented;
-    }
-}
-
-- (void)showFeedbackDialog {
-    if (self.screenVideoCaptureSession.recording) {
-        return;
-    }
-    UIImage *image = [ScreenCapture captureImage];
-    [self showFeedbackDialogWithImage:image video:nil];
 }
 
 - (void)showFeedbackDialogWithImage:(UIImage *)image video:(NSURL *)videoPath {
@@ -309,56 +170,6 @@ static AppFeedback *sharedData = nil;
     }];
 }
 
-- (void)readyScreenShot
-{
-    NSOperationQueue *mainQueue = [NSOperationQueue mainQueue];
-    [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationUserDidTakeScreenshotNotification
-                                                      object:nil
-                                                       queue:mainQueue
-                                                  usingBlock:^(NSNotification *note) {
-                                                      [self handleScreenShotNotification];
-                                                  }];
-}
-
-- (void)startRecording {
-    BOOL started = [self.screenVideoCaptureSession startRecordingUntil:VIDEO_LIMIT_SECS callback:^(NSURL *videoPath, NSError *error) {
-        self.captureOverlayWindow.enableCapture = NO;
-        self.floatingButtonController.buttonState = FloatingButtonStateFeedback;
-        [self.floatingButtonController endProgress];
-        [self updateFloatingButtonState];
-        if (error) {
-            UIAlertController *ac = [UIAlertController alertControllerWithTitle:[AppFeedbackLocalizedString stringFor:@"failToCaptureAlertTitle"]
-                                                                        message:error.localizedDescription
-                                                                 preferredStyle:UIAlertControllerStyleAlert];
-            [ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}]];
-            [self presentViewController:ac animated:YES completion:nil];
-
-            return;
-        }
-        
-        [self showFeedbackDialogWithImage:nil video:videoPath];
-    }];
-
-    if (started) {
-        self.captureOverlayWindow.enableCapture = YES;
-        self.floatingButtonController.buttonState = FloatingButtonStateStop;
-        [self.floatingButtonController startProgressWithSecs:VIDEO_LIMIT_SECS];
-        [self updateFloatingButtonState];
-    }
-}
-
-- (void)endRecording {
-    if (self.screenVideoCaptureSession.recording) {
-        self.floatingButtonController.hidden = YES;
-        [self.screenVideoCaptureSession stopRecording];
-    }
-}
-
-- (void)handleScreenShotNotification
-{
-    [self showFeedbackDialog];
-}
-
 - (void)presentViewController:(UIViewController *)viewControllerToPresent
                      animated:(BOOL)flag
                    completion:(void (^)(void))completion {
@@ -373,25 +184,6 @@ static AppFeedback *sharedData = nil;
         _reportViewController.delegate = self;
     }
     return _navigationController;
-}
-
-#pragma mark - FloatingButtonDelegate
-
-- (void)floatingButtonTapped {
-    if (self.screenVideoCaptureSession.recording) {
-        [self endRecording];
-    } else {
-        [self showFeedbackDialog];
-    }
-}
-
-#pragma mark - ReportViewControllerDelegate
-
-- (void)reportViewControllerClosed {
-    self.feedbackDialogPresented = NO;
-    if (!_isHidden) {
-        self.floatingButtonController.hidden = NO;
-    }
 }
 
 @end

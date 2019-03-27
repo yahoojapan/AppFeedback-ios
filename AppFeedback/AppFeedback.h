@@ -25,66 +25,11 @@
 
 #import <UIKit/UIKit.h>
 #import <sys/utsname.h>
-
-@interface AppFeedback : NSObject
-
-/**
- Initialize AppFeedback SDK
-
- @param token slack token
- @param channel slack channel id
- */
-+ (void)configureWithSlackToken:(nonnull NSString *)token slackChannel:(nonnull NSString *)channel;
-
-/**
- Initialize AppFeedback SDK
-
- @param channel slack channel id
- */
-+ (void)configureWithSlackChannel:(nonnull NSString *)channel;
-
-/**
- Slack API URL (default: https://slack.com/api)
- */
-@property (class, nonnull) NSString *slackApiUrl;
-
-/**
- List of categories to select on feedback
- */
-@property (class, nonnull) NSArray<NSString *> *feedbackCategories;
-
-/**
- Whether to hide feedback button (default: true)
- */
-@property (class) BOOL isHidden;
-
-/**
- Display feedback dialog when two fingers long tap gesture is detected
- */
-+ (void)readyFeedbackGesture;
-
-/**
- Display feedback dialog when screen shot
- */
-+ (void)readyScreenShot;
-
-/**
- Display feedback dialog
- 
- Use this method when displaying feedback dialog at any timing.
- */
-+ (void)showFeedbackDialog;
-
-/**
- *
- Start recording the screen
- */
-+ (void)startRecording;
-
-/**
- End recording the screen
- */
-+ (void)endRecording;
-
-@end
-
+#import <AppFeedback/ReportViewController.h>
+#import <AppFeedback/Config.h>
+#import <AppFeedback/FloatingButtonController.h>
+#import <AppFeedback/FloatingButtonControllerIOS9.h>
+#import <AppFeedback/ScreenVideoCaptureSession.h>
+#import <AppFeedback/ScreenCapture.h>
+#import <AppFeedback/OverlayWindow.h>
+#import <AppFeedback/CaptureOverlayWindow.h>

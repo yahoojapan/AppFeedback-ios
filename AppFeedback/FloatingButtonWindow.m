@@ -25,6 +25,7 @@
 
 #import "FloatingButtonWindow.h"
 #import "AppFeedbackInternal.h"
+#import <AppFeedback/AppFeedback-Swift.h>
 
 @interface FloatingButtonWindow ()
 
@@ -35,7 +36,7 @@
 - (id)init {
     if (self = [super init]) {
         self.backgroundColor = nil;
-        self.windowLevel = FLOATING_BUTTON_WINDOW_LEVEL;
+        self.windowLevel = [AppFeedback floatingButtonWindowLevel];
     }
     return self;
 }

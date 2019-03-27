@@ -21,26 +21,3 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-
-
-#import <Foundation/Foundation.h>
-#include "AppFeedback.h"
-
-// Internal interface
-
-#define VIDEO_LIMIT_SECS 30.0f
-
-#define FLOATING_BUTTON_WINDOW_LEVEL (CGFLOAT_MAX - 1000)
-#define OVERLAY_WINDOW_LEVEL (FLOATING_BUTTON_WINDOW_LEVEL - 1000)
-
-#define RGBA(r, g, b, a)  [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]
-
-@interface AppFeedback()
-
-@property (class, nonnull, readonly) AppFeedback *shared;
-@property (class, nonnull, readonly) NSBundle *frameworkBundle;
-
-@property (nonatomic, nonnull, readonly) UIWindow *floatingButtinWindow;
-- (void)updateFloatingButtonState;
-
-@end

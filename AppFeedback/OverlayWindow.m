@@ -25,6 +25,7 @@
 
 #import "OverlayWindow.h"
 #import "AppFeedbackInternal.h"
+#import <AppFeedback/AppFeedback-Swift.h>
 
 
 typedef enum AlertButtonIndex : NSUInteger {
@@ -44,7 +45,7 @@ typedef enum AlertButtonIndex : NSUInteger {
 
 - (id)init {
     if (self = [super init]) {
-        self.windowLevel = OVERLAY_WINDOW_LEVEL;
+        self.windowLevel = [AppFeedback overlayWindowLebell];
         self.backgroundColor = nil;
 
         self.rootViewController = [[UIViewController alloc] init];

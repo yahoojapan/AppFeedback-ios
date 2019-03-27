@@ -21,7 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0928E4811E9C888A00F477D2 /* Config.h in Headers */ = {isa = PBXBuildFile; fileRef = 0928E47F1E9C888A00F477D2 /* Config.h */; };
+		0928E4811E9C888A00F477D2 /* Config.h in Headers */ = {isa = PBXBuildFile; fileRef = 0928E47F1E9C888A00F477D2 /* Config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0928E4821E9C888A00F477D2 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928E4801E9C888A00F477D2 /* Config.m */; };
 		0928E4841E9C95AC00F477D2 /* ConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928E4831E9C95AC00F477D2 /* ConfigTests.m */; };
 		092EB7C62240BC0B007DA694 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092EB7C52240BC0B007DA694 /* DrawView.swift */; };
@@ -30,27 +30,27 @@
 		093517531E95E49B00BB554F /* AppFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCE68D01BD776B200A03D74 /* AppFeedback.framework */; };
 		093E55591EB097F800CF731F /* FloatingProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 093E55571EB097F800CF731F /* FloatingProgressView.h */; };
 		093E555A1EB097F800CF731F /* FloatingProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 093E55581EB097F800CF731F /* FloatingProgressView.m */; };
-		093E555D1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h in Headers */ = {isa = PBXBuildFile; fileRef = 093E555B1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h */; };
+		093E555D1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h in Headers */ = {isa = PBXBuildFile; fileRef = 093E555B1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		093E555E1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m in Sources */ = {isa = PBXBuildFile; fileRef = 093E555C1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m */; };
-		098916921EC06E060047074D /* CaptureOverlayWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 098916901EC06E060047074D /* CaptureOverlayWindow.h */; };
+		098916921EC06E060047074D /* CaptureOverlayWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 098916901EC06E060047074D /* CaptureOverlayWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		098916931EC06E060047074D /* CaptureOverlayWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 098916911EC06E060047074D /* CaptureOverlayWindow.m */; };
-		09B0F7491EADDFD90055F8A5 /* FloatingButtonView.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B0F7471EADDFD90055F8A5 /* FloatingButtonView.h */; };
+		09B0F7491EADDFD90055F8A5 /* FloatingButtonView.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B0F7471EADDFD90055F8A5 /* FloatingButtonView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09B0F74A1EADDFD90055F8A5 /* FloatingButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B0F7481EADDFD90055F8A5 /* FloatingButtonView.m */; };
 		09B0F74D1EADF2600055F8A5 /* FloatingButtonOuterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B0F74B1EADF2600055F8A5 /* FloatingButtonOuterView.h */; };
 		09B0F74E1EADF2600055F8A5 /* FloatingButtonOuterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B0F74C1EADF2600055F8A5 /* FloatingButtonOuterView.m */; };
 		09D5DC431EA8824400F24FA4 /* FloatingButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D5DC421EA8824400F24FA4 /* FloatingButton.xib */; };
-		09D5DC4B1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D5DC491EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h */; };
+		09D5DC4B1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D5DC491EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09D5DC4C1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5DC4A1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m */; };
 		09D5DC4F1EA8CC4B00F24FA4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D5DC4E1EA8CC4B00F24FA4 /* AVFoundation.framework */; };
-		09D5DC541EAA20E400F24FA4 /* ScreenCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D5DC521EAA20E400F24FA4 /* ScreenCapture.h */; };
+		09D5DC541EAA20E400F24FA4 /* ScreenCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D5DC521EAA20E400F24FA4 /* ScreenCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09D5DC551EAA20E400F24FA4 /* ScreenCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5DC531EAA20E400F24FA4 /* ScreenCapture.m */; };
-		09D5DC5E1EAA6F1E00F24FA4 /* OverlayWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D5DC5C1EAA6F1E00F24FA4 /* OverlayWindow.h */; };
+		09D5DC5E1EAA6F1E00F24FA4 /* OverlayWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D5DC5C1EAA6F1E00F24FA4 /* OverlayWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09D5DC5F1EAA6F1E00F24FA4 /* OverlayWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5DC5D1EAA6F1E00F24FA4 /* OverlayWindow.m */; };
-		09D9C38C1EA74DD900B81B19 /* FloatingButtonController.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D9C38A1EA74DD900B81B19 /* FloatingButtonController.h */; };
+		09D9C38C1EA74DD900B81B19 /* FloatingButtonController.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D9C38A1EA74DD900B81B19 /* FloatingButtonController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09D9C38D1EA74DD900B81B19 /* FloatingButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D9C38B1EA74DD900B81B19 /* FloatingButtonController.m */; };
-		09D9C3901EA74EE600B81B19 /* FloatingButtonWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D9C38E1EA74EE600B81B19 /* FloatingButtonWindow.h */; };
+		09D9C3901EA74EE600B81B19 /* FloatingButtonWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D9C38E1EA74EE600B81B19 /* FloatingButtonWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09D9C3911EA74EE600B81B19 /* FloatingButtonWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D9C38F1EA74EE600B81B19 /* FloatingButtonWindow.m */; };
-		09D9C3951EA766C700B81B19 /* FloatingButtonDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D9C3931EA766C700B81B19 /* FloatingButtonDelegate.h */; };
+		09D9C3951EA766C700B81B19 /* FloatingButtonDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D9C3931EA766C700B81B19 /* FloatingButtonDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09D9C3981EA77C2D00B81B19 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09D9C3971EA77C2D00B81B19 /* Images.xcassets */; };
 		2B4562712238DCCE008DF57B /* UIPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4562702238DCCE008DF57B /* UIPlaceHolderTextView.swift */; };
 		2B4562732238DCED008DF57B /* AutoResizeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4562722238DCED008DF57B /* AutoResizeTextView.swift */; };
@@ -62,10 +62,12 @@
 		DAB6F89C2240C6DB00EAB279 /* SlackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */; };
 		DAB6F8BF22420BDA00EAB279 /* SendDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6F8BE22420BDA00EAB279 /* SendDataTests.swift */; };
 		DAB6F8C1224215B800EAB279 /* AppFeedbackLocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6F8C0224215B800EAB279 /* AppFeedbackLocalizedString.swift */; };
+		DABEE22B224B42DA00CDA98F /* AppFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEE22A224B42DA00CDA98F /* AppFeedback.swift */; };
+		DABEE22D224B55FA00CDA98F /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEE22C224B55FA00CDA98F /* UIColor+.swift */; };
 		DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68D31BD776B300A03D74 /* AppFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */; };
 		DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */; };
-		DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDCC3FC1BD9D25000327609 /* ReportViewController.h */; };
+		DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDCC3FC1BD9D25000327609 /* ReportViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBDCC4001BD9D25100327609 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC3FD1BD9D25000327609 /* ReportViewController.m */; };
 		FB131F451F3190FA007B9EA0 /* DrawViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = FB131F431F3190FA007B9EA0 /* DrawViewController.h */; };
 		FB131F461F3190FA007B9EA0 /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB131F441F3190FA007B9EA0 /* DrawViewController.m */; };
@@ -127,6 +129,8 @@
 		DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackAPI.swift; sourceTree = "<group>"; };
 		DAB6F8BE22420BDA00EAB279 /* SendDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDataTests.swift; sourceTree = "<group>"; };
 		DAB6F8C0224215B800EAB279 /* AppFeedbackLocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedbackLocalizedString.swift; sourceTree = "<group>"; };
+		DABEE22A224B42DA00CDA98F /* AppFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedback.swift; sourceTree = "<group>"; };
+		DABEE22C224B55FA00CDA98F /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		DBCE68D01BD776B200A03D74 /* AppFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCE68D31BD776B300A03D74 /* AppFeedback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppFeedback.h; sourceTree = "<group>"; };
 		DBCE68D51BD776B300A03D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -260,6 +264,8 @@
 				DBCE68D31BD776B300A03D74 /* AppFeedback.h */,
 				DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */,
 				DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */,
+				DABEE22A224B42DA00CDA98F /* AppFeedback.swift */,
+				DABEE22C224B55FA00CDA98F /* UIColor+.swift */,
 				DBCE68D51BD776B300A03D74 /* Info.plist */,
 				DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */,
 				0928E47F1E9C888A00F477D2 /* Config.h */,
@@ -463,10 +469,12 @@
 				09D5DC4C1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m in Sources */,
 				09B0F74A1EADDFD90055F8A5 /* FloatingButtonView.m in Sources */,
 				DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */,
+				DABEE22D224B55FA00CDA98F /* UIColor+.swift in Sources */,
 				09D9C38D1EA74DD900B81B19 /* FloatingButtonController.m in Sources */,
 				DAB6F89C2240C6DB00EAB279 /* SlackAPI.swift in Sources */,
 				DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */,
 				0928E4821E9C888A00F477D2 /* Config.m in Sources */,
+				DABEE22B224B42DA00CDA98F /* AppFeedback.swift in Sources */,
 				093E555E1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m in Sources */,
 				09B0F74E1EADF2600055F8A5 /* FloatingButtonOuterView.m in Sources */,
 				DAB6F8C1224215B800EAB279 /* AppFeedbackLocalizedString.swift in Sources */,

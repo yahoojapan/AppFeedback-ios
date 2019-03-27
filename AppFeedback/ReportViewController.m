@@ -510,7 +510,7 @@ UITextViewDelegate
 
 
 - (IBAction)videoButtonTapped:(id)sender {
-    NSString *message = [NSString stringWithFormat:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertMessage"], (int)floor(VIDEO_LIMIT_SECS)];
+    NSString *message = [NSString stringWithFormat:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertMessage"], (int)floor([AppFeedback videoLimitSecs])];
     [self p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertTitle"] message:message cancelButtonTitle:[AppFeedbackLocalizedString stringFor:@"cancel"] destructiveButtonTitle:nil otherButtonTitle:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertStartButtonTitle"] tapBlock:^(NSInteger buttonIndex){
         if (buttonIndex == UIAlertFirstOtherButtonIndex) {
             [self p_close:^{

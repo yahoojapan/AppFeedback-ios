@@ -25,12 +25,13 @@
 
 #import "CaptureOverlayWindow.h"
 #import "AppFeedbackInternal.h"
+#import <AppFeedback/AppFeedback-Swift.h>
 
 @implementation CaptureOverlayWindow
 
 - (id)init {
     if (self = [super init]) {
-        self.windowLevel = OVERLAY_WINDOW_LEVEL;
+        self.windowLevel = [AppFeedback overlayWindowLevel];
         self.backgroundColor = nil;
 
         self.rootViewController = [[UIViewController alloc] init];
