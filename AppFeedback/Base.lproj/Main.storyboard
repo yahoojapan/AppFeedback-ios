@@ -334,7 +334,7 @@
         <!--Rendering-->
         <scene sceneID="d43-Jc-MOv">
             <objects>
-                <viewController storyboardIdentifier="DrawViewController" title="Rendering" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OfO-1t-4AJ" customClass="DrawViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DrawViewController" title="Rendering" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OfO-1t-4AJ" customClass="DrawViewController" customModule="AppFeedback" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d6p-je-sW0" userLabel="RootView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -383,13 +383,13 @@
                             <barButtonItem title="Close" id="Uak-43-rRS">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="closeButtonTapped:" destination="OfO-1t-4AJ" id="HKt-9B-wj4"/>
+                                    <action selector="closeButtonTapped:" destination="OfO-1t-4AJ" id="5Ab-d3-LBF"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Clear" id="I1p-hr-esy">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="undo:" destination="OfO-1t-4AJ" id="NPh-Mz-cPy"/>
+                                    <action selector="clearButtonTapped:" destination="OfO-1t-4AJ" id="5dk-5p-YYa"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>

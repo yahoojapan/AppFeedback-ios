@@ -50,6 +50,7 @@
 		09D9C3911EA74EE600B81B19 /* FloatingButtonWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D9C38F1EA74EE600B81B19 /* FloatingButtonWindow.m */; };
 		09D9C3951EA766C700B81B19 /* FloatingButtonDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D9C3931EA766C700B81B19 /* FloatingButtonDelegate.h */; };
 		09D9C3981EA77C2D00B81B19 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09D9C3971EA77C2D00B81B19 /* Images.xcassets */; };
+		09EDE9A5224209E700E8BC38 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EDE9A4224209E700E8BC38 /* DrawViewController.swift */; };
 		2B4562712238DCCE008DF57B /* UIPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4562702238DCCE008DF57B /* UIPlaceHolderTextView.swift */; };
 		2B4562732238DCED008DF57B /* AutoResizeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4562722238DCED008DF57B /* AutoResizeTextView.swift */; };
 		2BE8733421B7A58700B7D935 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8733621B7A58700B7D935 /* Localizable.strings */; };
@@ -66,8 +67,6 @@
 		DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */; };
 		DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDCC3FC1BD9D25000327609 /* ReportViewController.h */; };
 		DBDCC4001BD9D25100327609 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC3FD1BD9D25000327609 /* ReportViewController.m */; };
-		FB131F451F3190FA007B9EA0 /* DrawViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = FB131F431F3190FA007B9EA0 /* DrawViewController.h */; };
-		FB131F461F3190FA007B9EA0 /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB131F441F3190FA007B9EA0 /* DrawViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +111,7 @@
 		09D9C38F1EA74EE600B81B19 /* FloatingButtonWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonWindow.m; sourceTree = "<group>"; };
 		09D9C3931EA766C700B81B19 /* FloatingButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonDelegate.h; sourceTree = "<group>"; };
 		09D9C3971EA77C2D00B81B19 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		09EDE9A4224209E700E8BC38 /* DrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		2B4562702238DCCE008DF57B /* UIPlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPlaceHolderTextView.swift; sourceTree = "<group>"; };
 		2B4562722238DCED008DF57B /* AutoResizeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoResizeTextView.swift; sourceTree = "<group>"; };
 		2B4C828221BF82BC00B7ED6A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -132,8 +132,6 @@
 		DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppFeedbackInternal.m; sourceTree = "<group>"; };
 		DBDCC3FC1BD9D25000327609 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
 		DBDCC3FD1BD9D25000327609 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
-		FB131F431F3190FA007B9EA0 /* DrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawViewController.h; sourceTree = "<group>"; };
-		FB131F441F3190FA007B9EA0 /* DrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,9 +276,8 @@
 		FB131F321F316F2A007B9EA0 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
-				FB131F441F3190FA007B9EA0 /* DrawViewController.m */,
-				FB131F431F3190FA007B9EA0 /* DrawViewController.h */,
 				092EB7C52240BC0B007DA694 /* DrawView.swift */,
+				09EDE9A4224209E700E8BC38 /* DrawViewController.swift */,
 			);
 			name = Drawing;
 			sourceTree = "<group>";
@@ -294,7 +291,6 @@
 			files = (
 				0928E4811E9C888A00F477D2 /* Config.h in Headers */,
 				09B0F7491EADDFD90055F8A5 /* FloatingButtonView.h in Headers */,
-				FB131F451F3190FA007B9EA0 /* DrawViewController.h in Headers */,
 				DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */,
 				09D5DC541EAA20E400F24FA4 /* ScreenCapture.h in Headers */,
 				DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */,
@@ -445,9 +441,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB131F461F3190FA007B9EA0 /* DrawViewController.m in Sources */,
 				09D5DC5F1EAA6F1E00F24FA4 /* OverlayWindow.m in Sources */,
 				092EB7C62240BC0B007DA694 /* DrawView.swift in Sources */,
+				09EDE9A5224209E700E8BC38 /* DrawViewController.swift in Sources */,
 				09308418222FA180009C8ECE /* URL+FileSize.swift in Sources */,
 				DAA7B7AD222FA325009B9AB0 /* SendData.swift in Sources */,
 				2B4562712238DCCE008DF57B /* UIPlaceHolderTextView.swift in Sources */,
