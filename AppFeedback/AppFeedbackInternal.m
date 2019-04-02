@@ -30,7 +30,6 @@
 #import "FloatingButtonControllerIOS9.h"
 #import "ScreenVideoCaptureSession.h"
 #import "ScreenCapture.h"
-#import "OverlayWindow.h"
 #import "CaptureOverlayWindow.h"
 #import "AppFeedbackInternal.h"
 #import <AppFeedback/AppFeedback-Swift.h>
@@ -362,7 +361,7 @@ static AppFeedback *sharedData = nil;
 - (void)presentViewController:(UIViewController *)viewControllerToPresent
                      animated:(BOOL)flag
                    completion:(void (^)(void))completion {
-    [self.overlayWindow presentViewController:viewControllerToPresent animated:flag completion:completion];
+    [self.overlayWindow present:viewControllerToPresent animated:flag completion:completion];
 }
 
 - (UINavigationController *)navigationController {
