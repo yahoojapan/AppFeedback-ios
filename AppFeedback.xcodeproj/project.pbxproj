@@ -64,6 +64,7 @@
 		DAB6F8C1224215B800EAB279 /* AppFeedbackLocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6F8C0224215B800EAB279 /* AppFeedbackLocalizedString.swift */; };
 		DABEE22B224B42DA00CDA98F /* AppFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEE22A224B42DA00CDA98F /* AppFeedback.swift */; };
 		DABEE22D224B55FA00CDA98F /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEE22C224B55FA00CDA98F /* UIColor+.swift */; };
+		DAF574FE22548F83000F6DD1 /* Notification.Name+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF574FD22548F83000F6DD1 /* Notification.Name+.swift */; };
 		DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68D31BD776B300A03D74 /* AppFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */; };
 		DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */; };
@@ -131,6 +132,7 @@
 		DAB6F8C0224215B800EAB279 /* AppFeedbackLocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedbackLocalizedString.swift; sourceTree = "<group>"; };
 		DABEE22A224B42DA00CDA98F /* AppFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedback.swift; sourceTree = "<group>"; };
 		DABEE22C224B55FA00CDA98F /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		DAF574FD22548F83000F6DD1 /* Notification.Name+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+.swift"; sourceTree = "<group>"; };
 		DBCE68D01BD776B200A03D74 /* AppFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCE68D31BD776B300A03D74 /* AppFeedback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppFeedback.h; sourceTree = "<group>"; };
 		DBCE68D51BD776B300A03D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */,
 				DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */,
 				DABEE22A224B42DA00CDA98F /* AppFeedback.swift */,
+				DAF574FD22548F83000F6DD1 /* Notification.Name+.swift */,
 				DABEE22C224B55FA00CDA98F /* UIColor+.swift */,
 				DBCE68D51BD776B300A03D74 /* Info.plist */,
 				DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */,
@@ -469,6 +472,7 @@
 				09D5DC4C1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m in Sources */,
 				09B0F74A1EADDFD90055F8A5 /* FloatingButtonView.m in Sources */,
 				DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */,
+				DAF574FE22548F83000F6DD1 /* Notification.Name+.swift in Sources */,
 				DABEE22D224B55FA00CDA98F /* UIColor+.swift in Sources */,
 				09D9C38D1EA74DD900B81B19 /* FloatingButtonController.m in Sources */,
 				DAB6F89C2240C6DB00EAB279 /* SlackAPI.swift in Sources */,

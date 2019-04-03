@@ -27,19 +27,16 @@ import UIKit
 @objcMembers public class AppFeedback: NSObject {
     public static let videoLimitSecs: CGFloat = 30
     public static let floatingButtonWindowLebel: CGFloat = CGFloat.leastNormalMagnitude - CGFloat(1000)
-    public static let overlayWindowLebell: CGFloat = AppFeedback.floatingButtonWindowLebel -  CGFloat(1000)
-    public static let captureStartNotification = "CaptureStartNotification"
-    public static let captureEndNotification = "CaptureEndNotification"
+    public static let overlayWindowLebel: CGFloat = AppFeedback.floatingButtonWindowLebel -  CGFloat(1000)
     
-    public let config = Config()
+    public let config: Config = Config()
     public let overlayWindow = OverlayWindow()
     public let captureOverlayWindow = CaptureOverlayWindow()
     public let floatingButtonController: FloatingButtonController
     public let screenVideoCaptureSession = ScreenVideoCaptureSession()
     public var isHidden: Bool = false
-    public let feedbackCategories: [String]
-    public let feedbackDialogPresented: Bool
-    public let reportViewController: ReportViewController;
+    public var feedbackDialogPresented: Bool = false
+    public let reportViewController: ReportViewController
     public let navigationController: UINavigationController
     
     // FIXME: Internal
@@ -59,8 +56,8 @@ import UIKit
     public let floatingButtinWindow = UIWindow()
     
     private override init() {
+        floatingButtonController = AppFeedback.createFloatingViewController()
         super.init()
-        floatingButtonController = createFloatingViewController()
         floatingButtonController.delegate = self
         config.loadInfoPlist()
     }
@@ -101,7 +98,7 @@ import UIKit
         NotificationCenter.default.addObserver(forName: UIApplication.userDidTakeScreenshotNotification,
                                                object: nil,
                                                queue: OperationQueue.main) { _ in
-                                                shared.showFeedbackDialog()
+                                                AppFeedback.showFeedbackDialog()
         }
     }
     
@@ -111,8 +108,88 @@ import UIKit
         guard !shared.screenVideoCaptureSession.recording else { return }
         guard let image = ScreenCapture.captureImage() else { return }
         
-        // FIXME: 
-        // [self showFeedbackDialogWithImage:image video:nil];
+        showFeedbackDialog(with: image, videoPath: nil)
+    }
+    
+    private func showFeedbackDialog(with image: UIImage, videoPath: URL) {
+        if !config.isValid() {
+            print("AppFeedback not configured collectly for feedback")
+            return;
+        }
+        
+        if feedbackDialogPresented {
+            return;
+        }
+        
+        feedbackDialogPresented = true
+        updateFloatingButtonState()
+        
+        //モザイク処理を掛ける
+        NotificationCenter.default.post(name: .captureStart, object: nil)
+        
+        var sourceViewController: UIViewController? = nil
+        //現在表示中のviewcontrollerを取得
+        sourceViewController = UIApplication.shared.delegate?.window??.rootViewController
+        if sourceViewController is ReportViewController {
+            return
+        }
+        
+        if sourceViewController is UINavigationController {
+            //navigationbar
+            let nav = sourceViewController as? UINavigationController
+            sourceViewController = nav?.viewControllers.last
+            if (sourceViewController?.presentedViewController) != nil {
+                //モーダル優先
+                sourceViewController = sourceViewController?.presentedViewController
+            }
+        }
+        else {
+            //normal
+            if (sourceViewController?.presentedViewController) != nil {
+                //モーダル優先
+                sourceViewController = sourceViewController?.presentedViewController
+            }
+        }
+        
+        if sourceViewController is UINavigationController {
+            //navigationbar
+            let nav = sourceViewController as? UINavigationController
+            sourceViewController = nav?.viewControllers.last
+        }
+        
+        // ここからSwift化 ----
+        
+        //呼び出し元クラス名をログで送出する
+        NSString *className = NSStringFromClass([sourceViewController class]);
+        
+        if ([className isEqualToString:@"ReportViewController"]) {
+            return;
+        }
+        
+        UINavigationController *nav = self.navigationController;
+        
+        if (image) {
+            _reportViewController.image = image;
+        }
+        
+        _reportViewController.videoPath = videoPath;
+        
+        [_reportViewController setConfig:self.config];
+        
+        // キーボード表示中にフィードバックダイアログを表示すると、コメント入力時のキーボードが
+        // 白くなる問題があるので強制的に非表示にする
+        [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+        
+        [self presentViewController:nav animated:YES completion:^{
+            [self->_reportViewController setSourceClassName:className];
+            
+            }];
+    }
+    
+    private func present(viewController: UIViewController,
+                         animated: Bool,
+                         completion: @escaping ()-> Void) {
+        overlayWindow.present(viewController, animated: animated, completion: completion)
     }
     
     /// Start recording the screen
@@ -159,7 +236,7 @@ import UIKit
         }
     }
     
-    private func createFloatingViewController() -> FloatingButtonController {
+    private static func createFloatingViewController() -> FloatingButtonController {
         if Int32(floor(NSFoundationVersionNumber)) <= NSFoundationVersionNumber_iOS_9_x_Max {
             return FloatingButtonControllerIOS9()
         } else {
