@@ -1,6 +1,6 @@
 //
-//  Color.h
-//  Color
+//  ExpansionButton.swift
+//  AppFeedback
 //
 //  Copyright (c) 2018 Yahoo Japan Corporation.
 //
@@ -22,16 +22,27 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import UIKit
 
-#ifndef Color_h
-#define Color_h
+private var leftPerceivableArea: CGFloat = 0.0
+private var rightPerceivableArea: CGFloat = 0.0
 
-#import <UIKit/UIKit.h>
-
-@interface Color : NSObject
-
-+ (UIColor *)navBarTint;
-
-@end
-
-#endif /* Color_h */
+@objcMembers
+public class ExpansionButton: UIButton {
+    public func setPerceivableArea(leftArea: CGFloat, rightArea: CGFloat) {
+        leftPerceivableArea = leftArea
+        rightPerceivableArea = rightArea
+    }
+    
+    override open func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        // タップ確認用の CGRect を新規作成
+        var rect: CGRect = bounds
+        
+        // 指定した Area 分、拡張する（位置をオフセットし、幅を足す）
+        rect.origin.x -= leftPerceivableArea
+        rect.size.width += leftPerceivableArea + rightPerceivableArea
+        
+        // 拡張したエリアとのタップ判定を返す
+        return rect.contains(point)
+    }
+}

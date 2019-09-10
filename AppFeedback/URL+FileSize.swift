@@ -1,6 +1,6 @@
 //
-//  SlackAPI.h
-//  SlackAPI
+//  AppFeedback.h
+//  AppFeedback
 //
 //  Copyright (c) 2018 Yahoo Japan Corporation.
 //
@@ -22,35 +22,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import Foundation
 
-#ifndef SlackAPI_h
-#define SlackAPI_h
-
-#import <Foundation/Foundation.h>
-#import "Config.h"
-
-@interface SendData : NSObject
-
-@property (nonatomic, strong) NSData* imageData;
-@property (nonatomic, strong) NSURL* videoPath;
-@property (nonatomic, strong) NSString* title;
-@property (nonatomic, strong) NSString* category;
-@property (nonatomic, strong) NSString* comment;
-@property (nonatomic, strong) NSString* username;
-@property (nonatomic, strong) NSString* appTitle;
-@property (nonatomic, strong) NSString* appVersion;
-@property (nonatomic, strong) NSString* appBuildVersion;
-@property (nonatomic, strong) NSString* systemVersion;
-@property (nonatomic, strong) NSString* modelCode;
-@property (nonatomic, strong) NSString* modelName;
-
-@end
-
-@interface SlackAPI : NSObject
-
-- (instancetype)initWithToken:(NSString *)token channel:(NSString *)channel apiUrl:(NSString *)apiUrl branch:(NSString *)branchName;
-- (void)postData:(SendData *)data completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
-
-@end
-
-#endif /* SlackAPI_h */
+@objc public extension NSURL {
+    public var fileSize: Int {
+        let resource = try? self.resourceValues(forKeys: [.fileSizeKey])
+        return resource?[.fileSizeKey] as? Int ?? 0
+    }
+}

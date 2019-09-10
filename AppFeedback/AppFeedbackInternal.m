@@ -25,15 +25,14 @@
 
 #import "AppFeedback.h"
 #import "ReportViewController.h"
-#import "DeviceUtil.h"
 #import "Config.h"
 #import "FloatingButtonController.h"
 #import "FloatingButtonControllerIOS9.h"
 #import "ScreenVideoCaptureSession.h"
 #import "ScreenCapture.h"
-#import "OverlayWindow.h"
 #import "CaptureOverlayWindow.h"
 #import "AppFeedbackInternal.h"
+#import <AppFeedback/AppFeedback-Swift.h>
 
 // Notification
 static NSString * _Nonnull const kCaptureStartNotification = @"CaptureStartNotification";
@@ -327,7 +326,7 @@ static AppFeedback *sharedData = nil;
         [self.floatingButtonController endProgress];
         [self updateFloatingButtonState];
         if (error) {
-            UIAlertController *ac = [UIAlertController alertControllerWithTitle:AppFeedbackLocalizedString(@"failToCaptureAlertTitle", @"")
+            UIAlertController *ac = [UIAlertController alertControllerWithTitle:[AppFeedbackLocalizedString stringFor:@"failToCaptureAlertTitle"]
                                                                         message:error.localizedDescription
                                                                  preferredStyle:UIAlertControllerStyleAlert];
             [ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}]];
@@ -362,7 +361,7 @@ static AppFeedback *sharedData = nil;
 - (void)presentViewController:(UIViewController *)viewControllerToPresent
                      animated:(BOOL)flag
                    completion:(void (^)(void))completion {
-    [self.overlayWindow presentViewController:viewControllerToPresent animated:flag completion:completion];
+    [self.overlayWindow present:viewControllerToPresent animated:flag completion:completion];
 }
 
 - (UINavigationController *)navigationController {

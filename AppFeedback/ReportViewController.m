@@ -24,15 +24,9 @@
 
 
 #import "ReportViewController.h"
-#import "DrawViewController.h"
-#import "DeviceUtil.h"
-#import "UIPlaceHolderTextView.h"
 #import "Config.h"
 #import "AppFeedbackInternal.h"
-#import "NSURL+Sizse.h"
-#import "Color.h"
-#import "ExpansionButton.h"
-#import "SlackAPI.h"
+#import <AppFeedback/AppFeedback-Swift.h>
 
 @import AVFoundation;
 @import AVKit;
@@ -68,7 +62,6 @@ UITextViewDelegate
 @property (weak, nonatomic) IBOutlet UIButton *RecordingButton;
 @property (weak, nonatomic) IBOutlet UILabel *feedbackCategoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sendingLabel;
-    
 @property (weak, nonatomic) IBOutlet ExpansionButton *feedbackCategoryButton;
 @property (nonatomic) NSString* notSelectedCategoryTitle;
 
@@ -83,9 +76,8 @@ UITextViewDelegate
     [super viewDidLoad];
     //self.container.hidden = YES;
     [self p_setupView];
-
     [self.feedbackCategoryButton setPerceivableAreaWithLeftArea:0.0f rightArea:30.0f];
-    self.notSelectedCategoryTitle = AppFeedbackLocalizedString(@"select", @"");
+    self.notSelectedCategoryTitle = [AppFeedbackLocalizedString stringFor:@"select"];
 
     self.keyboardAccessoryView.hidden = YES;
     
@@ -100,7 +92,7 @@ UITextViewDelegate
     self.activityView.hidden = YES;
     [self.activityView.superview bringSubviewToFront:self.activityView];
     
-    self.sendingLabel.text = AppFeedbackLocalizedString(@"sendingLabelText", @"");
+    self.sendingLabel.text = [AppFeedbackLocalizedString stringFor:@"sendingLabelText"];
     [self.sendingLabel setHidden:YES];
 }
 
@@ -154,7 +146,7 @@ UITextViewDelegate
     
     self.freeCommentField.layer.cornerRadius = 5.0f;
     
-    self.freeCommentField.placeholder = AppFeedbackLocalizedString(@"comment", @"");
+    self.freeCommentField.placeholder = [AppFeedbackLocalizedString stringFor:@"comment"];
     self.freeCommentField.placeholderColor = [UIColor lightGrayColor];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -271,49 +263,51 @@ UITextViewDelegate
     //ScreenShot取得
     NSData *imageData = [self p_takeScreenShot:image];
 
-    SendData* data = [SendData new];
-    data.imageData = imageData;
-    data.videoPath = videoPath;
-    data.title = self.titleTextField.text;
-    data.category = self.feedbackCategoryButton.currentTitle;
-    data.comment = self.freeCommentField.text;
-    data.username = self.reporterName.text;
-    data.appTitle = (NSString*)[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
-    data.appVersion = DeviceUtil.appVersion;
-    data.appBuildVersion = DeviceUtil.appBuildVersion;
-    data.systemVersion = DeviceUtil.OSVersion;
-    data.modelCode = DeviceUtil.ModelCode;
-    data.modelName = DeviceUtil.ModelName;
+    SendData* data = [[SendData alloc] initWithImageData:imageData
+                                               videoPath:videoPath
+                                                   title:self.titleTextField.text
+                                                category:self.feedbackCategoryButton.currentTitle
+                                                 comment:self.freeCommentField.text
+                                                username:self.reporterName.text
+                                                appTitle:(NSString*)[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]
+                                              appVersion:DeviceUtil.appVersion
+                                         appBuildVersion:DeviceUtil.appBuildVersion
+                                           systemVersion:DeviceUtil.osVersion
+                                               modelCode:DeviceUtil.modelCode
+                                               modelName:DeviceUtil.modelName];
     
     [self.sendingLabel setHidden:NO];
 
-    SlackAPI* slackAPI = [[SlackAPI alloc] initWithToken:self.config.slackToken channel:self.config.slackChannel apiUrl:self.config.slackApiUrl branch:self.config.branchName];
-    [slackAPI postData:data
-     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        [self enableActivityIndicator:NO];
-         [self.sendingLabel setHidden:YES];
-
-         
-        if (error) {
-            if (error.code == kCFURLErrorUserCancelledAuthentication) {//401(Authentication failure)
-                [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                 message:AppFeedbackLocalizedString(@"slackPostInvalidMessage", @"")
-                 cancelButtonTitle:nil
-                 destructiveButtonTitle:nil
-                 otherButtonTitle:@"OK"
-                 tapBlock:nil];
-            } else {
-                [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                 message:AppFeedbackLocalizedString(@"slackPostClientErrorMessage", @"")
-                 cancelButtonTitle:nil
-                 destructiveButtonTitle:nil
-                 otherButtonTitle:@"OK"
-                 tapBlock:nil];
-            }
-            return;
-        }
+    SlackAPI* slackAPI = [[SlackAPI alloc] initWithToken:self.config.slackToken
+                          channel:self.config.slackChannel
+                          apiUrl:self.config.slackApiUrl
+                          branchName:self.config.branchName];
+    
+    [slackAPI postWithData:data
+         completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+             [self enableActivityIndicator:NO];
+             [self.sendingLabel setHidden:YES];
+             
+             if (error) {
+                 if (error.code == kCFURLErrorUserCancelledAuthentication) {//401(Authentication failure)
+                     [self
+                      p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
+                      message:[AppFeedbackLocalizedString stringFor:@"slackPostInvalidMessage"]
+                      cancelButtonTitle:nil
+                      destructiveButtonTitle:nil
+                      otherButtonTitle:@"OK"
+                      tapBlock:nil];
+                 } else {
+                     [self
+                      p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
+                      message:[AppFeedbackLocalizedString stringFor:@"slackPostClientErrorMessage"]
+                      cancelButtonTitle:nil
+                      destructiveButtonTitle:nil
+                      otherButtonTitle:@"OK"
+                      tapBlock:nil];
+                 }
+                 return;
+             }
         
         NSInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
         
@@ -333,8 +327,8 @@ UITextViewDelegate
                 [self doneSelectedFeedbackCategory:self.notSelectedCategoryTitle :false]; // 未選択の状態に戻す
                 
                 [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostSuccessTitle", @"")
-                 message:AppFeedbackLocalizedString(@"slackPostSuccessMessage", @"")
+                 p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostSuccessTitle"]
+                 message:[AppFeedbackLocalizedString stringFor:@"slackPostSuccessMessage"]
                  cancelButtonTitle:nil
                  destructiveButtonTitle:nil
                  otherButtonTitle:@"OK"
@@ -346,8 +340,8 @@ UITextViewDelegate
                 
             case 403:// Forbidden
                 [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                 message:AppFeedbackLocalizedString(@"slackPostAuthorizationErrorMessage", @"")
+                 p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
+                 message:[AppFeedbackLocalizedString stringFor:@"slackPostAuthorizationErrorMessage"]
                  cancelButtonTitle:nil
                  destructiveButtonTitle:nil
                  otherButtonTitle:@"OK"
@@ -356,8 +350,8 @@ UITextViewDelegate
                 
             case 500://Internal Error
                 [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                 message:AppFeedbackLocalizedString(@"slackPostUnknownErrorMessage", @"")
+                 p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
+                 message:[AppFeedbackLocalizedString stringFor:@"slackPostUnknownErrorMessage"]
                  cancelButtonTitle:nil
                  destructiveButtonTitle:nil
                  otherButtonTitle:@"OK"
@@ -366,8 +360,8 @@ UITextViewDelegate
                 
             default:
                 [self
-                 p_createAlertWithTitle:AppFeedbackLocalizedString(@"slackPostErrorTitle", @"")
-                 message:[NSString stringWithFormat:AppFeedbackLocalizedString(@"slackPostUnknownErrorStatucCodeMessage", @""), (long)statusCode]
+                 p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
+                 message:[NSString stringWithFormat:[AppFeedbackLocalizedString stringFor:@"slackPostUnknownErrorStatucCodeMessage"], (long)statusCode]
                  cancelButtonTitle:nil
                  destructiveButtonTitle:nil
                  otherButtonTitle:@"OK"
@@ -471,7 +465,7 @@ UITextViewDelegate
     if (self.titleTextField.text.length == 0) {
         [self
          p_createAlertWithTitle:nil
-         message:AppFeedbackLocalizedString(@"confirmReportSettingInputTitleMessage", @"")
+         message:[AppFeedbackLocalizedString stringFor:@"confirmReportSettingInputTitleMessage"]
          cancelButtonTitle:nil
          destructiveButtonTitle:nil
          otherButtonTitle:@"OK"
@@ -483,8 +477,8 @@ UITextViewDelegate
 
     if (self.reporterName.text.length == 0) {
         [self
-         p_createAlertWithTitle:AppFeedbackLocalizedString(@"confirmReportSettingMessage", @"")
-         message:AppFeedbackLocalizedString(@"confirmReportSettingSlackIdCausionMessage", @"")
+         p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"confirmReportSettingMessage"]
+         message:[AppFeedbackLocalizedString stringFor:@"confirmReportSettingSlackIdCausionMessage"]
          cancelButtonTitle:nil
          destructiveButtonTitle:nil
          otherButtonTitle:@"OK"
@@ -494,14 +488,14 @@ UITextViewDelegate
         return;
     }
     
-    NSString *confirmMsg = AppFeedbackLocalizedString(@"confirmReportSettingMessage", @"");
+    NSString *confirmMsg = [AppFeedbackLocalizedString stringFor:@"confirmReportSettingMessage"];
     
     if ([self.feedbackCategoryButton.currentTitle  isEqual: self.notSelectedCategoryTitle]) {
-        confirmMsg = [NSString stringWithFormat:@"%@\n\n%@", confirmMsg, AppFeedbackLocalizedString(@"confirmReportSettingNotSelectedCategoryMessage", @"")];
+        confirmMsg = [NSString stringWithFormat:@"%@\n\n%@", confirmMsg, [AppFeedbackLocalizedString stringFor:@"confirmReportSettingNotSelectedCategoryMessage"]];
     }
 
 
-    [self p_createAlertWithTitle:AppFeedbackLocalizedString(@"confirm", @"") message:confirmMsg cancelButtonTitle:AppFeedbackLocalizedString(@"cancel", @"") destructiveButtonTitle:nil otherButtonTitle:AppFeedbackLocalizedString(@"send", @"") tapBlock:^(NSInteger buttonIndex){
+    [self p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"confirm"] message:confirmMsg cancelButtonTitle:[AppFeedbackLocalizedString stringFor:@"cancel"] destructiveButtonTitle:nil otherButtonTitle:[AppFeedbackLocalizedString stringFor:@"send"] tapBlock:^(NSInteger buttonIndex){
         if (buttonIndex == UIAlertFirstOtherButtonIndex) {
             [self p_sendMessage];
             [self closeKeyboard];
@@ -515,8 +509,8 @@ UITextViewDelegate
 
 
 - (IBAction)videoButtonTapped:(id)sender {
-    NSString *message = [NSString stringWithFormat:AppFeedbackLocalizedString(@"videoButtonTappedAlertMessage", @""), (int)floor(VIDEO_LIMIT_SECS)];
-    [self p_createAlertWithTitle:AppFeedbackLocalizedString(@"videoButtonTappedAlertTitle", @"") message:message cancelButtonTitle:AppFeedbackLocalizedString(@"cancel", @"") destructiveButtonTitle:nil otherButtonTitle:AppFeedbackLocalizedString(@"videoButtonTappedAlertStartButtonTitle", @"") tapBlock:^(NSInteger buttonIndex){
+    NSString *message = [NSString stringWithFormat:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertMessage"], (int)floor(VIDEO_LIMIT_SECS)];
+    [self p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertTitle"] message:message cancelButtonTitle:[AppFeedbackLocalizedString stringFor:@"cancel"] destructiveButtonTitle:nil otherButtonTitle:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertStartButtonTitle"] tapBlock:^(NSInteger buttonIndex){
         if (buttonIndex == UIAlertFirstOtherButtonIndex) {
             [self p_close:^{
                 [AppFeedback startRecording];
@@ -687,17 +681,17 @@ UITextViewDelegate
 
 - (void)setupNavBarAttributes:(UINavigationController *)navController {
     // storyboardからだと反映されないので、コードから直接色指定する。
-    navController.navigationBar.barTintColor = Color.navBarTint;
+    navController.navigationBar.barTintColor = [UIColor colorWithRed:0.278 green:0.729 blue:0.678 alpha:1.0];
     navController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName: UIColor.whiteColor };
 }
 
 // フィードバックカテゴリ選択ボタンを押下した時の処理
 - (IBAction)selectFeedbackCategory:(id)sender {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:AppFeedbackLocalizedString(@"categoryMessage", @"")
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[AppFeedbackLocalizedString stringFor:@"categoryMessage"]
                                                                              message:nil
                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:AppFeedbackLocalizedString(@"cancel", @"")
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:[AppFeedbackLocalizedString stringFor:@"cancel"]
                                                            style:UIAlertActionStyleCancel
                                                          handler:^(UIAlertAction * action) {}];
     

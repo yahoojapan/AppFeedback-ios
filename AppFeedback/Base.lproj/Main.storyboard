@@ -86,7 +86,7 @@
                                                 <rect key="frame" x="10" y="260.66666666666669" width="420" height="300.00000000000006"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pRC-RS-zAC" userLabel="FreeCommentField" customClass="UIPlaceHolderTextView">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pRC-RS-zAC" userLabel="FreeCommentField" customClass="UIPlaceHolderTextView" customModule="AppFeedback">
                                                 <rect key="frame" x="10" y="105.66666666666666" width="580" height="140"/>
                                                 <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -171,7 +171,7 @@
                                                 <color key="textColor" red="0.38431372549019605" green="0.38431372549019605" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="bottomLeft" horizontalHuggingPriority="750" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeV-rN-syK" customClass="ExpansionButton">
+                                            <button opaque="NO" contentMode="bottomLeft" horizontalHuggingPriority="750" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeV-rN-syK" customClass="ExpansionButton" customModule="AppFeedback" customModuleProvider="target">
                                                 <rect key="frame" x="93" y="9" width="49" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Select">
@@ -181,7 +181,7 @@
                                                     <color key="titleColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="selectFeedbackCategory:" destination="RGA-cb-TLJ" eventType="touchDown" id="HBG-NM-6jk"/>
+                                                    <action selector="selectFeedbackCategory:" destination="RGA-cb-TLJ" eventType="touchUpInside" id="tnh-BB-4Jc"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="送信中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ue-iZ-Spc">
@@ -311,7 +311,7 @@
                         <outlet property="activityIndicator" destination="BQX-zL-8TG" id="DDk-e4-IX4"/>
                         <outlet property="activityView" destination="HLt-Vp-yvr" id="Vis-j0-LbX"/>
                         <outlet property="container" destination="4Vc-vg-eNt" id="i9V-DM-kN3"/>
-                        <outlet property="feedbackCategoryButton" destination="eeV-rN-syK" id="Avo-5g-j4p"/>
+                        <outlet property="feedbackCategoryButton" destination="eeV-rN-syK" id="Vzo-UM-V8l"/>
                         <outlet property="feedbackCategoryLabel" destination="bj5-5w-icM" id="p4i-Ji-NZa"/>
                         <outlet property="freeCommentField" destination="pRC-RS-zAC" id="wTn-gT-rnp"/>
                         <outlet property="freeCommentHeightConstraint" destination="Orb-wr-YZ1" id="9X0-gw-Aqy"/>
@@ -334,7 +334,7 @@
         <!--Rendering-->
         <scene sceneID="d43-Jc-MOv">
             <objects>
-                <viewController storyboardIdentifier="DrawViewController" title="Rendering" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OfO-1t-4AJ" customClass="DrawViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DrawViewController" title="Rendering" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OfO-1t-4AJ" customClass="DrawViewController" customModule="AppFeedback" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d6p-je-sW0" userLabel="RootView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -349,7 +349,7 @@
                                             <constraint firstAttribute="width" priority="1" constant="372.67000000000002" id="fOM-UG-Ula"/>
                                         </constraints>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FnM-cX-9pp" customClass="DrawView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FnM-cX-9pp" customClass="DrawView" customModule="AppFeedback" customModuleProvider="target">
                                         <rect key="frame" x="20.666666666666657" y="84.666666666666686" width="372.66666666666674" height="604.66666666666652"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -383,13 +383,13 @@
                             <barButtonItem title="Close" id="Uak-43-rRS">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="closeButtonTapped:" destination="OfO-1t-4AJ" id="HKt-9B-wj4"/>
+                                    <action selector="closeButtonTapped:" destination="OfO-1t-4AJ" id="5Ab-d3-LBF"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Clear" id="I1p-hr-esy">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="undo:" destination="OfO-1t-4AJ" id="NPh-Mz-cPy"/>
+                                    <action selector="clearButtonTapped:" destination="OfO-1t-4AJ" id="5dk-5p-YYa"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>

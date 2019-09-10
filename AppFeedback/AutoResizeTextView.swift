@@ -1,6 +1,6 @@
 //
-//  DeviceUtil.h
-//  DeviceUtil
+//  AutoResizeTextView.h
+//  AutoResizeTextView
 //
 //  Copyright (c) 2018 Yahoo Japan Corporation.
 //
@@ -22,19 +22,32 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import UIKit
 
-#import <Foundation/Foundation.h>
-
-@interface DeviceUtil : NSObject
-+ (NSString *)appVersion;
-
-+ (NSString *)appBuildVersion;
-+ (NSString *)OSName;
-+ (NSString *)OSVersion;
-+ (NSString *)ModelCode;
-+ (NSString *)ModelName;
-@end
-
-@interface StringUtil: NSObject
-+ (NSArray *)matchPattern:(NSString *)pattern string:(NSString *)string;
-@end
+@objcMembers
+public class AutoResizeTextView: UITextView {
+    public var minHeight: CGFloat = 0
+    public weak var heightConstraint: NSLayoutConstraint?
+    
+    override public func awakeFromNib() {
+        super.awakeFromNib()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(autoResizeTextViewtextChanged(_:)), name: UITextView.textDidChangeNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if heightConstraint != nil {
+            heightConstraint?.constant = max(minHeight, intrinsicContentSize.height)
+        }
+    }
+    
+    func autoResizeTextViewtextChanged(_ notification: Notification) {
+        setNeedsLayout()
+    }
+}

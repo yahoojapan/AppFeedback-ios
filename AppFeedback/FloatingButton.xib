@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,7 +22,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FloatingButtonIcon" translatesAutoresizingMaskIntoConstraints="NO" id="U4G-k3-MMM">
                     <rect key="frame" x="1" y="1" width="53" height="53"/>
                 </imageView>
-                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcZ-Ia-Ygs" userLabel="Progress" customClass="FloatingProgressView">
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcZ-Ia-Ygs" userLabel="Progress" customClass="FloatingProgressView" customModule="AppFeedback">
                     <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
                 </view>
             </subviews>
@@ -47,7 +47,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="feedbackImage" destination="U4G-k3-MMM" id="PAB-eg-Wyc"/>
-                <outlet property="progressView" destination="lcZ-Ia-Ygs" id="TCl-yu-6Fi"/>
+                <outlet property="progressView" destination="lcZ-Ia-Ygs" id="7Hb-E2-KqH"/>
                 <outlet property="stopImage" destination="1Vm-EH-hmr" id="bD5-UK-4Tv"/>
             </connections>
             <point key="canvasLocation" x="-72.5" y="50.5"/>
