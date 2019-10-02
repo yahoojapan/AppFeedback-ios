@@ -65,6 +65,7 @@
                           @"iPod4,1"    :@"iPod Touch 4th",
                           @"iPod5,1"    :@"iPod Touch 5th",
                           @"iPod7,1"    :@"iPod Touch 6th",
+                          @"iPod9,1"    :@"iPod Touch 7th",
 
                           @"iPhone1,1"  :@"iPhone",
                           @"iPhone1,2"  :@"iPhone",
@@ -98,6 +99,9 @@
                           @"iPhone11,2" :@"iPhone XS",
                           @"iPhone11,4" :@"iPhone XS Max",
                           @"iPhone11,6" :@"iPhone XS Max",
+                          @"iPhone12,1" :@"iPhone 11",
+                          @"iPhone12,3" :@"iPhone 11 Pro",
+                          @"iPhone12,5" :@"iPhone 11 Pro Max",
 
                           @"iPad1,1"   :@"iPad 1 ",
                           @"iPad2,1"   :@"iPad 2 WiFi",
@@ -137,7 +141,11 @@
                           @"iPad7,3"   :@"iPad Pro 10.5inch WiFi",
                           @"iPad7,4"   :@"iPad Pro 10.5inch Cellular",
                           @"iPad7,5"   :@"iPad 6th WiFi",
-                          @"iPad7,6"   :@"iPad 6th Cellular"
+                          @"iPad7,6"   :@"iPad 6th Cellular",
+                          @"iPad11,1"  :@"iPad mini 5th Gen WiFi",
+                          @"iPad11,2"  :@"iPad mini 5th Gen",
+                          @"iPad11,3"  :@"iPad Air 3rd Gen WiFi",
+                          @"iPad11,4"  :@"iPad Air 3rd Gen"
                           };
     return deviceNames[modelCode];
 }
