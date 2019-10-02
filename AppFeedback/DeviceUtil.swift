@@ -63,6 +63,7 @@ import Foundation
             case "iPod4,1": return "iPod Touch 4th"
             case "iPod5,1": return "iPod Touch 5th"
             case "iPod7,1": return "iPod Touch 6th"
+            case "iPod9,1": return "iPod Touch 7th"
             
             case "iPhone1,1": return "iPhone"
             case "iPhone1,2": return "iPhone"
@@ -96,7 +97,10 @@ import Foundation
             case "iPhone11,2": return "iPhone XS"
             case "iPhone11,4": return "iPhone XS Max"
             case "iPhone11,6": return "iPhone XS Max"
-            
+            case "iPhone12,1": return "iPhone 11"
+            case "iPhone12,3": return "iPhone 11 Pro"
+            case "iPhone12,5": return "iPhone 11 Pro Max"
+
             case "iPad1,1": return "iPad 1 "
             case "iPad2,1": return "iPad 2 WiFi"
             case "iPad2,2": return "iPad 2 Cellular"
@@ -136,6 +140,10 @@ import Foundation
             case "iPad7,4": return "iPad Pro 10.5inch Cellular"
             case "iPad7,5": return "iPad 6th WiFi"
             case "iPad7,6": return "iPad 6th Cellular"
+            case "iPad11,1": return "iPad mini 5th Gen WiFi"
+            case "iPad11,2": return "iPad mini 5th Gen"
+            case "iPad11,3": return "iPad Air 3rd Gen WiFi"
+            case "iPad11,4": return "iPad Air 3rd Gen"
         default:
             return ""
         }
