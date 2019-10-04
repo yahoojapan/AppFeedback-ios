@@ -52,7 +52,7 @@
 }
 
 - (BOOL)isValid {
-    return self.slackToken && self.slackChannel;
+    return self.slackChannel;
 }
 
 #pragma mark - Private Methods
