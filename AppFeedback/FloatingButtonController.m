@@ -32,6 +32,7 @@
 
 // ボタンの直径st
 static const CGFloat BUTTON_SIZE = 50.0;
+static const CGFloat SHADOW_SIZE = 5.0;
 
 @interface FloatingButtonController ()
 
@@ -69,13 +70,13 @@ static const CGFloat BUTTON_SIZE = 50.0;
 
     // 初期位置
     CGSize screenSize = UIScreen.mainScreen.bounds.size;
-    CGRect initRect = CGRectMake(screenSize.width - BUTTON_SIZE - 10,
+    CGRect initRect = CGRectMake(screenSize.width - (BUTTON_SIZE + SHADOW_SIZE),
                                  70,
-                                 BUTTON_SIZE,
-                                 BUTTON_SIZE);
+                                 BUTTON_SIZE + SHADOW_SIZE * 2,
+                                 BUTTON_SIZE + SHADOW_SIZE * 2);
     self.window.frame = initRect;
 
-    FloatingButtonOuterView *view = [[FloatingButtonOuterView alloc] initWithFrame:CGRectMake(0, 0, BUTTON_SIZE, BUTTON_SIZE)];
+    FloatingButtonOuterView *view = [[FloatingButtonOuterView alloc] initWithFrame:CGRectMake(SHADOW_SIZE, SHADOW_SIZE, BUTTON_SIZE, BUTTON_SIZE)];
     view.backgroundColor = [UIColor clearColor];
     view.layer.masksToBounds = NO;
     view.layer.shadowColor = [[UIColor blackColor] CGColor];
@@ -85,11 +86,11 @@ static const CGFloat BUTTON_SIZE = 50.0;
     view.layer.cornerRadius = BUTTON_SIZE / 2;
 
     FloatingButtonView *buttonView = [[bundle loadNibNamed:@"FloatingButton" owner:nil options:0] firstObject];
-    buttonView.frame = CGRectMake(0, 0, BUTTON_SIZE, BUTTON_SIZE);
+    buttonView.frame = CGRectMake(SHADOW_SIZE, SHADOW_SIZE, BUTTON_SIZE, BUTTON_SIZE);
     buttonView.layer.cornerRadius = BUTTON_SIZE / 2;
-    buttonView.clipsToBounds = YES;
     buttonView.buttonState = FloatingButtonStateFeedback;
     [buttonView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(buttonTapped:)]];
+    view.autoresizesSubviews = NO;
 
     [view addSubview:buttonView];
     view.buttonView = buttonView;
