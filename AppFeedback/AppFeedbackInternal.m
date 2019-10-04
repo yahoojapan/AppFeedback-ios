@@ -291,6 +291,8 @@ static AppFeedback *sharedData = nil;
 
     UINavigationController *nav = self.navigationController;
     
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
+
     if (image) {
        _reportViewController.image = image;
     }

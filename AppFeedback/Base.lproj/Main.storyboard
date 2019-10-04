@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pVU-VP-tMo">
-    <device id="retina6_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pVU-VP-tMo">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -83,7 +81,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="575.66666666666663"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tvq-dc-BIV">
-                                                <rect key="frame" x="10" y="260.66666666666669" width="420" height="300.00000000000006"/>
+                                                <rect key="frame" x="10" y="260.66666666666669" width="412.33333333333331" height="300.00000000000006"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pRC-RS-zAC" userLabel="FreeCommentField" customClass="UIPlaceHolderTextView">
@@ -96,7 +94,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Slack ID（Required）" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bV0-Ol-cjp" userLabel="ReporterName">
-                                                <rect key="frame" x="440" y="260.66666666666669" width="150" height="30"/>
+                                                <rect key="frame" x="432.33333333333331" y="260.66666666666669" width="157.66666666666669" height="30"/>
                                                 <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="01e-In-3eR"/>
@@ -115,12 +113,11 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="p9w-Pd-3XX"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSC-l6-NTs">
-                                                <rect key="frame" x="440" y="308.66666666666669" width="150" height="20"/>
+                                                <rect key="frame" x="432.33333333333331" y="308.66666666666669" width="157.66666666666669" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="tintColor" red="0.2784313725" green="0.72941176470000002" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -136,7 +133,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sh-V3-7vu">
-                                                <rect key="frame" x="440" y="346.66666666666669" width="150" height="20"/>
+                                                <rect key="frame" x="432.33333333333331" y="346.66666666666669" width="157.66666666666669" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="tintColor" red="0.27942162749999999" green="0.72747856379999998" blue="0.67986273770000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -151,7 +148,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndn-OJ-PPP" userLabel="PlayButton">
-                                                <rect key="frame" x="10" y="260.66666666666669" width="420" height="300.00000000000006"/>
+                                                <rect key="frame" x="10" y="260.66666666666669" width="412.33333333333331" height="300.00000000000006"/>
                                                 <state key="normal" image="Play"/>
                                                 <connections>
                                                     <action selector="playButtonTapped:" destination="RGA-cb-TLJ" eventType="touchUpInside" id="nov-GI-85r"/>
@@ -185,7 +182,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="送信中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ue-iZ-Spc">
-                                                <rect key="frame" x="440" y="386.66666666666669" width="52" height="21"/>
+                                                <rect key="frame" x="432.33333333333331" y="386.66666666666669" width="52" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -323,7 +320,7 @@
                         <outlet property="scrollView" destination="BHh-VZ-nVc" id="TcU-4r-cNN"/>
                         <outlet property="sendingLabel" destination="2Ue-iZ-Spc" id="bqm-fj-nwp"/>
                         <outlet property="titleTextField" destination="eZ4-A6-azb" id="XrD-7l-Ysd"/>
-                        <segue destination="DXz-hK-wY9" kind="presentation" identifier="goToDrawing" id="5ZA-Cv-wgl"/>
+                        <segue destination="DXz-hK-wY9" kind="presentation" identifier="goToDrawing" modalPresentationStyle="fullScreen" id="5ZA-Cv-wgl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUy-c6-mdx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -354,7 +351,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.85532489529358702" green="0.86142347794227148" blue="0.87971922588832485" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.85490196078431369" green="0.86274509803921573" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Dvn-hB-VgL" firstAttribute="centerX" secondItem="aE0-lU-oFo" secondAttribute="centerX" priority="999" id="9hA-Iz-ago"/>
                                     <constraint firstItem="Dvn-hB-VgL" firstAttribute="top" secondItem="FnM-cX-9pp" secondAttribute="top" id="Jfy-og-TV5"/>
@@ -369,7 +366,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85490196078431369" green="0.86274509803921573" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aE0-lU-oFo" firstAttribute="trailing" secondItem="bOI-Nl-bi3" secondAttribute="trailing" id="DBM-sv-OsP"/>
                             <constraint firstItem="aE0-lU-oFo" firstAttribute="top" secondItem="bOI-Nl-bi3" secondAttribute="top" id="E8F-Bb-HVV"/>
