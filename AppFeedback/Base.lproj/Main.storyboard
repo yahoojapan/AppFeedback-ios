@@ -351,7 +351,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.85532489529358702" green="0.86142347794227148" blue="0.87971922588832485" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.85490196078431369" green="0.86274509803921573" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Dvn-hB-VgL" firstAttribute="centerX" secondItem="aE0-lU-oFo" secondAttribute="centerX" priority="999" id="9hA-Iz-ago"/>
                                     <constraint firstItem="Dvn-hB-VgL" firstAttribute="top" secondItem="FnM-cX-9pp" secondAttribute="top" id="Jfy-og-TV5"/>
@@ -366,7 +366,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85490196078431369" green="0.86274509803921573" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aE0-lU-oFo" firstAttribute="trailing" secondItem="bOI-Nl-bi3" secondAttribute="trailing" id="DBM-sv-OsP"/>
                             <constraint firstItem="aE0-lU-oFo" firstAttribute="top" secondItem="bOI-Nl-bi3" secondAttribute="top" id="E8F-Bb-HVV"/>
