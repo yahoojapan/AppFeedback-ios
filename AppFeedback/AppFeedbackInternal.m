@@ -30,7 +30,6 @@
 #import "FloatingButtonControllerIOS9.h"
 #import "ScreenVideoCaptureSession.h"
 #import "ScreenCapture.h"
-#import "CaptureOverlayWindow.h"
 #import "AppFeedbackInternal.h"
 #import <AppFeedback/AppFeedback-Swift.h>
 
@@ -138,6 +137,7 @@ static AppFeedback *sharedData = nil;
         
         self.overlayWindow = [[OverlayWindow alloc] init];
         self.captureOverlayWindow = [[CaptureOverlayWindow alloc] init];
+        self.captureOverlayWindow.floatingButtonWindow = AppFeedback.shared.floatingButtinWindow;
 
         self.config = [Config new];
         [self.config loadInfoPlist];
@@ -321,7 +321,7 @@ static AppFeedback *sharedData = nil;
 
 - (void)startRecording {
     BOOL started = [self.screenVideoCaptureSession startRecordingUntil:VIDEO_LIMIT_SECS callback:^(NSURL *videoPath, NSError *error) {
-        self.captureOverlayWindow.enableCapture = NO;
+        self.captureOverlayWindow.isCaptureEnabled = NO;
         self.floatingButtonController.buttonState = FloatingButtonStateFeedback;
         [self.floatingButtonController endProgress];
         [self updateFloatingButtonState];
@@ -339,7 +339,7 @@ static AppFeedback *sharedData = nil;
     }];
 
     if (started) {
-        self.captureOverlayWindow.enableCapture = YES;
+        self.captureOverlayWindow.isCaptureEnabled = YES;
         self.floatingButtonController.buttonState = FloatingButtonStateStop;
         [self.floatingButtonController startProgressWithSecs:VIDEO_LIMIT_SECS];
         [self updateFloatingButtonState];
