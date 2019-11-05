@@ -34,6 +34,7 @@
 #import "OverlayWindow.h"
 #import "CaptureOverlayWindow.h"
 #import "AppFeedbackInternal.h"
+#import <UIKit/UIKit.h>
 
 // Notification
 static NSString * _Nonnull const kCaptureStartNotification = @"CaptureStartNotification";
@@ -140,10 +141,23 @@ static AppFeedback *sharedData = nil;
         self.overlayWindow = [[OverlayWindow alloc] init];
         self.captureOverlayWindow = [[CaptureOverlayWindow alloc] init];
 
+        if (@available(iOS 13.0, *)) {
+            [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(willConnect) name:UISceneWillConnectNotification object:nil];
+        }
+        
         self.config = [Config new];
         [self.config loadInfoPlist];
     }
     return self;
+}
+
+- (void)willConnect {
+    if (@available(iOS 13.0, *)) {
+        UIWindowScene *windowScene = (UIWindowScene *)UIApplication.sharedApplication.connectedScenes.anyObject;
+        self.captureOverlayWindow.windowScene = windowScene;
+        self.overlayWindow.windowScene = windowScene;
+        self.floatingButtinWindow.windowScene = windowScene;
+    }
 }
 
 - (void)configureWithSlackToken:(NSString *)token slackChannel:(NSString *)channel {
@@ -186,7 +200,7 @@ static AppFeedback *sharedData = nil;
         longPressGesture.numberOfTouchesRequired = 2;
         
         // ビューにジェスチャーを追加
-        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        UIWindow *window = UIApplication.sharedApplication.windows.firstObject;
         [self p_removeLongPressGesture:window];
         [window addGestureRecognizer:longPressGesture];
     });
@@ -254,7 +268,8 @@ static AppFeedback *sharedData = nil;
     
     UIViewController *sourceViewController = nil;
     //現在表示中のviewcontrollerを取得
-    sourceViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    UIWindow *window = UIApplication.sharedApplication.windows.firstObject;
+    sourceViewController =  window.rootViewController;
     if ([sourceViewController isKindOfClass:[ReportViewController class]]) {
         return;
     }
