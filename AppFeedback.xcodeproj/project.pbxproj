@@ -28,6 +28,7 @@
 		093517531E95E49B00BB554F /* AppFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCE68D01BD776B200A03D74 /* AppFeedback.framework */; };
 		093E555D1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h in Headers */ = {isa = PBXBuildFile; fileRef = 093E555B1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h */; };
 		093E555E1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m in Sources */ = {isa = PBXBuildFile; fileRef = 093E555C1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m */; };
+		0947D804257D4DC100EE4A05 /* AppFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947D803257D4DC100EE4A05 /* AppFeedback.swift */; };
 		098916921EC06E060047074D /* CaptureOverlayWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 098916901EC06E060047074D /* CaptureOverlayWindow.h */; };
 		098916931EC06E060047074D /* CaptureOverlayWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 098916911EC06E060047074D /* CaptureOverlayWindow.m */; };
 		09B0F7491EADDFD90055F8A5 /* FloatingButtonView.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B0F7471EADDFD90055F8A5 /* FloatingButtonView.h */; };
@@ -64,8 +65,6 @@
 		DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68D31BD776B300A03D74 /* AppFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBCE68F71BD776ED00A03D74 /* AppFeedbackInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */; };
 		DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */; };
-		DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDCC3FC1BD9D25000327609 /* ReportViewController.h */; };
-		DBDCC4001BD9D25100327609 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC3FD1BD9D25000327609 /* ReportViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +86,7 @@
 		093517521E95E49B00BB554F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		093E555B1EB0B8B100CF731F /* FloatingButtonControllerIOS9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonControllerIOS9.h; sourceTree = "<group>"; };
 		093E555C1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonControllerIOS9.m; sourceTree = "<group>"; };
+		0947D803257D4DC100EE4A05 /* AppFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedback.swift; sourceTree = "<group>"; };
 		098916901EC06E060047074D /* CaptureOverlayWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureOverlayWindow.h; sourceTree = "<group>"; };
 		098916911EC06E060047074D /* CaptureOverlayWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureOverlayWindow.m; sourceTree = "<group>"; };
 		09B0F7471EADDFD90055F8A5 /* FloatingButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonView.h; sourceTree = "<group>"; };
@@ -128,8 +128,6 @@
 		DBCE68D51BD776B300A03D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBCE68E01BD776ED00A03D74 /* AppFeedbackInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppFeedbackInternal.h; sourceTree = "<group>"; };
 		DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppFeedbackInternal.m; sourceTree = "<group>"; };
-		DBDCC3FC1BD9D25000327609 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
-		DBDCC3FD1BD9D25000327609 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,9 +193,7 @@
 		09D5DC571EAA6A0A00F24FA4 /* FeedbackDialog */ = {
 			isa = PBXGroup;
 			children = (
-				DBDCC3FC1BD9D25000327609 /* ReportViewController.h */,
 				D460C3562253306D00CBC359 /* OverlayWindow.swift */,
-				DBDCC3FD1BD9D25000327609 /* ReportViewController.m */,
 				09C80B3B224B495C00994C01 /* ReportViewController.swift */,
 				D42C66E8223B95BB00EB1A21 /* ExpansionButton.swift */,
 			);
@@ -266,6 +262,7 @@
 				DAB6F8C0224215B800EAB279 /* AppFeedbackLocalizedString.swift */,
 				2BE8733621B7A58700B7D935 /* Localizable.strings */,
 				09BBC4A2257395740013C741 /* Config.swift */,
+				0947D803257D4DC100EE4A05 /* AppFeedback.swift */,
 			);
 			path = AppFeedback;
 			sourceTree = "<group>";
@@ -287,7 +284,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				09B0F7491EADDFD90055F8A5 /* FloatingButtonView.h in Headers */,
-				DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */,
 				09D5DC541EAA20E400F24FA4 /* ScreenCapture.h in Headers */,
 				DBCE68D41BD776B300A03D74 /* AppFeedback.h in Headers */,
 				09B0F74D1EADF2600055F8A5 /* FloatingButtonOuterView.h in Headers */,
@@ -455,11 +451,11 @@
 				09D9C38D1EA74DD900B81B19 /* FloatingButtonController.m in Sources */,
 				DAB6F89C2240C6DB00EAB279 /* SlackAPI.swift in Sources */,
 				D460C3572253306D00CBC359 /* OverlayWindow.swift in Sources */,
+				0947D804257D4DC100EE4A05 /* AppFeedback.swift in Sources */,
 				DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */,
 				093E555E1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m in Sources */,
 				09B0F74E1EADF2600055F8A5 /* FloatingButtonOuterView.m in Sources */,
 				DAB6F8C1224215B800EAB279 /* AppFeedbackLocalizedString.swift in Sources */,
-				DBDCC4001BD9D25100327609 /* ReportViewController.m in Sources */,
 				098916931EC06E060047074D /* CaptureOverlayWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

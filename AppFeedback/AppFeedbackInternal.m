@@ -24,8 +24,6 @@
 
 
 #import "AppFeedback.h"
-#import "ReportViewController.h"
-#import "Config.h"
 #import "FloatingButtonController.h"
 #import "FloatingButtonControllerIOS9.h"
 #import "ScreenVideoCaptureSession.h"
@@ -281,13 +279,6 @@ static AppFeedback *sharedData = nil;
         sourceViewController = nav.viewControllers.lastObject;
     }
     
-    //呼び出し元クラス名をログで送出する
-    NSString *className = NSStringFromClass([sourceViewController class]);
-
-    if ([className isEqualToString:@"ReportViewController"]) {
-        return;
-    }
-
     UINavigationController *nav = self.navigationController;
     
     if (image) {
@@ -302,10 +293,9 @@ static AppFeedback *sharedData = nil;
     // 白くなる問題があるので強制的に非表示にする
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:nav animated:YES completion:^{
-        [self->_reportViewController setSourceClassName:className];
-        
-    }];
+     }];
 }
 
 - (void)readyScreenShot

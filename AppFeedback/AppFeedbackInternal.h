@@ -34,6 +34,8 @@
 
 @interface AppFeedback()
 
++ (double)videoLimitSecs;
+
 @property (class, nonnull, readonly) AppFeedback *shared;
 @property (class, nonnull, readonly) NSBundle *frameworkBundle;
 

@@ -8,17 +8,17 @@
 
 import Foundation
 
-class Config {
-
+@objcMembers
+public class Config: NSObject {
     /// feedback カテゴリの一覧
-    var categories: [String]
+    public var categories: [String]
 
-    var slackApiUrl: String
-    var slackToken: String = ""
-    var slackChannel: String = ""
-    var branchName: String?
+    public var slackApiUrl: String
+    public var slackToken: String = ""
+    public var slackChannel: String = ""
+    public var branchName: String?
 
-    init() {
+    override init() {
         self.categories = [
             AppFeedbackLocalizedString.string(for: "bug"),
             AppFeedbackLocalizedString.string(for: "request"),
@@ -32,7 +32,7 @@ class Config {
     /**
      アプリの Info.plist からSDK用の設定を読み込む
      */
-    func loadInfoPlist() {
+    public func loadInfoPlist() {
         guard let info = Bundle.main.infoDictionary else { return }
         self.loadInfoPlistDic(info)
     }
@@ -53,7 +53,7 @@ class Config {
         }
     }
     
-    func getRequiredKey(_ info: [String: Any], key: String) -> String? {
+    public func getRequiredKey(_ info: [String: Any], key: String) -> String? {
         guard let value = info[key] as? String else {
             NSLog("AppFeedback: %@ not found in Info.plist", key);
             return nil
@@ -63,7 +63,7 @@ class Config {
 
 
 
-    var isValid: Bool {
+    public var isValid: Bool {
         return !self.slackToken.isEmpty && !self.slackChannel.isEmpty
     }
 }

@@ -10,19 +10,21 @@ import Foundation
 import AVFoundation
 import AVKit
 
-protocol ReportViewControllerDelegate {
+
+@objc
+public protocol ReportViewControllerDelegate {
     func reportViewControllerClosed()
 }
 
-class ReportViewController : UIViewController {
+@objcMembers
+public class ReportViewController : UIViewController {
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var imageView: UIImageView!
-    var image: UIImage!
-    var videoPath: URL!
+    public var image: UIImage!
+    public var videoPath: URL!
     var drawnImage: UIImage!
-    var sourceClassName: String
-    var config: Config
-    var delegate: ReportViewControllerDelegate?
+    public var config: Config!
+    public var delegate: ReportViewControllerDelegate?
     
     typealias AlertComletionBlock = (_ buttonIndex: AlertButtonIndex) ->  Void
     
@@ -52,13 +54,15 @@ class ReportViewController : UIViewController {
     @IBOutlet weak var feedbackCategoryLabel: UILabel!
     @IBOutlet weak var sendingLabel: UILabel!
     @IBOutlet weak var feedbackCategoryButton: ExpansionButton!
-    var notSelectedCategoryTitle: String
+    var notSelectedCategoryTitle: String = ""
 
-    var focusOnReporterName: Bool
+    var focusOnReporterName: Bool = false
+    
+    
     
     // MARK: - Life cycle
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         self.p_setupView();
         self.feedbackCategoryButton.setPerceivableArea(leftArea: 0.0, rightArea: 0.0)
@@ -83,7 +87,7 @@ class ReportViewController : UIViewController {
         self.sendingLabel.isHidden = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // キーボード表示・非表示時のイベント登録
         
@@ -102,7 +106,7 @@ class ReportViewController : UIViewController {
         self.hiddenButton()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     
         // キーボード表示・非表示時のイベント削除
@@ -115,7 +119,7 @@ class ReportViewController : UIViewController {
     }
     
     func p_close() {
-        self.p_close()
+        self.p_close(completion: {})
     }
     
     func p_close(completion: () -> Void) {
@@ -276,7 +280,7 @@ class ReportViewController : UIViewController {
     
 
     
-    func p_createAlert(title: String, message: String, cancelButtonTitle: String?, destructiveButtonTitle: String?, otherButtonTitle: String?, tapBlock: AlertComletionBlock?) {
+    func p_createAlert(title: String?, message: String, cancelButtonTitle: String?, destructiveButtonTitle: String?, otherButtonTitle: String?, tapBlock: AlertComletionBlock?) {
     
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
     
@@ -376,58 +380,38 @@ class ReportViewController : UIViewController {
                 return
             }
             
-
-            
             let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
 
             switch statusCode {
             case 200:
                 guard let data = data else {
                     self.p_createAlert(title: "Slack Error",
-                                       message: "Empty response",
+                                       message: "Invalid response",
                                        cancelButtonTitle:nil ,
                                        destructiveButtonTitle:nil ,
                                        otherButtonTitle:"OK",
                                        tapBlock:nil)
-
+                    return
                 }
-
-                guard let responseJson = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) else {
-                    self.p_createAlert(title: "Slack Error", message: "Invalid response data",
+                
+                if !data.ok {
+                    self.p_createAlert(title: "Slack Error", message: data.error ?? "Invalid response json",
                                        cancelButtonTitle:nil ,
                                        destructiveButtonTitle:nil ,
                                        otherButtonTitle:"OK" ,
                                        tapBlock:nil)
-                    return
                 }
                 
-                guard let responseDictionary = responseJson as? [String: Any] else {
-                    self.p_createAlert(title: "Slack Error", message: "Invalid response json",
-                                       cancelButtonTitle:nil ,
-                                       destructiveButtonTitle:nil ,
-                                       otherButtonTitle:"OK" ,
-                                       tapBlock:nil)
-                    return
-                }
-                
-                responseDictionary["ok"]
-                
-                if responseDictionary.booleanValue == false {
-                    let errorMessage = responseDictionary["error"]
-                    self.p_createAlert(title: "Slack Error", message: errorMessage, cancelButtonTitle:nil ,destructiveButtonTitle:nil ,otherButtonTitle:"OK" ,tapBlock:nil)
-                    return
-                }
-    
                 self.titleTextField.text = ""
                 self.freeCommentField.text = ""
-                self.doneSelectedFeedbackCategory(self.notSelectedCategoryTitle, isSelected:false) // 未選択の状態に戻す
+                self.doneSelectedFeedbackCategory(selectedCategory: self.notSelectedCategoryTitle, isSelected: false)  // 未選択の状態に戻す
     
                 self.p_createAlert(title:AppFeedbackLocalizedString.string(for:"slackPostSuccessTitle"),
                                    message:AppFeedbackLocalizedString.string(for:"slackPostSuccessMessage"),
                                    cancelButtonTitle:nil,
                                    destructiveButtonTitle:nil,
                                    otherButtonTitle:"OK",
-                                   tapBlock: buttonIndex {
+                                   tapBlock: { _ in
                                     self.p_close()
                                    })
                 break
@@ -451,7 +435,7 @@ class ReportViewController : UIViewController {
     
             default:
                 self.p_createAlert(title: AppFeedbackLocalizedString.string(for: "slackPostErrorTitle"),
-                                   message:String(format: AppFeedbackLocalizedString.string(for: "slackPostUnknownErrorStatucCodeMessage"), (long)statusCode),
+                                   message:String(format: AppFeedbackLocalizedString.string(for: "slackPostUnknownErrorStatucCodeMessage"), statusCode),
                                                           cancelButtonTitle:nil,
                                                           destructiveButtonTitle:nil,
                                                           otherButtonTitle:"OK",
@@ -462,23 +446,33 @@ class ReportViewController : UIViewController {
     }
     
     func enableActivityIndicator(_ enable: Bool) {
-        self.activityView.hidden = !enable
-        self.sendButton.enabled = !enable
+        self.activityView.isHidden = !enable
+        self.sendButton.isEnabled = !enable
     }
     
 
-    func scrollToTextViewCaret(textView: UIView) {
-        var caretRect = textView.caretRectForPosition(textView.selectedTextRange.end)
-    
+    func scrollToTextViewCaret(textView: UITextInput) {
+        guard let selectedTextRange = textView.selectedTextRange else {
+            return
+        }
+        
+        guard let view = textView.textInputView else {
+            return
+        }
+
+        var caretRect = textView.caretRect(for: selectedTextRange.end)
+
         // カーソルが最後にあると INFINITY になる……？
-        if caretRect.origin.y == INFINITY {
-            caretRect.origin.y = textView.frame.size.height
+        if caretRect.origin.y == CGFloat.infinity {
+            caretRect.origin.y = view.frame.size.height
             caretRect.origin.x = 0
             caretRect.size.height = 10
             caretRect.size.width = 1
         }
     
-        caretRect.origin = textView.convertPoint(caretRect.origin, toView:self.scrollView)
+
+        
+        caretRect.origin = view.convert(caretRect.origin, to: self.scrollView)
     
         let keyboardTopBorder = self.scrollView.frame.size.height - self.keyboardHeight
     
@@ -494,54 +488,56 @@ class ReportViewController : UIViewController {
         let asset: AVURLAsset = AVURLAsset(url: url, options:nil)
         let generator: AVAssetImageGenerator = AVAssetImageGenerator(asset: asset)
         generator.appliesPreferredTrackTransform = true
+
+        let thumbTime = CMTimeMakeWithSeconds(0.5, preferredTimescale: Int32())
     
-        let thumbTime = CMTimeMakeWithSeconds(0.5, NSEC_PER_SEC)
-    
-        var error: NSError = nil
-        let imageRef = generator.copyCGImageAtTime(thumbTime, actualTime:nil error:&error)
-        let image = UIImage.image(CGImage:imageRef,
-                                  scale:UIScreen.mainScreen.scale,
-                                  orientation:UIImageOrientationUp)
-        CGImageRelease(imageRef)
-    
-        return image
-    
+        do {
+            let imageRef = try generator.copyCGImage(at: thumbTime, actualTime:nil)
+            let image = UIImage(cgImage:imageRef,
+                                scale:UIScreen.main.scale,
+                                orientation:UIImage.Orientation.up)
+
+            return image
+        } catch let e {
+            print(e)
+            return nil
+        }
     }
     
     // MARK: - IBActions
     
     @IBAction func didTapOK(_ sender: Any) {
-        if self.reporterName.text.length > 0 {
+        if (self.reporterName.text ?? "").count > 0 {
             let userDefaults = UserDefaults.standard
             userDefaults.setValue(self.reporterName.text, forKey:"report.user_name")
             userDefaults.synchronize()
         }
     
-        if self.titleTextField.text.length == 0 {
+        if (self.titleTextField.text ?? "").count == 0 {
             self.p_createAlert(title: nil,
                                message:AppFeedbackLocalizedString.string(for :"confirmReportSettingInputTitleMessage"),
                                cancelButtonTitle:nil,
                                destructiveButtonTitle:nil,
                                otherButtonTitle:"OK",
-                               tapBlock: (buttonIndex: Int) {
+                               tapBlock:  { (buttonIndex) in
                                 self.titleTextField.becomeFirstResponder()
                                })
             return
         }
     
-        if self.reporterName.text.length == 0 {
+        if (self.reporterName.text ?? "").count == 0 {
             self.p_createAlert(title: AppFeedbackLocalizedString.string(for: "confirmReportSettingMessage"),
                                message:AppFeedbackLocalizedString.string(for: "confirmReportSettingSlackIdCausionMessage"),
                                cancelButtonTitle:nil,
                                destructiveButtonTitle:nil,
                                otherButtonTitle:"OK",
-                               tapBlock: (buttonIndex: Int) {
+                               tapBlock:  { buttonIndex in
                                 self.reporterName.becomeFirstResponder()
                                })
             return
         }
     
-        let confirmMsg = AppFeedbackLocalizedString.string(for "confirmReportSettingMessage")
+        var confirmMsg = AppFeedbackLocalizedString.string(for: "confirmReportSettingMessage")
     
         if self.feedbackCategoryButton.currentTitle == self.notSelectedCategoryTitle {
             confirmMsg = String(format: "%@\n\n%@", confirmMsg, AppFeedbackLocalizedString.string(for: "confirmReportSettingNotSelectedCategoryMessage"))
@@ -550,11 +546,11 @@ class ReportViewController : UIViewController {
     
         self.p_createAlert(title: AppFeedbackLocalizedString.string(for: "confirm"),
                            message:confirmMsg,
-                           cancelButtonTitle:AppFeedbackLocalizedString(for: "cancel"),
+                           cancelButtonTitle:AppFeedbackLocalizedString.string(for: "cancel"),
                            destructiveButtonTitle:nil,
-                           otherButtonTitle:AppFeedbackLocalizedString(for: "send"),
-                           tapBlock: (buttonIndex: Int) {
-                            if buttonIndex == UIAlertFirstOtherButtonIndex {
+                           otherButtonTitle:AppFeedbackLocalizedString.string(for: "send"),
+                           tapBlock:  { buttonIndex in
+                            if buttonIndex == AlertButtonIndex.UIAlertFirstOtherButtonIndex {
                                 self.p_sendMessage()
                                 self.closeKeyboard()
                             }
@@ -567,15 +563,16 @@ class ReportViewController : UIViewController {
     
     
     @IBAction func videoButtonTapped(sender: Any) {
-        let message = String(format: AppFeedbackLocalizedString.string(for: "videoButtonTappedAlertMessage"), (int)floor(VIDEO_LIMIT_SECS))
+
+        let message = String(format: AppFeedbackLocalizedString.string(for: "videoButtonTappedAlertMessage"), Int(floor(VIDEO_LIMIT_SECS)))
         self.p_createAlert(title: AppFeedbackLocalizedString.string(for: "videoButtonTappedAlertTitle"),
                            message:message,
-                           cancelButtonTitle:AppFeedbackLocalizedString.string(for "cancel"),
+                           cancelButtonTitle:AppFeedbackLocalizedString.string(for: "cancel"),
                            destructiveButtonTitle:nil,
                            otherButtonTitle:AppFeedbackLocalizedString.string(for: "videoButtonTappedAlertStartButtonTitle"),
-                           tapBlock: (buttonIndex: Int) {
-                            if buttonIndex == UIAlertFirstOtherButtonIndex {
-                                self p_close: {
+                           tapBlock: { buttonIndex in
+                            if buttonIndex ==  AlertButtonIndex.UIAlertFirstOtherButtonIndex {
+                                self.p_close {
                                     AppFeedback.startRecording()
                                 }
                             }
@@ -583,12 +580,14 @@ class ReportViewController : UIViewController {
     }
     
     @IBAction func playButtonTapped(sender: Any) {
-        if !self.videoPath return
+        if self.videoPath == nil {
+            return
+        }
     
         let avPlayer = AVPlayer(url: self.videoPath)
         let controller = AVPlayerViewController()
         controller.player = avPlayer
-        self.presentViewController(controller, animated:true, completion: {
+        self.present(controller, animated:true, completion: {
             avPlayer.play()
         })
     }
@@ -598,22 +597,24 @@ class ReportViewController : UIViewController {
     }
     
     // 描画画面に遷移する際スクリーンショットを渡す
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == goToDrawing {
-            let navController = segue.destinationViewController as! UINavigationController
-            self.setupNavBarAttributes:navController()
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToDrawing" {
+            let navController = segue.destination as! UINavigationController
+            self.setupNavBarAttributes(navController: navController)
             let drawViewController = navController.topViewController as! DrawViewController
-            drawViewController.originImage = UIImage(cgImage: self.image.cgImage)
-            if sender != nil {
-                drawViewController.editingImage = UIImage(cgImage: (sender as! UIImage).cgImage)
+            if let cgImage = self.image.cgImage {
+                drawViewController.originImage = UIImage(cgImage: cgImage)
+            }
+            if let senderImage = sender as? UIImage, let cgImage = senderImage.cgImage {
+                drawViewController.editingImage = UIImage(cgImage: cgImage)
             }
         }
     }
     
     // 保存ボタンを押して描画画面から戻った時の処理
     @IBAction func unwindToDrawViewController(segue: UIStoryboardSegue) {
-        let drawViewController = segue.sourceViewController as! DrawViewController
-        if drawViewController.editingImage {
+        let drawViewController = segue.source as! DrawViewController
+        if (drawViewController.editingImage != nil) {
             drawViewController.editingImage = nil
             self.drawnImage = drawViewController.imageView.image
         } else {
@@ -624,9 +625,9 @@ class ReportViewController : UIViewController {
     }
     
     // 画像編集ボタンを押した時の処理
-    @IBAction editButton(sender: Any) {
+    @IBAction func editButton(sender: Any) {
         // 既に保存されている画像がある場合、途中から編集する
-        if self.drawnImage {
+        if (self.drawnImage != nil) {
             self.performSegue(withIdentifier: "goToDrawing", sender: self.imageView.image)
         } else {
             self.performSegue(withIdentifier: "goToDrawing", sender: nil)
@@ -640,22 +641,23 @@ class ReportViewController : UIViewController {
     }
     
     // フィードバックカテゴリ選択ボタンを押下した時の処理
-    @IBAction selectFeedbackCategory(sender: Any) {
-        let alertController = UIAlertController(title: AppFeedbackLocalizedString.string(for "categoryMessage"),
+    @IBAction func selectFeedbackCategory(sender: Any) {
+        let alertController = UIAlertController(title: AppFeedbackLocalizedString.string(for: "categoryMessage"),
                                                 message:nil,
                                                 preferredStyle: .actionSheet)
     
-        let cancelAction = UIAlertAction(title: AppFeedbackLocalizedString.string(for "cancel"),
+        let cancelAction = UIAlertAction(title: AppFeedbackLocalizedString.string(for: "cancel"),
                                          style: .cancel,
-                                         handler: (_) {})
+                                         handler: { _ in })
     
-        alertController.add(cancelAction)
-    
-        self.config.categories.enumerateObjectsUsingBlock(id Any, idx: UInt, stop: Bool) {
-            let selectAction = UIAlertAction(title:self.config.categories[idx],
+        alertController.addAction(cancelAction)
+
+
+        for category in self.config.categories {
+            let selectAction = UIAlertAction(title:category,
                                              style: .default,
-                                             handler: (action) {
-                                                self.doneSelectedFeedbackCategory(self.config.categories[idx], isSelected:true)
+                                             handler: { action in
+                                                self.doneSelectedFeedbackCategory(selectedCategory: category, isSelected: true)
                                              })
     
             selectAction.setValue(UIColor.darkGray, forKey: "titleTextColor")
@@ -663,16 +665,16 @@ class ReportViewController : UIViewController {
         }
     
         // iPad で Action Sheet を使う場合、popoverPresentationController を設定しないとクラッシュする。
-        alertController.popoverPresentationController.sourceView = self.feedbackCategoryLabel
-        alertController.popoverPresentationController.sourceRect = self.feedbackCategoryButton.frame
+        alertController.popoverPresentationController?.sourceView = self.feedbackCategoryLabel
+        alertController.popoverPresentationController?.sourceRect = self.feedbackCategoryButton.frame
     
-        self.presentViewController:alertController, animated:true completion:nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // 選択したフィードバックカテゴリを画面に反映する。
     func doneSelectedFeedbackCategory(selectedCategory: String, isSelected: Bool) {
-        self.feedbackCategoryButton.setTitle(selectedCategory, forState: .normal)
-        self.feedbackCategoryButton.selected = isSelected
+        self.feedbackCategoryButton.setTitle(selectedCategory, for: .normal)
+        self.feedbackCategoryButton.isSelected = isSelected
     }
 }
 
@@ -705,20 +707,20 @@ extension ReportViewController: UITextFieldDelegate {
 
 extension ReportViewController: UITextViewDelegate {
     // freeCommentFieldにフォーカスが当たった
-    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         focusOnReporterName = false
-        self.scrollToTextViewCaret(textView)
+        self.scrollToTextViewCaret(textView: textView)
         return true
     }
-    
-    func textViewDidChange(textView: UITextView) {
+ 
+    func textViewDidChange(_ textView: UITextView) {
         textView.setNeedsLayout()
         textView.layoutIfNeeded()
-        self.scrollToTextViewCaret(textView)
+        self.scrollToTextViewCaret(textView: textView)
     }
     
     // freeCommentFieldからフォーカスが外れた
-    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         /*特にやることなし*/
         return true
     }
