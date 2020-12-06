@@ -18,18 +18,18 @@ class ReportViewController : UIViewController {
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var imageView: UIImageView!
     var image: UIImage!
-    var videoPath: NSURL!
+    var videoPath: URL!
     var drawnImage: UIImage!
     var sourceClassName: String
     var config: Config
-    var delegate: ReportViewControllerDelegate
+    var delegate: ReportViewControllerDelegate?
     
-    typealias AlertComletionBlock = (buttonIndex: Int) ->  Void
+    typealias AlertComletionBlock = (_ buttonIndex: AlertButtonIndex) ->  Void
     
     enum AlertButtonIndex : Int {
-        UIAlertCancelButtonIndex = 0,
-        UIAlertDestructiveButtonIndex = 1,
-        UIAlertFirstOtherButtonIndex = 2
+        case UIAlertCancelButtonIndex = 0
+        case UIAlertDestructiveButtonIndex = 1
+        case UIAlertFirstOtherButtonIndex = 2
     }
     
 
@@ -51,7 +51,7 @@ class ReportViewController : UIViewController {
     @IBOutlet weak var RecordingButton: UIButton!
     @IBOutlet weak var feedbackCategoryLabel: UILabel!
     @IBOutlet weak var sendingLabel: UILabel!
-    @IBOutlet weak var feedbackCategoryButton: ExpansionButton
+    @IBOutlet weak var feedbackCategoryButton: ExpansionButton!
     var notSelectedCategoryTitle: String
 
     var focusOnReporterName: Bool
@@ -64,13 +64,15 @@ class ReportViewController : UIViewController {
         self.feedbackCategoryButton.setPerceivableArea(leftArea: 0.0, rightArea: 0.0)
         self.notSelectedCategoryTitle = AppFeedbackLocalizedString.string(for: "select")
     
-        self.keyboardAccessoryView.hidden = true
-    
-        self.setupNavBarAttributes(self.navigationController)
+        self.keyboardAccessoryView.isHidden = true
+
+        if let nav = self.navigationController {
+            self.setupNavBarAttributes(navController: nav)
+        }
     
         // dismiss時にcallbackが呼ばれない問題の対応
         // http://stackoverflow.com/a/30069208/7642392
-        self.modalPresentationStyle = UIModalPresentationFullScreen
+        self.modalPresentationStyle = .fullScreen
         self.freeCommentField.minHeight = self.freeCommentHeightConstraint.constant
         self.freeCommentField.heightConstraint = self.freeCommentHeightConstraint
     
@@ -85,8 +87,14 @@ class ReportViewController : UIViewController {
         super.viewWillAppear(animated)
         // キーボード表示・非表示時のイベント登録
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: .keyboardWillChangeFrameNotification , object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: .keyboardWillHideNotification , object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillChange(notification:)),
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHidden(notification:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
 
     
         self.p_setupImageView()
@@ -98,24 +106,26 @@ class ReportViewController : UIViewController {
         super.viewWillDisappear(animated)
     
         // キーボード表示・非表示時のイベント削除
-        NotificationCenter.default.removeObserver(self, name: .keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillChangeFrameNotification,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
     }
     
     func p_close() {
-        self.p_close {}
+        self.p_close()
     }
     
-    func p_close(completion () -> Void) {
+    func p_close(completion: () -> Void) {
         self.closeKeyboard()
         self.drawnImage = nil
 
         self.dismiss(animated: true) {
-            if self.delegate {
-                self.delegate.reportViewControllerClosed()
-            }
+            self.delegate?.reportViewControllerClosed()
         }
-        completion();
+        completion()
     }
 
     func p_setupView() {
@@ -128,8 +138,7 @@ class ReportViewController : UIViewController {
         self.freeCommentField.placeholderColor = UIColor.lightGray
     
         let userDefaults = UserDefaults.standard
-        let userName = userDefaults.string(forKey: "report.user_name")
-        if userName {
+        if let userName = userDefaults.string(forKey: "report.user_name") {
             self.reporterName.text = userName
         }
     
@@ -139,30 +148,30 @@ class ReportViewController : UIViewController {
     }
     
     func p_setupImageView() {
-        if self.videoPath {
-            if let image = self.generateVideoPreviewImage(self.videoPath) {
+        if let videoPath = self.videoPath {
+            if let image = self.generateVideoPreviewImage(url: videoPath) {
                 self.imageView.image = image
             }
             self.playButton.isHidden = false
-        } else if self.drawnImage {
+        } else if let drawnImage = self.drawnImage {
             self.playButton.isHidden = true
-            self.imageView.image = self.drawnImage
-        } else if self.image {
+            self.imageView.image = drawnImage
+        } else if let image = self.image {
             self.playButton.isHidden = true
-            self.imageView.image = self.image
+            self.imageView.image = image
         }
     }
     
     //動画保存時は「画像編集開始」ボタンを非表示・描画画像保存時は「キャプチャ開始」ボタンを非表示
     func hiddenButton() {
-        if self.videoPath {
+        if self.videoPath != nil {
             self.DrawingButton.isEnabled = false
             self.DrawingButton.alpha = 0.4
     
             self.RecordingButton.isEnabled = true
             self.RecordingButton.alpha = 1
     
-        } else if self.drawnImage {
+        } else if self.drawnImage != nil {
             self.DrawingButton.isEnabled = true
             self.DrawingButton.alpha = 1
     
@@ -181,508 +190,536 @@ class ReportViewController : UIViewController {
         self.view.endEditing(true)
     }
     
-    func p_createAlertWithTitle(title: String, message: String, cancelButtonTitle: String destructiveButtonTitle String, otherButtonTitle: String tapBlock: AlertComletionBlock) {
+    @objc func keyboardWillChange(notification: NSNotification) {
+        self.view.layoutIfNeeded()
+        // キーボードの top を取得する
+        
+        guard let userInfo = notification.userInfo,
+              var keyboardRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            NSLog("Failed to get keyboard frame")
+            return
+        }
+        
+        let origKeyboardRect = keyboardRect
+        let margin: CGFloat = 4.0
+    
+    
+        if focusOnReporterName {
+            self.keyboardAccessoryView.isHidden = true
+        } else {
+            self.keyboardAccessoryView.isHidden = false
+        }
+    
+        keyboardRect.size.height += self.keyboardAccessoryView.frame.size.height + margin
+        keyboardRect.origin.y -= self.keyboardAccessoryView.frame.size.height - margin
+        self.keyboardHeight = keyboardRect.size.height
+    
+        UIView.beginAnimations(nil, context:nil)
+
+        // キーボードアニメーションと同じ間隔、速度になるように設定
+        if let userInfo = notification.userInfo {
+            if let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval {
+                UIView.setAnimationDuration(duration)
+            }
+            if let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? UIView.AnimationCurve {
+                UIView.setAnimationCurve(curve)
+            }
+        }
+
+        UIView.setAnimationBeginsFromCurrentState(true)
+    
+        self.keyboardAccessoryBottomConstraint.constant = origKeyboardRect.size.height
+        self.view.layoutIfNeeded()
+    
+        // 表示アニメーション開始
+        UIView.commitAnimations()
+    
+        // scrollView の contentInset と scrollIndicatorInsets の bottom に追加
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardRect.size.height, right: 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+    
+        if self.freeCommentField.isFirstResponder {
+            self.scrollToTextViewCaret(textView: self.freeCommentField)
+        }
+    }
+    
+
+    
+    @objc func keyboardWillHidden(notification: NSNotification) {
+        // キーボードアニメーションと同じ間隔、速度になるように設定
+        UIView.beginAnimations(nil, context:nil)
+        
+        if let userInfo = notification.userInfo {
+            if let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval {
+                UIView.setAnimationDuration(duration)
+            }
+            if let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? UIView.AnimationCurve {
+                UIView.setAnimationCurve(curve)
+            }
+        }
+
+        self.keyboardHeight = 0;
+    
+        // インセットを 0 にする
+        let contentInsets = UIEdgeInsets.zero
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+    
+        self.keyboardAccessoryView.isHidden = true
+        self.keyboardAccessoryBottomConstraint.constant = 0
+        self.view.layoutIfNeeded()
+    
+        // 非表示アニメーション開始
+        UIView.commitAnimations()
+    }
+    
+
+    
+    func p_createAlert(title: String, message: String, cancelButtonTitle: String?, destructiveButtonTitle: String?, otherButtonTitle: String?, tapBlock: AlertComletionBlock?) {
     
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
     
-        if cancelButtonTitle {
+        if let cancelButtonTitle = cancelButtonTitle {
             ac.addAction(UIAlertAction(title: cancelButtonTitle, style: .default) { action in
-                if tapBlock {
-                    tapBlock(.UIAlertCancelButtonIndex)
-                }
+                tapBlock?(.UIAlertCancelButtonIndex)
             })
         }
 
-        if destructiveButtonTitle {
-            ac.addAction(UIAlertAction(title: destructiveButtonTitle, style: .default) {
-                if tapBlock {
-                    tapBlock(.UIAlertDestructiveButtonIndex)
-                }
+        if let destructiveButtonTitle = destructiveButtonTitle {
+            ac.addAction(UIAlertAction(title: destructiveButtonTitle, style: .default) { action in
+                tapBlock?(.UIAlertDestructiveButtonIndex)
             })
         }
 
-        if otherButtonTitle {
-            ac.addAction(UIAlertAction(title: otherButtonTitle, style: .default) {
-                if tapBlock {
-                    tapBlock(.UIAlertFirstOtherButtonIndex)
-                }
+        if let otherButtonTitle = otherButtonTitle {
+            ac.addAction(UIAlertAction(title: otherButtonTitle, style: .default) { action in
+                tapBlock?(.UIAlertFirstOtherButtonIndex)
             })
         }
     
-        [self presentViewController:ac animated:YES completion:nil];
+        self.present(ac, animated: true, completion: nil)
     }
     
-    func p_takeScreenShot(image: UIImage) -> Data {
+    func p_takeScreenShot(image: UIImage) -> Data? {
 
-        let imageData =UIImagePNGRepresentation( image )
+        let imageData = image.pngData()
     
-        return imageData;
+        return imageData
     }
     
     func p_sendMessage() {
-        if self.videoPath {
-    
-            let videoSize = self.videoPath(fileSize)
+        if let videoPath = self.videoPath {
+            let videoSize = videoPath.fileSize
             let indicatorThresholdSize = 1 * 1024 * 1024
 
             if videoSize > indicatorThresholdSize {
                 self.enableActivityIndicator(true)
             }
 
-            self.p_sendMessage(image: nil, videoPath: self.videoPath)
+            self.p_sendMessage(image: nil, videoPath: videoPath)
         } else {
-            self.p_sendMessage(image: self.imageView.image videoPath: nil)
+            self.p_sendMessage(image: self.imageView.image, videoPath: nil)
         }
     }
     
-    func p_sendMessage(image: UIImage, videoPath: NSURL) {
+    func p_sendMessage(image: UIImage?, videoPath: URL?) {
         //ScreenShot取得
-        let imageData = self.p_takeScreenShot(image)
-    
-        let data = SendData(imageData: imageData, videoPath: videoPath, title: self.titleTextField, category: self.feedbackCategoryLabel, comment: self.freeCommentField.text, username: self.reporterName.text, appTitle: Bundle.main.infoDictionary?["CFBundleName"], appVersion: DeviceUtil.appVersion, appBuildVersion: DeviceUtil.appBuildVersion, systemVersion: DeviceUtil.osVersion, modelCode: DeviceUtil.modelCode, modelName: DeviceUtil.modelName)
-    
+        let imageData: Data?
+        if let image = image {
+            imageData = self.p_takeScreenShot(image: image)
+        } else {
+            imageData = nil
+        }
+        
+        let sendData = SendData(imageData: imageData,
+                                videoPath: videoPath,
+                                title: self.titleTextField.text,
+                                category: self.feedbackCategoryButton.currentTitle,
+                                comment: self.freeCommentField.text,
+                                username: self.reporterName.text,
+                                appTitle: (Bundle.main.infoDictionary?["CFBundleName"] as? String) ?? "",
+                                appVersion: DeviceUtil.appVersion,
+                                appBuildVersion: DeviceUtil.appBuildVersion,
+                                systemVersion: DeviceUtil.osVersion,
+                                modelCode: DeviceUtil.modelCode,
+                                modelName: DeviceUtil.modelName)
+        
         self.sendingLabel.isHidden = false
     
-        let slackAPI = SlackAPI(token: self.config.slackToken, channel: self.config.slackChannel, apiUrl: self.config.slackApiUrl, branchName: self.config.branchName) [[SlackAPI alloc] initWithToken:self.config.slackToken
+        let slackAPI = SlackAPI(token: self.config.slackToken,
+                                channel: self.config.slackChannel,
+                                apiUrl: self.config.slackApiUrl,
+                                branchName: self.config.branchName)
 
-            slackAPI.post(data: data) { (data, response, error) in
-
+        slackAPI.post(data: sendData) { (data, response, error) in
+            let error = error as NSError?
             self.enableActivityIndicator(false)
             self.sendingLabel.isHidden = true
     
-            if error {
-            if error.code == kCFURLErrorUserCancelledAuthentication {//401(Authentication failure)
-            self.p_createAlert(title: AppFeedbackLocalizedString.string(for: "slackPostErrorTitle"),
-            message: AppFeedbackLocalizedString.string(for: "slackPostInvalidMessage")
-    cancelButtonTitle:nil
-    destructiveButtonTitle:nil
-    otherButtonTitle:@"OK"
-    tapBlock:nil];
-    } else {
-    [self
-    p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
-    message:[AppFeedbackLocalizedString stringFor:@"slackPostClientErrorMessage"]
-    cancelButtonTitle:nil
-    destructiveButtonTitle:nil
-    otherButtonTitle:@"OK"
-    tapBlock:nil];
-    }
-    return;
-    }
+            if let error = error {
+                if error.code == CFNetworkErrors.cfurlErrorUserCancelledAuthentication.rawValue {//401(Authentication failure)
+                    self.p_createAlert(title: AppFeedbackLocalizedString.string(for: "slackPostErrorTitle"),
+                                       message: AppFeedbackLocalizedString.string(for: "slackPostInvalidMessage"),
+                                       cancelButtonTitle:nil,
+                                       destructiveButtonTitle:nil,
+                                       otherButtonTitle:"OK",
+                                       tapBlock:nil)
+                } else {
+                    self.p_createAlert(title: AppFeedbackLocalizedString.string(for:"slackPostErrorTitle"),
+                                       message:AppFeedbackLocalizedString.string(for:"slackPostClientErrorMessage"),
+                                       cancelButtonTitle:nil,
+                                       destructiveButtonTitle:nil,
+                                       otherButtonTitle:"OK",
+                                       tapBlock:nil)
+                }
+                return
+            }
+            
+
+            
+            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+
+            switch statusCode {
+            case 200:
+                guard let data = data else {
+                    self.p_createAlert(title: "Slack Error",
+                                       message: "Empty response",
+                                       cancelButtonTitle:nil ,
+                                       destructiveButtonTitle:nil ,
+                                       otherButtonTitle:"OK",
+                                       tapBlock:nil)
+
+                }
+
+                guard let responseJson = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) else {
+                    self.p_createAlert(title: "Slack Error", message: "Invalid response data",
+                                       cancelButtonTitle:nil ,
+                                       destructiveButtonTitle:nil ,
+                                       otherButtonTitle:"OK" ,
+                                       tapBlock:nil)
+                    return
+                }
+                
+                guard let responseDictionary = responseJson as? [String: Any] else {
+                    self.p_createAlert(title: "Slack Error", message: "Invalid response json",
+                                       cancelButtonTitle:nil ,
+                                       destructiveButtonTitle:nil ,
+                                       otherButtonTitle:"OK" ,
+                                       tapBlock:nil)
+                    return
+                }
+                
+                responseDictionary["ok"]
+                
+                if responseDictionary.booleanValue == false {
+                    let errorMessage = responseDictionary["error"]
+                    self.p_createAlert(title: "Slack Error", message: errorMessage, cancelButtonTitle:nil ,destructiveButtonTitle:nil ,otherButtonTitle:"OK" ,tapBlock:nil)
+                    return
+                }
     
-    NSInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
+                self.titleTextField.text = ""
+                self.freeCommentField.text = ""
+                self.doneSelectedFeedbackCategory(self.notSelectedCategoryTitle, isSelected:false) // 未選択の状態に戻す
     
-    switch (statusCode) {
-    case 200: {
-    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data
-    options:NSJSONReadingAllowFragments
-    error:nil];
-    if ([responseDictionary[@"ok"] boolValue] == NO) {
-    NSString *errorMessage = responseDictionary[@"error"];
-    [self p_createAlertWithTitle:@"Slack Error" message: errorMessage cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitle:@"OK" tapBlock:nil];
-    return;
-    }
+                self.p_createAlert(title:AppFeedbackLocalizedString.string(for:"slackPostSuccessTitle"),
+                                   message:AppFeedbackLocalizedString.string(for:"slackPostSuccessMessage"),
+                                   cancelButtonTitle:nil,
+                                   destructiveButtonTitle:nil,
+                                   otherButtonTitle:"OK",
+                                   tapBlock: buttonIndex {
+                                    self.p_close()
+                                   })
+                break
+            case 403:// Forbidden
+                self.p_createAlert(title:AppFeedbackLocalizedString.string(for: "slackPostErrorTitle"),
+                                   message:AppFeedbackLocalizedString.string(for:"slackPostAuthorizationErrorMessage"),
+                                   cancelButtonTitle:nil,
+                                   destructiveButtonTitle:nil,
+                                   otherButtonTitle:"OK",
+                                   tapBlock:nil)
+                break
     
-    self.titleTextField.text = @"";
-    self.freeCommentField.text = @"";
-    [self doneSelectedFeedbackCategory:self.notSelectedCategoryTitle :false]; // 未選択の状態に戻す
+            case 500://Internal Error
+                self.p_createAlert(title:AppFeedbackLocalizedString.string(for: "slackPostErrorTitle"),
+                                   message:AppFeedbackLocalizedString.string(for:"slackPostUnknownErrorMessage"),
+                                   cancelButtonTitle:nil,
+                                   destructiveButtonTitle:nil,
+                                   otherButtonTitle:"OK",
+                                   tapBlock:nil)
+                break
     
-    [self
-    p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostSuccessTitle"]
-    message:[AppFeedbackLocalizedString stringFor:@"slackPostSuccessMessage"]
-    cancelButtonTitle:nil
-    destructiveButtonTitle:nil
-    otherButtonTitle:@"OK"
-    tapBlock:^(NSInteger buttonIndex){
-    [self p_close];
-    }];
-    break;
-    }
-    
-    case 403:// Forbidden
-    [self
-    p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
-    message:[AppFeedbackLocalizedString stringFor:@"slackPostAuthorizationErrorMessage"]
-    cancelButtonTitle:nil
-    destructiveButtonTitle:nil
-    otherButtonTitle:@"OK"
-    tapBlock:nil];
-    break;
-    
-    case 500://Internal Error
-    [self
-    p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
-    message:[AppFeedbackLocalizedString stringFor:@"slackPostUnknownErrorMessage"]
-    cancelButtonTitle:nil
-    destructiveButtonTitle:nil
-    otherButtonTitle:@"OK"
-    tapBlock:nil];
-    break;
-    
-    default:
-    [self
-    p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"slackPostErrorTitle"]
-    message:[NSString stringWithFormat:[AppFeedbackLocalizedString stringFor:@"slackPostUnknownErrorStatucCodeMessage"], (long)statusCode]
-    cancelButtonTitle:nil
-    destructiveButtonTitle:nil
-    otherButtonTitle:@"OK"
-    tapBlock:nil];
-    break;
-    }
-    }];
-    }
-    
-    - (void)enableActivityIndicator:(BOOL)enable {
-    self.activityView.hidden = !enable;
-    self.sendButton.enabled = !enable;
-    }
-    
-    - (NSMutableData*)setTextData:(NSMutableData *)feedbackData textDictionary:(NSDictionary *)textDictionary boundary:(NSString *)boundary {
-    for (id key in [textDictionary keyEnumerator]) {
-    NSString* value = [textDictionary valueForKey:key];
-    [feedbackData appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [feedbackData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data;"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [feedbackData appendData:[[NSString stringWithFormat:@"name=\"%@\"\r\n\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
-    [feedbackData appendData:[[NSString stringWithFormat:@"%@\r\n", value] dataUsingEncoding:NSUTF8StringEncoding]];
-    }
-    
-    return feedbackData;
-    }
-    
-    - (NSMutableData*)setImageData:(NSMutableData *)feedbackData imageData:(NSData *)imageData videoPath:(NSURL *)videoPath boundary:(NSString *)boundary {
-    [feedbackData appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [feedbackData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data;"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [feedbackData appendData:[[NSString stringWithFormat:@"name=\"%@\";", @"file"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [feedbackData appendData:[[NSString stringWithFormat:@"filename=\"%@\"\r\n", @"file"] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    if (videoPath) {
-    NSData *videoData = [NSData dataWithContentsOfURL:videoPath];
-    [feedbackData appendData:[[NSString stringWithFormat:@"Content-Type: video/mp4\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [feedbackData appendData:videoData];
-    } else {
-    [feedbackData appendData:[[NSString stringWithFormat:@"Content-Type: image/jpeg\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [feedbackData appendData:imageData];
+            default:
+                self.p_createAlert(title: AppFeedbackLocalizedString.string(for: "slackPostErrorTitle"),
+                                   message:String(format: AppFeedbackLocalizedString.string(for: "slackPostUnknownErrorStatucCodeMessage"), (long)statusCode),
+                                                          cancelButtonTitle:nil,
+                                                          destructiveButtonTitle:nil,
+                                                          otherButtonTitle:"OK",
+                                                          tapBlock:nil)
+                break
+            }
+        }
     }
     
-    [feedbackData appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // last
-    [feedbackData appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    return feedbackData;
+    func enableActivityIndicator(_ enable: Bool) {
+        self.activityView.hidden = !enable
+        self.sendButton.enabled = !enable
     }
     
-    - (void)scrollToTextViewCaret:(UIView<UITextInput> *)textView {
-    CGRect caretRect = [textView caretRectForPosition:textView.selectedTextRange.end];
+
+    func scrollToTextViewCaret(textView: UIView) {
+        var caretRect = textView.caretRectForPosition(textView.selectedTextRange.end)
     
-    // カーソルが最後にあると INFINITY になる……？
-    if (caretRect.origin.y == INFINITY) {
-    caretRect.origin.y = textView.frame.size.height;
-    caretRect.origin.x = 0;
-    caretRect.size.height = 10;
-    caretRect.size.width = 1;
+        // カーソルが最後にあると INFINITY になる……？
+        if caretRect.origin.y == INFINITY {
+            caretRect.origin.y = textView.frame.size.height
+            caretRect.origin.x = 0
+            caretRect.size.height = 10
+            caretRect.size.width = 1
+        }
+    
+        caretRect.origin = textView.convertPoint(caretRect.origin, toView:self.scrollView)
+    
+        let keyboardTopBorder = self.scrollView.frame.size.height - self.keyboardHeight
+    
+        if caretRect.origin.y + caretRect.size.height > keyboardTopBorder {
+            let rect = caretRect
+            self.scrollView.scrollRectToVisible(rect, animated:true)
+        }
     }
     
-    caretRect.origin = [textView convertPoint:caretRect.origin toView:self.scrollView];
+    // MARK: - Video関連
     
-    CGFloat keyboardTopBorder = self.scrollView.frame.size.height - self.keyboardHeight;
+    func generateVideoPreviewImage(url: URL) -> UIImage? {
+        let asset: AVURLAsset = AVURLAsset(url: url, options:nil)
+        let generator: AVAssetImageGenerator = AVAssetImageGenerator(asset: asset)
+        generator.appliesPreferredTrackTransform = true
     
-    if (caretRect.origin.y + caretRect.size.height > keyboardTopBorder) {
-    CGRect rect = caretRect;
-    [self.scrollView scrollRectToVisible:rect animated:YES];
-    }
-    }
+        let thumbTime = CMTimeMakeWithSeconds(0.5, NSEC_PER_SEC)
     
-    #pragma mark - Video関連
+        var error: NSError = nil
+        let imageRef = generator.copyCGImageAtTime(thumbTime, actualTime:nil error:&error)
+        let image = UIImage.image(CGImage:imageRef,
+                                  scale:UIScreen.mainScreen.scale,
+                                  orientation:UIImageOrientationUp)
+        CGImageRelease(imageRef)
     
-    -(UIImage *)generateVideoPreviewImage:(NSURL *)url
-    {
-    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:url options:nil];
-    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-    generator.appliesPreferredTrackTransform = YES;
-    
-    CMTime thumbTime = CMTimeMakeWithSeconds(0.5, NSEC_PER_SEC);
-    
-    NSError *error = nil;
-    CGImageRef imageRef = [generator copyCGImageAtTime:thumbTime actualTime:NULL error:&error];
-    UIImage *image = [UIImage imageWithCGImage:imageRef
-    scale:UIScreen.mainScreen.scale
-    orientation:UIImageOrientationUp];
-    CGImageRelease(imageRef);
-    
-    return image;
+        return image
     
     }
     
-    #pragma mark - IBActions
+    // MARK: - IBActions
     
-    - (IBAction)didTapOK:(id)sender {
-    if (self.reporterName.text.length > 0) {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setValue:self.reporterName.text forKey:@"report.user_name"];
-    [userDefaults synchronize];
+    @IBAction func didTapOK(_ sender: Any) {
+        if self.reporterName.text.length > 0 {
+            let userDefaults = UserDefaults.standard
+            userDefaults.setValue(self.reporterName.text, forKey:"report.user_name")
+            userDefaults.synchronize()
+        }
+    
+        if self.titleTextField.text.length == 0 {
+            self.p_createAlert(title: nil,
+                               message:AppFeedbackLocalizedString.string(for :"confirmReportSettingInputTitleMessage"),
+                               cancelButtonTitle:nil,
+                               destructiveButtonTitle:nil,
+                               otherButtonTitle:"OK",
+                               tapBlock: (buttonIndex: Int) {
+                                self.titleTextField.becomeFirstResponder()
+                               })
+            return
+        }
+    
+        if self.reporterName.text.length == 0 {
+            self.p_createAlert(title: AppFeedbackLocalizedString.string(for: "confirmReportSettingMessage"),
+                               message:AppFeedbackLocalizedString.string(for: "confirmReportSettingSlackIdCausionMessage"),
+                               cancelButtonTitle:nil,
+                               destructiveButtonTitle:nil,
+                               otherButtonTitle:"OK",
+                               tapBlock: (buttonIndex: Int) {
+                                self.reporterName.becomeFirstResponder()
+                               })
+            return
+        }
+    
+        let confirmMsg = AppFeedbackLocalizedString.string(for "confirmReportSettingMessage")
+    
+        if self.feedbackCategoryButton.currentTitle == self.notSelectedCategoryTitle {
+            confirmMsg = String(format: "%@\n\n%@", confirmMsg, AppFeedbackLocalizedString.string(for: "confirmReportSettingNotSelectedCategoryMessage"))
+        }
+    
+    
+        self.p_createAlert(title: AppFeedbackLocalizedString.string(for: "confirm"),
+                           message:confirmMsg,
+                           cancelButtonTitle:AppFeedbackLocalizedString(for: "cancel"),
+                           destructiveButtonTitle:nil,
+                           otherButtonTitle:AppFeedbackLocalizedString(for: "send"),
+                           tapBlock: (buttonIndex: Int) {
+                            if buttonIndex == UIAlertFirstOtherButtonIndex {
+                                self.p_sendMessage()
+                                self.closeKeyboard()
+                            }
+                           })
     }
     
-    if (self.titleTextField.text.length == 0) {
-    [self
-    p_createAlertWithTitle:nil
-    message:[AppFeedbackLocalizedString stringFor:@"confirmReportSettingInputTitleMessage"]
-    cancelButtonTitle:nil
-    destructiveButtonTitle:nil
-    otherButtonTitle:@"OK"
-    tapBlock:^(NSInteger buttonIndex){
-    [self.titleTextField becomeFirstResponder];
-    }];
-    return;
-    }
-    
-    if (self.reporterName.text.length == 0) {
-    [self
-    p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"confirmReportSettingMessage"]
-    message:[AppFeedbackLocalizedString stringFor:@"confirmReportSettingSlackIdCausionMessage"]
-    cancelButtonTitle:nil
-    destructiveButtonTitle:nil
-    otherButtonTitle:@"OK"
-    tapBlock:^(NSInteger buttonIndex){
-    [self.reporterName becomeFirstResponder];
-    }];
-    return;
-    }
-    
-    NSString *confirmMsg = [AppFeedbackLocalizedString stringFor:@"confirmReportSettingMessage"];
-    
-    if ([self.feedbackCategoryButton.currentTitle  isEqual: self.notSelectedCategoryTitle]) {
-    confirmMsg = [NSString stringWithFormat:@"%@\n\n%@", confirmMsg, [AppFeedbackLocalizedString stringFor:@"confirmReportSettingNotSelectedCategoryMessage"]];
+    @IBAction func didTapCancel(sender: Any) {
+        self.p_close()
     }
     
     
-    [self p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"confirm"] message:confirmMsg cancelButtonTitle:[AppFeedbackLocalizedString stringFor:@"cancel"] destructiveButtonTitle:nil otherButtonTitle:[AppFeedbackLocalizedString stringFor:@"send"] tapBlock:^(NSInteger buttonIndex){
-    if (buttonIndex == UIAlertFirstOtherButtonIndex) {
-    [self p_sendMessage];
-    [self closeKeyboard];
-    }
-    }];
-    }
-    
-    - (IBAction)didTapCancel:(id)sender {
-    [self p_close];
-    }
-    
-    
-    - (IBAction)videoButtonTapped:(id)sender {
-    NSString *message = [NSString stringWithFormat:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertMessage"], (int)floor(VIDEO_LIMIT_SECS)];
-    [self p_createAlertWithTitle:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertTitle"] message:message cancelButtonTitle:[AppFeedbackLocalizedString stringFor:@"cancel"] destructiveButtonTitle:nil otherButtonTitle:[AppFeedbackLocalizedString stringFor:@"videoButtonTappedAlertStartButtonTitle"] tapBlock:^(NSInteger buttonIndex){
-    if (buttonIndex == UIAlertFirstOtherButtonIndex) {
-    [self p_close:^{
-    [AppFeedback startRecording];
-    }];
-    }
-    }];
+    @IBAction func videoButtonTapped(sender: Any) {
+        let message = String(format: AppFeedbackLocalizedString.string(for: "videoButtonTappedAlertMessage"), (int)floor(VIDEO_LIMIT_SECS))
+        self.p_createAlert(title: AppFeedbackLocalizedString.string(for: "videoButtonTappedAlertTitle"),
+                           message:message,
+                           cancelButtonTitle:AppFeedbackLocalizedString.string(for "cancel"),
+                           destructiveButtonTitle:nil,
+                           otherButtonTitle:AppFeedbackLocalizedString.string(for: "videoButtonTappedAlertStartButtonTitle"),
+                           tapBlock: (buttonIndex: Int) {
+                            if buttonIndex == UIAlertFirstOtherButtonIndex {
+                                self p_close: {
+                                    AppFeedback.startRecording()
+                                }
+                            }
+                           })
     }
     
-    - (IBAction)playButtonTapped:(id)sender {
-    if (!self.videoPath) return;
+    @IBAction func playButtonTapped(sender: Any) {
+        if !self.videoPath return
     
-    AVPlayer *avPlayer = [AVPlayer playerWithURL:self.videoPath];
-    AVPlayerViewController *controller = [[AVPlayerViewController alloc] init];
-    controller.player = avPlayer;
-    [self presentViewController:controller animated:YES completion:^{
-    [avPlayer play];
-    }];
+        let avPlayer = AVPlayer(url: self.videoPath)
+        let controller = AVPlayerViewController()
+        controller.player = avPlayer
+        self.presentViewController(controller, animated:true, completion: {
+            avPlayer.play()
+        })
     }
     
-    - (IBAction)closeKeyboardButtonTapped:(id)sender {
-    [self closeKeyboard];
+    @IBAction func closeKeyboardButtonTapped(sender: Any) {
+        self.closeKeyboard()
     }
-    
-    #pragma mark - Textfield Delegate
-    - (BOOL)textFieldShouldReturn:(UITextField *)textField
-    {
-    if (textField == self.reporterName) {
-    [textField resignFirstResponder];
-    return YES;
-    }
-    
-    if (textField == self.titleTextField) {
-    [textField resignFirstResponder];
-    [self.freeCommentField becomeFirstResponder];
-    return NO;
-    }
-    
-    return YES;
-    }
-    
-    - (void)keyboardWillChange:(NSNotification*)notification
-    {[self.view layoutIfNeeded];
-    // キーボードの top を取得する
-    NSDictionary *userInfo = [notification userInfo];
-    CGRect keyboardRect = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    
-    CGRect origKeyboardRect = keyboardRect;
-    CGFloat margin = 4.0;
-    
-    
-    if(focusOnReporterName){
-    self.keyboardAccessoryView.hidden = YES;
-    }else{
-    self.keyboardAccessoryView.hidden = NO;
-    }
-    
-    keyboardRect.size.height += self.keyboardAccessoryView.frame.size.height + margin;
-    keyboardRect.origin.y -= self.keyboardAccessoryView.frame.size.height - margin;
-    self.keyboardHeight = keyboardRect.size.height;
-    
-    // キーボードアニメーションと同じ間隔、速度になるように設定
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
-    [UIView setAnimationCurve:[notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    
-    self.keyboardAccessoryBottomConstraint.constant = origKeyboardRect.size.height;
-    [self.view layoutIfNeeded];
-    
-    // 表示アニメーション開始
-    [UIView commitAnimations];
-    
-    // scrollView の contentInset と scrollIndicatorInsets の bottom に追加
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardRect.size.height, 0.0);
-    _scrollView.contentInset = contentInsets;
-    _scrollView.scrollIndicatorInsets = contentInsets;
-    
-    if (self.freeCommentField.isFirstResponder) {
-    [self scrollToTextViewCaret:self.freeCommentField];
-    }
-    }
-    
-    - (void)keyboardWillHidden:(NSNotification*)notification
-    {
-    // キーボードアニメーションと同じ間隔、速度になるように設定
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
-    [UIView setAnimationCurve:[notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    
-    self.keyboardHeight = 0;
-    
-    // インセットを 0 にする
-    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    _scrollView.contentInset = contentInsets;
-    _scrollView.scrollIndicatorInsets = contentInsets;
-    
-    self.keyboardAccessoryView.hidden = YES;
-    self.keyboardAccessoryBottomConstraint.constant = 0;
-    [self.view layoutIfNeeded];
-    
-    // 非表示アニメーション開始
-    [UIView commitAnimations];
-    }
-    
-    // reporterNameにフォーカスが当たった
-    - (void)textFieldDidBeginEditing:(UITextField *)textField
-    {
-    focusOnReporterName = textField == self.reporterName;
-    }
-    
-    // reporterNameからフォーカスが外れた
-    - (void)textFieldDidEndEditing:(UITextField *)textField{/*特にやることなし*/}
-    
-    // freeCommentFieldにフォーカスが当たった
-    - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
-    {
-    focusOnReporterName = NO;
-    [self scrollToTextViewCaret:textView];
-    return YES;
-    }
-    
-    - (void)textViewDidChange:(UITextView *)textView {
-    [textView setNeedsLayout];
-    [textView layoutIfNeeded];
-    [self scrollToTextViewCaret:textView];
-    }
-    
-    // freeCommentFieldからフォーカスが外れた
-    - (BOOL)textViewShouldEndEditing:(UITextView *)textView{/*特にやることなし*/ return YES;}
     
     // 描画画面に遷移する際スクリーンショットを渡す
-    - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"goToDrawing"]) {
-    UINavigationController *navController = segue.destinationViewController;
-    [self setupNavBarAttributes:navController];
-    DrawViewController *drawViewController = (DrawViewController *)navController.topViewController;
-    drawViewController.originImage = [[UIImage alloc] initWithCGImage:self.image.CGImage];
-    if (sender != nil) {
-    drawViewController.editingImage = [[UIImage alloc] initWithCGImage:((UIImage*)sender).CGImage];
-    }
-    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == goToDrawing {
+            let navController = segue.destinationViewController as! UINavigationController
+            self.setupNavBarAttributes:navController()
+            let drawViewController = navController.topViewController as! DrawViewController
+            drawViewController.originImage = UIImage(cgImage: self.image.cgImage)
+            if sender != nil {
+                drawViewController.editingImage = UIImage(cgImage: (sender as! UIImage).cgImage)
+            }
+        }
     }
     
     // 保存ボタンを押して描画画面から戻った時の処理
-    - (IBAction)unwindToDrawViewController:(UIStoryboardSegue *)segue
-    {
-    DrawViewController *drawViewController = [segue sourceViewController];
-    if (drawViewController.editingImage) {
-    drawViewController.editingImage = nil;
-    self.drawnImage = [drawViewController.imageView image];
-    } else {
-    self.drawnImage = nil;
-    self.imageView.image = drawViewController.originImage;
-    }
-    self.videoPath = nil;
+    @IBAction func unwindToDrawViewController(segue: UIStoryboardSegue) {
+        let drawViewController = segue.sourceViewController as! DrawViewController
+        if drawViewController.editingImage {
+            drawViewController.editingImage = nil
+            self.drawnImage = drawViewController.imageView.image
+        } else {
+            self.drawnImage = nil
+            self.imageView.image = drawViewController.originImage
+        }
+        self.videoPath = nil
     }
     
     // 画像編集ボタンを押した時の処理
-    - (IBAction)editButton:(id)sender {
-    // 既に保存されている画像がある場合、途中から編集する
-    if (self.drawnImage) {
-    [self performSegueWithIdentifier:@"goToDrawing" sender:self.imageView.image];
-    } else {
-    [self performSegueWithIdentifier:@"goToDrawing" sender:nil];
-    }
+    @IBAction editButton(sender: Any) {
+        // 既に保存されている画像がある場合、途中から編集する
+        if self.drawnImage {
+            self.performSegue(withIdentifier: "goToDrawing", sender: self.imageView.image)
+        } else {
+            self.performSegue(withIdentifier: "goToDrawing", sender: nil)
+        }
     }
     
-    - (void)setupNavBarAttributes:(UINavigationController *)navController {
-    // storyboardからだと反映されないので、コードから直接色指定する。
-    navController.navigationBar.barTintColor = [UIColor colorWithRed:0.278 green:0.729 blue:0.678 alpha:1.0];
-    navController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName: UIColor.whiteColor };
+    func setupNavBarAttributes(navController: UINavigationController) {
+        // storyboardからだと反映されないので、コードから直接色指定する。
+        navController.navigationBar.barTintColor = UIColor(red:0.278, green:0.729, blue:0.678, alpha:1.0)
+        navController.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
     }
     
     // フィードバックカテゴリ選択ボタンを押下した時の処理
-    - (IBAction)selectFeedbackCategory:(id)sender {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[AppFeedbackLocalizedString stringFor:@"categoryMessage"]
-    message:nil
-    preferredStyle:UIAlertControllerStyleActionSheet];
+    @IBAction selectFeedbackCategory(sender: Any) {
+        let alertController = UIAlertController(title: AppFeedbackLocalizedString.string(for "categoryMessage"),
+                                                message:nil,
+                                                preferredStyle: .actionSheet)
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:[AppFeedbackLocalizedString stringFor:@"cancel"]
-    style:UIAlertActionStyleCancel
-    handler:^(UIAlertAction * action) {}];
+        let cancelAction = UIAlertAction(title: AppFeedbackLocalizedString.string(for "cancel"),
+                                         style: .cancel,
+                                         handler: (_) {})
     
-    [alertController addAction:cancelAction];
+        alertController.add(cancelAction)
     
-    [self.config.categories enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-    UIAlertAction * selectAction = [UIAlertAction actionWithTitle:self.config.categories[idx]
-    style:UIAlertActionStyleDefault
-    handler:^(UIAlertAction * action) {
-    [self doneSelectedFeedbackCategory:self.config.categories[idx] :true];
-    }];
+        self.config.categories.enumerateObjectsUsingBlock(id Any, idx: UInt, stop: Bool) {
+            let selectAction = UIAlertAction(title:self.config.categories[idx],
+                                             style: .default,
+                                             handler: (action) {
+                                                self.doneSelectedFeedbackCategory(self.config.categories[idx], isSelected:true)
+                                             })
     
-    [selectAction setValue:[UIColor darkGrayColor] forKey:@"titleTextColor"];
-    [alertController addAction:selectAction];
-    }];
+            selectAction.setValue(UIColor.darkGray, forKey: "titleTextColor")
+            alertController.addAction(selectAction)
+        }
     
-    // iPad で Action Sheet を使う場合、popoverPresentationController を設定しないとクラッシュする。
-    alertController.popoverPresentationController.sourceView = self.feedbackCategoryLabel;
-    alertController.popoverPresentationController.sourceRect = self.feedbackCategoryButton.frame;
+        // iPad で Action Sheet を使う場合、popoverPresentationController を設定しないとクラッシュする。
+        alertController.popoverPresentationController.sourceView = self.feedbackCategoryLabel
+        alertController.popoverPresentationController.sourceRect = self.feedbackCategoryButton.frame
     
-    [self presentViewController:alertController animated:YES completion:nil];
+        self.presentViewController:alertController, animated:true completion:nil)
     }
     
     // 選択したフィードバックカテゴリを画面に反映する。
-    - (void)doneSelectedFeedbackCategory:(NSString *)selectedCategory :(BOOL)isSelected {
-    [self.feedbackCategoryButton setTitle:selectedCategory forState:UIControlStateNormal];
-    self.feedbackCategoryButton.selected = isSelected;
+    func doneSelectedFeedbackCategory(selectedCategory: String, isSelected: Bool) {
+        self.feedbackCategoryButton.setTitle(selectedCategory, forState: .normal)
+        self.feedbackCategoryButton.selected = isSelected
     }
-    
-    @end
-
 }
 
+extension ReportViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.reporterName {
+            textField.resignFirstResponder()
+            return true
+        }
+    
+        if textField == self.titleTextField {
+            textField.resignFirstResponder()
+            self.freeCommentField.becomeFirstResponder()
+            return false
+        }
+    
+        return true
+    }
+    
+    // reporterNameにフォーカスが当たった
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        focusOnReporterName = textField == self.reporterName
+    }
+    
+    // reporterNameからフォーカスが外れた
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        /*特にやることなし*/
+    }
+}
+
+extension ReportViewController: UITextViewDelegate {
+    // freeCommentFieldにフォーカスが当たった
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        focusOnReporterName = false
+        self.scrollToTextViewCaret(textView)
+        return true
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        textView.setNeedsLayout()
+        textView.layoutIfNeeded()
+        self.scrollToTextViewCaret(textView)
+    }
+    
+    // freeCommentFieldからフォーカスが外れた
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        /*特にやることなし*/
+        return true
+    }
+}

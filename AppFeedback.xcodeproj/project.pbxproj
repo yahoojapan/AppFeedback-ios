@@ -21,8 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0928E4811E9C888A00F477D2 /* Config.h in Headers */ = {isa = PBXBuildFile; fileRef = 0928E47F1E9C888A00F477D2 /* Config.h */; };
-		0928E4821E9C888A00F477D2 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928E4801E9C888A00F477D2 /* Config.m */; };
 		0928E4841E9C95AC00F477D2 /* ConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928E4831E9C95AC00F477D2 /* ConfigTests.m */; };
 		092EB7C62240BC0B007DA694 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092EB7C52240BC0B007DA694 /* DrawView.swift */; };
 		09308418222FA180009C8ECE /* URL+FileSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09308417222FA180009C8ECE /* URL+FileSize.swift */; };
@@ -36,6 +34,7 @@
 		09B0F74A1EADDFD90055F8A5 /* FloatingButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B0F7481EADDFD90055F8A5 /* FloatingButtonView.m */; };
 		09B0F74D1EADF2600055F8A5 /* FloatingButtonOuterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B0F74B1EADF2600055F8A5 /* FloatingButtonOuterView.h */; };
 		09B0F74E1EADF2600055F8A5 /* FloatingButtonOuterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B0F74C1EADF2600055F8A5 /* FloatingButtonOuterView.m */; };
+		09BBC4A3257395740013C741 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BBC4A2257395740013C741 /* Config.swift */; };
 		09C80B3C224B495C00994C01 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C80B3B224B495C00994C01 /* ReportViewController.swift */; };
 		09D5DC431EA8824400F24FA4 /* FloatingButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D5DC421EA8824400F24FA4 /* FloatingButton.xib */; };
 		09D5DC4B1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D5DC491EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h */; };
@@ -80,8 +79,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0928E47F1E9C888A00F477D2 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
-		0928E4801E9C888A00F477D2 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		0928E4831E9C95AC00F477D2 /* ConfigTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTests.m; sourceTree = "<group>"; };
 		092EB7C52240BC0B007DA694 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		09308417222FA180009C8ECE /* URL+FileSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+FileSize.swift"; sourceTree = "<group>"; };
@@ -96,6 +93,7 @@
 		09B0F7481EADDFD90055F8A5 /* FloatingButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonView.m; sourceTree = "<group>"; };
 		09B0F74B1EADF2600055F8A5 /* FloatingButtonOuterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingButtonOuterView.h; sourceTree = "<group>"; };
 		09B0F74C1EADF2600055F8A5 /* FloatingButtonOuterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonOuterView.m; sourceTree = "<group>"; };
+		09BBC4A2257395740013C741 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		09C80B3B224B495C00994C01 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		09D5DC421EA8824400F24FA4 /* FloatingButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingButton.xib; sourceTree = "<group>"; };
 		09D5DC491EA8CC3000F24FA4 /* ScreenVideoCaptureSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenVideoCaptureSession.h; sourceTree = "<group>"; };
@@ -257,8 +255,6 @@
 				DBCE68E11BD776ED00A03D74 /* AppFeedbackInternal.m */,
 				DBCE68D51BD776B300A03D74 /* Info.plist */,
 				DAA7B7A5222F9060009B9AB0 /* DeviceUtil.swift */,
-				0928E47F1E9C888A00F477D2 /* Config.h */,
-				0928E4801E9C888A00F477D2 /* Config.m */,
 				2B4562702238DCCE008DF57B /* UIPlaceHolderTextView.swift */,
 				2B4562722238DCED008DF57B /* AutoResizeTextView.swift */,
 				09D5DC481EA8BF9300F24FA4 /* ScreenCapture */,
@@ -269,6 +265,7 @@
 				DAB6F89B2240C6DB00EAB279 /* SlackAPI.swift */,
 				DAB6F8C0224215B800EAB279 /* AppFeedbackLocalizedString.swift */,
 				2BE8733621B7A58700B7D935 /* Localizable.strings */,
+				09BBC4A2257395740013C741 /* Config.swift */,
 			);
 			path = AppFeedback;
 			sourceTree = "<group>";
@@ -289,7 +286,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0928E4811E9C888A00F477D2 /* Config.h in Headers */,
 				09B0F7491EADDFD90055F8A5 /* FloatingButtonView.h in Headers */,
 				DBDCC3FF1BD9D25100327609 /* ReportViewController.h in Headers */,
 				09D5DC541EAA20E400F24FA4 /* ScreenCapture.h in Headers */,
@@ -453,13 +449,13 @@
 				D42C66ED2242174600EB1A21 /* FloatingProgressView.swift in Sources */,
 				09D9C3911EA74EE600B81B19 /* FloatingButtonWindow.m in Sources */,
 				09D5DC4C1EA8CC3000F24FA4 /* ScreenVideoCaptureSession.m in Sources */,
+				09BBC4A3257395740013C741 /* Config.swift in Sources */,
 				09B0F74A1EADDFD90055F8A5 /* FloatingButtonView.m in Sources */,
 				DBCE68F81BD776ED00A03D74 /* AppFeedbackInternal.m in Sources */,
 				09D9C38D1EA74DD900B81B19 /* FloatingButtonController.m in Sources */,
 				DAB6F89C2240C6DB00EAB279 /* SlackAPI.swift in Sources */,
 				D460C3572253306D00CBC359 /* OverlayWindow.swift in Sources */,
 				DAA7B7A6222F9060009B9AB0 /* DeviceUtil.swift in Sources */,
-				0928E4821E9C888A00F477D2 /* Config.m in Sources */,
 				093E555E1EB0B8B100CF731F /* FloatingButtonControllerIOS9.m in Sources */,
 				09B0F74E1EADF2600055F8A5 /* FloatingButtonOuterView.m in Sources */,
 				DAB6F8C1224215B800EAB279 /* AppFeedbackLocalizedString.swift in Sources */,

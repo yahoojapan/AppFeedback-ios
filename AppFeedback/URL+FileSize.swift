@@ -24,9 +24,11 @@
 
 import Foundation
 
-@objc public extension NSURL {
-    public var fileSize: Int {
-        let resource = try? self.resourceValues(forKeys: [.fileSizeKey])
+public extension URL {
+    var fileSize: Int {
+        let nsurl = self as NSURL
+        let resource = try? nsurl.resourceValues(forKeys: [.fileSizeKey])
+        
         return resource?[.fileSizeKey] as? Int ?? 0
     }
 }
