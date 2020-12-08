@@ -33,6 +33,11 @@ public class SlackAPI: NSObject {
     
     static public let boundary = "AppFeedbackiOSSDKBoundary"
     
+    public struct ResponseData: Decodable {
+        let ok: Bool
+        let error: String?
+    }
+    
     public init(token: String,
                 channel: String,
                 apiUrl: String,
@@ -43,7 +48,7 @@ public class SlackAPI: NSObject {
         self.branchName = branchName
     }
     
-    public func post(data: SendData, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    public func post(data: SendData, completionHandler: @escaping (ResponseData?, URLResponse?, Error?) -> Void) {
         let urlString = apiUrl + "/files.upload"
         guard let url = URL(string: urlString) else { return }
         var request = URLRequest(url: url)
@@ -60,7 +65,23 @@ public class SlackAPI: NSObject {
         request.httpBody = feedbackData
         
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
-        let task = session.dataTask(with: request, completionHandler: completionHandler)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                return completionHandler(nil, response, error)
+            }
+            
+            if let error = error {
+                return completionHandler(nil, response, error)
+            }
+
+            do {
+                let apiResponse = try JSONDecoder().decode(ResponseData.self, from: data)
+                return completionHandler(apiResponse, response, error)
+            } catch let error {
+                return completionHandler(nil, response, error)
+            }
+        }
+
         task.resume()
     }
 }
