@@ -660,7 +660,12 @@ public class ReportViewController : UIViewController {
                                                 self.doneSelectedFeedbackCategory(selectedCategory: category, isSelected: true)
                                              })
     
-            selectAction.setValue(UIColor.darkGray, forKey: "titleTextColor")
+            if #available(iOS 13.0, *) {
+                selectAction.setValue(UIColor.label, forKey: "titleTextColor")
+            } else {
+                selectAction.setValue(UIColor.darkGray, forKey: "titleTextColor")
+            }
+            
             alertController.addAction(selectAction)
         }
     
@@ -679,7 +684,8 @@ public class ReportViewController : UIViewController {
 }
 
 extension ReportViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+    private func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.reporterName {
             textField.resignFirstResponder()
             return true
@@ -695,32 +701,32 @@ extension ReportViewController: UITextFieldDelegate {
     }
     
     // reporterNameにフォーカスが当たった
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    private func textFieldDidBeginEditing(_ textField: UITextField) {
         focusOnReporterName = textField == self.reporterName
     }
     
     // reporterNameからフォーカスが外れた
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    private func textFieldDidEndEditing(_ textField: UITextField) {
         /*特にやることなし*/
     }
 }
 
 extension ReportViewController: UITextViewDelegate {
     // freeCommentFieldにフォーカスが当たった
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+    private func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         focusOnReporterName = false
         self.scrollToTextViewCaret(textView: textView)
         return true
     }
  
-    func textViewDidChange(_ textView: UITextView) {
+    private func textViewDidChange(_ textView: UITextView) {
         textView.setNeedsLayout()
         textView.layoutIfNeeded()
         self.scrollToTextViewCaret(textView: textView)
     }
     
     // freeCommentFieldからフォーカスが外れた
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+    private func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         /*特にやることなし*/
         return true
     }
