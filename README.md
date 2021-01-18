@@ -32,14 +32,13 @@ Introducing this SDK, a floating icon of feedback is displayed. Tapping it, a fe
 Swift
 
 ### 1. Incorporate SDK
-#### Swift Package Manager (Xcode12〜)
+#### 1.1 Swift Package Manager (Xcode12〜)
 Please add the following URL from Swift Packages in the project file.
 ```
 https://github.com/yahoojapan/AppFeedback-ios
 ```
 
-
-#### Carthage
+#### 1.2 Carthage
 [Carthage](https://github.com/Carthage/Carthage)
 ```
 github "https://github.com/yahoojapan/AppFeedback-ios"
