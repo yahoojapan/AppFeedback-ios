@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pVU-VP-tMo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pVU-VP-tMo">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +30,7 @@
         <!--Feedback-->
         <scene sceneID="Xgg-4g-Kz9">
             <objects>
-                <viewController storyboardIdentifier="ReportView" title="Feedback" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RGA-cb-TLJ" customClass="ReportViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReportView" title="Feedback" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RGA-cb-TLJ" customClass="ReportViewController" customModule="AppFeedback" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Vc-vg-eNt" userLabel="RootView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,7 +45,7 @@
                                             <rect key="frame" x="281.66666666666669" y="220.66666666666669" width="37" height="37"/>
                                         </activityIndicatorView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sending..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wep-PR-6FS">
-                                            <rect key="frame" x="247.66666666666666" y="287.66666666666669" width="104.66666666666666" height="27"/>
+                                            <rect key="frame" x="248.33333333333334" y="287.66666666666669" width="103.33333333333334" height="27"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -84,7 +84,7 @@
                                                 <rect key="frame" x="10" y="260.66666666666669" width="412.33333333333331" height="300.00000000000006"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pRC-RS-zAC" userLabel="FreeCommentField" customClass="UIPlaceHolderTextView">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pRC-RS-zAC" userLabel="FreeCommentField" customClass="UIPlaceHolderTextView" customModule="AppFeedback" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="105.66666666666666" width="580" height="140"/>
                                                 <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -101,7 +101,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="01e-In-3eR"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="lO0-j2-QZy"/>
                                                 </constraints>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" systemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done"/>
                                                 <connections>
@@ -147,7 +147,7 @@
                                                 </connections>
                                             </button>
                                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CategoryPulldown" translatesAutoresizingMaskIntoConstraints="NO" id="FHl-6k-hLo">
-                                                <rect key="frame" x="150" y="10" width="14" height="30"/>
+                                                <rect key="frame" x="149" y="10" width="14" height="30"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="FTw-R2-3dT"/>
@@ -160,8 +160,8 @@
                                                 <color key="textColor" red="0.38431372549019605" green="0.38431372549019605" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="bottomLeft" horizontalHuggingPriority="750" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeV-rN-syK" customClass="ExpansionButton">
-                                                <rect key="frame" x="93" y="9" width="49" height="33"/>
+                                            <button opaque="NO" contentMode="bottomLeft" horizontalHuggingPriority="750" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeV-rN-syK" customClass="ExpansionButton" customModule="AppFeedback" customModuleProvider="target">
+                                                <rect key="frame" x="93" y="9" width="48" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Select">
                                                     <color key="titleColor" red="0.69803921570000005" green="0.69803921570000005" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -242,7 +242,7 @@
                                             <constraint firstAttribute="height" constant="1" id="Zrd-FC-nph"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAJ-Fe-Y06">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAJ-Fe-Y06">
                                         <rect key="frame" x="530" y="5.6666666666666288" width="50" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Close"/>
@@ -263,6 +263,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="olA-OO-8tQ"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="olA-OO-8tQ" firstAttribute="trailing" secondItem="tlv-6t-AE9" secondAttribute="trailing" id="2Lj-8T-BhH"/>
@@ -285,7 +286,6 @@
                             <constraint firstItem="20y-tQ-Gei" firstAttribute="leading" secondItem="olA-OO-8tQ" secondAttribute="leading" id="zij-QH-Xhh"/>
                             <constraint firstItem="20y-tQ-Gei" firstAttribute="top" secondItem="4Vc-vg-eNt" secondAttribute="top" id="zjv-G8-gRy"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="olA-OO-8tQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Feedback" id="jKp-DZ-8i5">
                         <barButtonItem key="leftBarButtonItem" title="Close" id="pHQ-Zk-4s5" userLabel="Close">
@@ -333,7 +333,7 @@
         <!--Rendering-->
         <scene sceneID="d43-Jc-MOv">
             <objects>
-                <viewController storyboardIdentifier="DrawViewController" title="Rendering" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OfO-1t-4AJ" customClass="DrawViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DrawViewController" title="Rendering" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OfO-1t-4AJ" customClass="DrawViewController" customModule="AppFeedback" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d6p-je-sW0" userLabel="RootView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -348,7 +348,7 @@
                                             <constraint firstAttribute="width" priority="1" constant="372.67000000000002" id="fOM-UG-Ula"/>
                                         </constraints>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FnM-cX-9pp" customClass="DrawView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FnM-cX-9pp" customClass="DrawView" customModule="AppFeedback" customModuleProvider="target">
                                         <rect key="frame" x="20.666666666666657" y="84.666666666666686" width="372.66666666666674" height="604.66666666666652"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -368,6 +368,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="bOI-Nl-bi3"/>
                         <color key="backgroundColor" red="0.85490196078431369" green="0.86274509803921573" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aE0-lU-oFo" firstAttribute="trailing" secondItem="bOI-Nl-bi3" secondAttribute="trailing" id="DBM-sv-OsP"/>
@@ -375,7 +376,6 @@
                             <constraint firstItem="aE0-lU-oFo" firstAttribute="bottom" secondItem="bOI-Nl-bi3" secondAttribute="bottom" id="Ov4-F2-662"/>
                             <constraint firstItem="aE0-lU-oFo" firstAttribute="leading" secondItem="bOI-Nl-bi3" secondAttribute="leading" id="hhG-pI-Tra"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bOI-Nl-bi3"/>
                     </view>
                     <navigationItem key="navigationItem" title="Image Edit" id="TDt-M0-Lpn">
                         <leftBarButtonItems>
@@ -427,11 +427,14 @@
             <point key="canvasLocation" x="1341" y="279"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.2784313725" green="0.72941176470000002" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
         <image name="CategoryPulldown" width="375" height="667"/>
         <image name="Drawing" width="18" height="14"/>
         <image name="Play" width="37" height="43"/>
         <image name="VideoCapture" width="18" height="12"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
-    <color key="tintColor" red="0.2784313725" green="0.72941176470000002" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
 </document>
