@@ -61,6 +61,7 @@
 		2BE8733821B7A5D100B7D935 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8733A21B7A5D100B7D935 /* Main.storyboard */; };
 		7EBE637A218194E800AB7499 /* ExpansionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EBE6379218194E800AB7499 /* ExpansionButton.h */; };
 		7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE637B2181958000AB7499 /* ExpansionButton.m */; };
+		B6E2DACF25B54579001B6EE3 /* Bundle+Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E2DACE25B54579001B6EE3 /* Bundle+Target.swift */; };
 		DB9010BA1BDDB096001E0576 /* UIPlaceHolderTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */; };
 		DB9010BB1BDDB096001E0576 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9010B91BDDB096001E0576 /* UIPlaceHolderTextView.m */; };
 		DB9010BE1BDDB9F3001E0576 /* PopUpTransitionAnimater.h in Headers */ = {isa = PBXBuildFile; fileRef = DB9010BC1BDDB9F3001E0576 /* PopUpTransitionAnimater.h */; };
@@ -137,6 +138,7 @@
 		2BE8733C21B7A9C500B7D935 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7EBE6379218194E800AB7499 /* ExpansionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpansionButton.h; sourceTree = "<group>"; };
 		7EBE637B2181958000AB7499 /* ExpansionButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpansionButton.m; sourceTree = "<group>"; };
+		B6E2DACE25B54579001B6EE3 /* Bundle+Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Target.swift"; sourceTree = "<group>"; };
 		DB9010B81BDDB096001E0576 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
 		DB9010B91BDDB096001E0576 /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
 		DB9010BC1BDDB9F3001E0576 /* PopUpTransitionAnimater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpTransitionAnimater.h; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				095D269121B64EF6003802F5 /* SlackAPI.h */,
 				095D268F21B64EE9003802F5 /* SlackAPI.m */,
 				2BE8733621B7A58700B7D935 /* Localizable.strings */,
+				B6E2DACE25B54579001B6EE3 /* Bundle+Target.swift */,
 			);
 			path = AppFeedback;
 			sourceTree = "<group>";
@@ -407,7 +410,7 @@
 					};
 					DBCE68CF1BD776B200A03D74 = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1230;
 					};
 					DBCE690E1BD77C4400A03D74 = {
 						CreatedOnToolsVersion = 7.0;
@@ -419,6 +422,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				ja,
 				Base,
@@ -493,6 +497,7 @@
 				DBDCC4091BD9D8C900327609 /* AnimationUtil.m in Sources */,
 				DB9010BB1BDDB096001E0576 /* UIPlaceHolderTextView.m in Sources */,
 				DBDCC4051BD9D4E400327609 /* DeviceUtil.m in Sources */,
+				B6E2DACF25B54579001B6EE3 /* Bundle+Target.swift in Sources */,
 				09059A681EC1897C004B338E /* AutoResizeTextView.m in Sources */,
 				7EBE637C2181958000AB7499 /* ExpansionButton.m in Sources */,
 				093E555A1EB097F800CF731F /* FloatingProgressView.m in Sources */,
@@ -549,6 +554,7 @@
 		093517561E95E49B00BB554F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -564,6 +570,7 @@
 		093517571E95E49B00BB554F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
