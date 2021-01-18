@@ -31,8 +31,15 @@ Introducing this SDK, a floating icon of feedback is displayed. Tapping it, a fe
 
 Swift
 
-### 1. Incorporate SDK with Carthage
+### 1. Incorporate SDK
+#### Swift Package Manager (Xcode12〜)
+Please add the following URL from Swift Packages in the project file.
+```
+https://github.com/yahoojapan/AppFeedback-ios
+```
 
+
+#### Carthage
 [Carthage](https://github.com/Carthage/Carthage)
 ```
 github "https://github.com/yahoojapan/AppFeedback-ios"
@@ -41,6 +48,8 @@ github "https://github.com/yahoojapan/AppFeedback-ios"
 If you do not want to include SDK framework binaries in your application, please remove it from Copy Frameworks by looking at the configuration for the following.
 
 ![](./assets/CopyFrameworks.png)
+
+
 
 ### 2. import header
 
@@ -66,7 +75,7 @@ Initialize the SDK when launching the application. Make sure it is enabled only 
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // ……
-    
+
     #if ENABLE_APP_FEEDBACK
         AppFeedback.configure(withSlackToken:"<your token>", slackChannel:"<slack channel id>")
     #endif
