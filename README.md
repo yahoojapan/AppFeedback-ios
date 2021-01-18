@@ -48,8 +48,6 @@ If you do not want to include SDK framework binaries in your application, please
 
 ![](./assets/CopyFrameworks.png)
 
-
-
 ### 2. import header
 
 import [Bridging Header](https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html)
