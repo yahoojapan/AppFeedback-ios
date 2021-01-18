@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "AppFeedback",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v11)
     ],
