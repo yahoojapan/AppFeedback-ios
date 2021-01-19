@@ -7,7 +7,4 @@
    <FileRef
       location = "group:SampleApp/SampleApp.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Package.swift">
-   </FileRef>
 </Workspace>
