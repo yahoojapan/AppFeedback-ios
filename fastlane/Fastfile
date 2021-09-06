@@ -17,6 +17,7 @@ platform :ios do
     carthage(command: 'build',
              no_skip_current: true,
              platform: 'iOS',
+             use_xcframeworks: true,
              configuration: configuration)
 
     run_tests(
