@@ -6,6 +6,9 @@ import PackageDescription
 let package = Package(
     name: "AppFeedback",
     defaultLocalization: "en",
+    platforms: [
+        .iOS(.v9),
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -22,12 +25,18 @@ let package = Package(
         .target(
             name: "AppFeedback",
             dependencies: [],
-            path: "AppFeedback"
-            ),
+            path: "AppFeedback",
+            exclude: [
+                "Info.plist",
+            ]
+        ),
         .testTarget(
             name: "AppFeedbackTests",
             dependencies: ["AppFeedback"],
-            path: "AppFeedbackTests"
-            ),
+            path: "AppFeedbackTests",
+            exclude: [
+                "Info.plist",
+            ]
+        ),
     ]
 )

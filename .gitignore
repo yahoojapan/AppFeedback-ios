@@ -57,6 +57,10 @@ fastlane/screenshots
 
 *.framework.zip
 
+# Swift Package Manager
+
+.build
+
 # Ruby
 
 # Gemfile.lock
