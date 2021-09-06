@@ -70,7 +70,11 @@ static AppFeedback *sharedData = nil;
     NSString* bundlePath = [NSBundle.mainBundle pathForResource:@"AppFeedbackResource" ofType:@"bundle"];
     return [NSBundle bundleWithPath:bundlePath];
 #else
+#ifdef SWIFT_PACKAGE
+    return AppFeedback_AppFeedback_SWIFTPM_MODULE_BUNDLE();
+#else
     return [NSBundle bundleForClass:self.class];
+#endif
 #endif
 }
 
